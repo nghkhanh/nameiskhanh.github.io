@@ -5,8 +5,10 @@ nav_order: 1
 ---
   
 Bạn có hối hận về ngày hôm qua?  
-♬♬♬♬♬
-
+(◕‿◕)  
+  
+  
+  
 ***Biển học vô biên, lấy kiên trì làm bến.***  
 ***Mây xanh không lối, lấy chỉ cả dựng nên.***  
                                     *Hữu Giang*
