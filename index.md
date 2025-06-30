@@ -3,8 +3,6 @@ layout: default
 title: Trang chủ
 nav_order: 1
 ---
-# Nguyễn Hữu Khánh
-  
   
 Bạn có hối hận về ngày hôm qua?.
 
