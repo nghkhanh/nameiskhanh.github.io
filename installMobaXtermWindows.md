@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Install MobaXterm
+title: Intro
 nav_order: 1
-parent: Windows tutorials
+parent: Buổi 1. Docker và Terraform
 grand_parent: Data Engineer
 ---
 
