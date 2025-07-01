@@ -3,7 +3,7 @@ layout: default
 title: Windows tutorials
 nav_order: 2
 has_children: true
-parent: Logging In
+parent: Data Engineer
 ---
 
-# Windows Tutorials
+# Buổi 1. Docker và Terraform
