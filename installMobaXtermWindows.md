@@ -3,7 +3,7 @@ layout: default
 title: Install MobaXterm
 nav_order: 1
 parent: Windows tutorials
-grand_parent: Logging In
+grand_parent: Data Engineer
 ---
 
 # How to: Install MobaXterm (Windows)
