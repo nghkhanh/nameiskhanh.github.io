@@ -1,9 +1,10 @@
 ---
 layout: default
-title: 15. NER
-nav_order: 15
-parent: NLP
-permalink: /nlp/15_ner
+title: 14. NER
+nav_order: 14
+parent: Course
+grand_parent: NLP
+permalink: /nlp/course/14_ner/
 ---
 
 # Name Entity Recognition

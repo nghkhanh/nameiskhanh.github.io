@@ -1,9 +1,10 @@
 ---
 layout: default
-title: 11. GRU
-nav_order: 11
-parent: NLP
-permalink: /nlp/11_gru/
+title: 10. Gated Recurrent Unit
+nav_order: 10
+parent: Course
+grand_parent: NLP
+permalink: /nlp/course/10_gru/
 ---
 
 # Gated Recurrent Unit

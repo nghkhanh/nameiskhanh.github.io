@@ -1,9 +1,10 @@
 ---
 layout: default
-title: 10. LSTM
-nav_order: 10
-parent: NLP
-permalink: /nlp/10_lstm
+title: 9. Long Short Term Memory
+nav_order: 9
+parent: Course
+grand_parent: NLP
+permalink: /nlp/course/09_long_short_term_memory.md
 ---
 
 # Long Short Term Memory

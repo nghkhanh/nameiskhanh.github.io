@@ -1,9 +1,10 @@
 ---
 layout: default
-title: 9. RNN
-nav_order: 9
-parent: NLP
-permalink: /nlp/09_rnn/
+title: 8. Recurrent Neural Network
+nav_order: 8
+parent: Course
+grand_parent: NLP
+permalink: /nlp/course/08_rnn/
 ---
 
 # Recurrent Neural Network

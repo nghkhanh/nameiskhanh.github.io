@@ -1,9 +1,10 @@
 ---
 layout: default
-title: 12. Attention
-nav_order: 12
-parent: NLP
-permalink: /nlp/12_attention
+title: 11. Attention
+nav_order: 11
+parent: Course
+grand_parent: NLP
+permalink: /nlp/course/11_attention/
 ---
 
 # Attention is all you need

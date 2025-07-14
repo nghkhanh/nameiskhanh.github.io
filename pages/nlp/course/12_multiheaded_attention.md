@@ -1,9 +1,10 @@
 ---
 layout: default
-title: 13. Mutilhead attention
-nav_order: 13
-parent: NLP
-permalink: nlp/13_multihead_attention
+title: 12. Multi-Headed Attention
+nav_order: 12
+parent: Course
+grand_parent: NLP
+permalink: /nlp/course/12_multiheaded_attention/
 ---
 
 # Multi-Headed Attention

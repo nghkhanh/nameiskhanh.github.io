@@ -1,9 +1,10 @@
 ---
 layout: default
-title: 8. Word embedding
-nav_order: 8
-parent: NLP
-permalink: /nlp/8_word_embedding/
+title: 7. Word Embeddding
+nav_order: 7
+parent: Course
+grand_parent: NLP
+permalink: /nlp/course/07_word_embedding/
 ---
 
 # Word Embeddding

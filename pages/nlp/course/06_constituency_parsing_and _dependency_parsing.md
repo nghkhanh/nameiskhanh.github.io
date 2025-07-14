@@ -1,9 +1,10 @@
 ---
 layout: default
-title: 7. Parsing
-nav_order: 7
-parent: NLP
-permalink: /nlp/07_parsing/
+title: 6. Parsing
+nav_order: 6
+parent: Course
+grand_parent: NLP
+permalink: nlp/course/06_constituency_parsing_and _dependency_parsing/
 ---
 
 # Constituency Parsing and Dependency Parsing

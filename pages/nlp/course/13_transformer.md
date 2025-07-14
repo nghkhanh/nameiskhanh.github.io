@@ -1,9 +1,10 @@
 ---
 layout: default
-title: 14. Transformer
-nav_order: 14
-parent: NLP
-permalink: /nlp/14_transformer
+title: 13. Transformer
+nav_order: 13
+parent: Course
+grand_parent: NLP
+permalink: /nlp/course/13_transformer/
 ---
 
 # Transformer

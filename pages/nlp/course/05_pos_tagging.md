@@ -1,9 +1,10 @@
 ---
 layout: default
-title: 6. POS tagging
-nav_order: 6
-parent: NLP
-permalink: /nlp/06_pos_tagging/
+title: 5. Parts-Of-Speech
+nav_order: 5
+parent: Course
+grand_parent: NLP
+permalink: /nlp/course/05_pos_tagging/
 ---
 
 # POS(Parts-Of-Speech) Tagging in NLP
