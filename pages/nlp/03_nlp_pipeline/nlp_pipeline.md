@@ -1,9 +1,9 @@
 ---
 layout: default
-title: NLP Pipeline
+title: 3. NLP Pipeline
 nav_order: 3
 parent: NLP
-permalink: /nlp/pipeline/
+permalink: /nlp/03_nlp_pipeline/
 ---
 
 # NLP Pipeline

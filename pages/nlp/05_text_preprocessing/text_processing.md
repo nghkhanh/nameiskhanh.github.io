@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Text Preprocessing
+title: 5. Text Preprocessing
 nav_order: 5
 parent: NLP
-permalink: /nlp/text-preprocessing/
+permalink: /nlp/05_text_preprocessing/
 ---
 
 # Text Preprocessing

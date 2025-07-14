@@ -1,3 +1,11 @@
+---
+layout: default
+title: 9. RNN
+nav_order: 9
+parent: NLP
+permalink: /nlp/09_rnn/
+---
+
 # Recurrent Neural Network
 
 ## Introduction

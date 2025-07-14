@@ -1,3 +1,11 @@
+---
+layout: default
+title: 11. GRU
+nav_order: 11
+parent: NLP
+permalink: /nlp/11_gru/
+---
+
 # Gated Recurrent Unit
 
 ## Introduction

@@ -1,3 +1,11 @@
+---
+layout: default
+title: 8. Word embedding
+nav_order: 8
+parent: NLP
+permalink: /nlp/8_word_embedding/
+---
+
 # Word Embeddding
 
 ## Introduction

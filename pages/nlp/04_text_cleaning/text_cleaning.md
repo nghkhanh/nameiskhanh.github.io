@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Text Cleaning
+title: 4. Text Cleaning
 nav_order: 4
 parent: NLP
-permalink: /nlp/text-cleaning/
+permalink: /nlp/04_text_cleaning/
 ---
 
 # Text Extraction and Cleanup

@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Giới thiệu về NLP
+title: 1. Introduction NLP
 nav_order: 1
 parent: NLP
-permalink: /nlp/introduction/
+permalink: /nlp/01_introduction/
 ---
 
 # Natural Language Processing in the Real World

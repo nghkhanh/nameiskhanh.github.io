@@ -1,3 +1,11 @@
+---
+layout: default
+title: 12. Attention
+nav_order: 12
+parent: NLP
+permalink: /nlp/12_attention
+---
+
 # Attention is all you need
 
 ## Introduction

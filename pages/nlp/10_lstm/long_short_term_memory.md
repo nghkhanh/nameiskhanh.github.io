@@ -1,3 +1,11 @@
+---
+layout: default
+title: 10. LSTM
+nav_order: 10
+parent: NLP
+permalink: /nlp/10_lstm
+---
+
 # Long Short Term Memory
 
 ## Introduction

@@ -1,3 +1,11 @@
+---
+layout: default
+title: 15. NER
+nav_order: 15
+parent: NLP
+permalink: /nlp/15_ner
+---
+
 # Name Entity Recognition
 
 ## Introduction

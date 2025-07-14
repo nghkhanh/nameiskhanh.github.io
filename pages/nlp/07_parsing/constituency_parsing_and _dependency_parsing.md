@@ -1,3 +1,11 @@
+---
+layout: default
+title: 7. Parsing
+nav_order: 7
+parent: NLP
+permalink: /nlp/07_parsing/
+---
+
 # Constituency Parsing and Dependency Parsing
 
 ## Introduction
