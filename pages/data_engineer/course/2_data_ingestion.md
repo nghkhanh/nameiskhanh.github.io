@@ -388,7 +388,7 @@ The status of each task can be seen in both views as you trigger a DAG.
   {% endraw %}
   * We want to periodically download data each month and the filename changes according to the name and month. We can use _templating_ to parametrize the filename.
     * Airflow uses the [Jinja template engine](https://jinja.palletsprojects.com/en/3.0.x/).
-    * Jinja templates make use of `{%...%}` for statements (control structures such as `if` and `for`, macros, etc) and `{{...}}` for expressions (literals, math and logic operators, variables, Python methods, etc). 
+    * Jinja templates make use of {% raw %}`{%...%}`{% endraw %} for statements (control structures such as `if` and `for`, macros, etc) and {% raw %}`{{...}}`{% endraw %} for expressions (literals, math and logic operators, variables, Python methods, etc). 
     * Airflow offers a series of predefined variables and macros which can be consulted [in this link](https://airflow.apache.org/docs/apache-airflow/stable/templates-ref.html).
     * We use a template to rename the file with the current year and month that the task is running:
       * `execution_date` is an Airflow variable that returns the _execution date_ (or _logical date_ in newer versions of Airflow) of the task, which denotes the current data interval as specified by the `start_date` of the DAG and the number of executions. In this example, this is useful to download past data, since we can trigger this DAG manually and in each execution the execution date will increase by the amount specified in the `schedule_interval`, thus allowing us to download data for multiple months by simply rerunning the DAG.
