@@ -7,167 +7,156 @@ grand_parent: NLP
 permalink: /nlp/course/02_nlp_pipeline/
 ---
 
-
-# Quy trình NLP
-Chúng ta đã tìm hiểu một số ứng dụng phổ biến của NLP như phân tích cảm xúc, trích xuất thông tin, tóm tắt văn bản,... và bây giờ sẽ khám phá cách xây dựng các ứng dụng này. Để xây dựng một ứng dụng NLP trong tổ chức, chúng ta sẽ chia nhỏ vấn đề thành các bài toán con và phát triển quy trình từng bước, liệt kê tất cả các dạng xử lý văn bản cần thiết. Quy trình này, gọi là pipeline, bao gồm chuỗi các bước cần thiết để xây dựng bất kỳ mô hình NLP nào. Hiểu rõ các bước này là điều quan trọng để giải quyết các vấn đề NLP trong công việc.
+# NLP Pipeline
+We have explored some common NLP applications such as Sentiment Analysis, Information Extraction, and Text Summarization, etc... and now we will explore how to build these applications. To build such an application at our organization, we would break the problem into sub-problems and develop a step-by-step procedure, listing all necessary text processing forms. This process, called a pipeline, involves the series of steps needed to build any NLP model. Understanding these common steps is crucial for tackling workplace NLP problems. 
 
 ![](images/Pipeline.png)
 
-Hình trên minh họa các thành phần chính của một quy trình phát triển hệ thống NLP hiện đại dựa trên dữ liệu. Các giai đoạn chính trong pipeline này gồm:
+The above figure outlines the main components of a modern, data-driven NLP system development pipeline. The key stages in this pipeline are:
 
-1. Thu thập dữ liệu
-2. Làm sạch văn bản
-3. Tiền xử lý
-4. Kỹ thuật đặc trưng
-5. Xây dựng mô hình
-6. Đánh giá
-7. Triển khai
-8. Giám sát và cập nhật mô hình
+1. Data acquisition
+2. Text cleaning
+3. Pre-processing
+4. Feature engineering
+5. Modeling
+6. Evaluation
+7. Deployment
+8. Monitoring and Model Updating
 
-Phát triển hệ thống NLP bắt đầu bằng việc thu thập dữ liệu liên quan, sau đó làm sạch và tiền xử lý để chuẩn hóa dữ liệu. Tiếp theo, kỹ thuật đặc trưng sẽ trích xuất các chỉ báo hữu ích, được định dạng cho các thuật toán mô hình hóa. Trong giai đoạn xây dựng và đánh giá mô hình, các mô hình khác nhau được xây dựng và kiểm tra. Mô hình tốt nhất sẽ được triển khai, và hiệu suất của nó được giám sát, cập nhật thường xuyên khi cần thiết.
+Developing an NLP system starts with collecting relevant data, followed by text cleaning and pre-processing to standardize the data. Next, feature engineering extracts useful indicators, which are formatted for modeling algorithms. In the modeling and evaluation phase, different models are built and assessed. The best model is then deployed, and its performance is regularly monitored and updated as needed.
 
-Thực tế, quy trình phát triển NLP không phải lúc nào cũng tuyến tính. Thường phải quay lại các bước như trích xuất đặc trưng, xây dựng mô hình và đánh giá nhiều lần. Có các vòng lặp, đặc biệt từ đánh giá quay lại tiền xử lý, kỹ thuật đặc trưng và xây dựng mô hình. Ở cấp độ dự án, có vòng lặp từ giám sát quay lại thu thập dữ liệu.
+In reality, the NLP development process isn't always linear. It often involves revisiting steps like feature extraction, modeling, and evaluation multiple times. There are also loops, especially from evaluation back to pre-processing, feature engineering, and modeling. At the project level, there's a loop from monitoring back to data acquisition.
 
-Chúng ta sẽ tìm hiểu tổng quan từng giai đoạn của pipeline NLP, bắt đầu với bước đầu tiên: thu thập dữ liệu.
+We'll explore each stage of the NLP pipeline in overview, let's begin with the first step: data acquisition.
 
+## Data Acquisition
 
-## Thu thập dữ liệu
+Data is crucial for any machine learning system, and often becomes a bottleneck in industrial projects. In this section, we'll explore strategies for gathering relevant data for NLP projects. Sometimes data is readily available, while other times we need to search for it. Text data can be found on various platforms like websites, emails, and social media, but it might not always be in a machine-readable format or relevant to our task. Therefore, understanding our problem is crucial before seeking data. Here are some methods for collecting data:
 
-Dữ liệu là yếu tố quan trọng cho bất kỳ hệ thống học máy nào, và thường là điểm nghẽn trong các dự án công nghiệp. Trong phần này, chúng ta sẽ tìm hiểu các chiến lược thu thập dữ liệu phù hợp cho dự án NLP. Đôi khi dữ liệu có sẵn, nhưng nhiều lúc phải đi tìm kiếm. Dữ liệu văn bản có thể lấy từ các nền tảng như website, email, mạng xã hội, nhưng không phải lúc nào cũng ở dạng máy có thể đọc được hoặc phù hợp với bài toán. Vì vậy, cần hiểu rõ vấn đề trước khi tìm kiếm dữ liệu. Một số phương pháp thu thập dữ liệu gồm:
++ Public dataset: We can search for public datasets to use, if a suitable dataset is found, we can build and evaluate a model. If no appropriate dataset is available, we need to consider other options.
++ Scrape data: We can source relevant data from the internet. Then, this data can be scraped and labeled by human annotators.
++ Data augmentation: Collecting data is effective but time-consuming. Therefore, we can use data augmentation to create text that is syntactically similar to source text data in any NLP problems.
 
-+ Bộ dữ liệu công khai: Có thể tìm kiếm các bộ dữ liệu công khai để sử dụng, nếu tìm được bộ phù hợp thì có thể xây dựng và đánh giá mô hình. Nếu không có bộ dữ liệu phù hợp, cần cân nhắc các phương án khác.
-+ Quét dữ liệu: Có thể lấy dữ liệu liên quan từ Internet. Sau đó, dữ liệu này được quét và gán nhãn bởi người chú thích.
-+ Tăng cường dữ liệu: Việc thu thập dữ liệu hiệu quả nhưng tốn thời gian. Vì vậy, có thể sử dụng kỹ thuật tăng cường dữ liệu để tạo ra văn bản có cấu trúc tương tự dữ liệu nguồn cho các bài toán NLP.
+## Text cleaning
+At times, our obtained data might not be clean, containing HTML tags, typos, or special characters. Therefore, we need methods to tidy up our text data.
 
++ Unicode Normalization: When working with text data, we might encounter symbols, emojis, or other special characters. We can change them into text that computers can understand.
++ HTML parsing and cleanup: Involving analyzing HTML code to understand its structure and then removing any unnecessary or incorrect elements (such as HTML tags) to ensure the code is clean and well-formed.
++ Spell checks: Doing basic spell checks to fix common typos and make the text consistent.
 
-## Làm sạch văn bản
-Đôi khi dữ liệu thu được không sạch, chứa các thẻ HTML, lỗi chính tả hoặc ký tự đặc biệt. Vì vậy, cần có các phương pháp để làm sạch dữ liệu văn bản.
+Let’s move on to the next step in our pipeline: pre-processing.
 
-+ Chuẩn hóa Unicode: Khi làm việc với dữ liệu văn bản, có thể gặp các ký hiệu, emoji hoặc ký tự đặc biệt. Có thể chuyển chúng thành dạng văn bản mà máy tính hiểu được.
-+ Phân tích và làm sạch HTML: Phân tích mã HTML để hiểu cấu trúc, sau đó loại bỏ các thành phần không cần thiết hoặc sai (như thẻ HTML) để đảm bảo mã sạch và đúng định dạng.
-+ Kiểm tra chính tả: Thực hiện kiểm tra chính tả cơ bản để sửa lỗi thường gặp và làm cho văn bản nhất quán.
+## Pre-processing:
 
-Chúng ta cùng chuyển sang bước tiếp theo trong pipeline: tiền xử lý.
+Even after cleaning up some text, we still need to pre-process it, especially when crawling data on the Internet. Additionally, NLP software requires text to be split into sentences and words. Pre-processing involves these tasks, as well as removing special characters, digits, and converting text to lowercase if needed. These decisions are made during the pre-processing stage in NLP.
 
-
-## Tiền xử lý
-
-Ngay cả sau khi làm sạch văn bản, vẫn cần tiền xử lý, đặc biệt khi thu thập dữ liệu từ Internet. Ngoài ra, phần mềm NLP yêu cầu văn bản phải được tách thành câu và từ. Tiền xử lý bao gồm các nhiệm vụ này, cũng như loại bỏ ký tự đặc biệt, số, chuyển văn bản về chữ thường nếu cần. Các quyết định này được thực hiện trong giai đoạn tiền xử lý NLP.
-
-+ Bước khởi đầu:
-    + Phân đoạn câu: Là quá trình chia văn bản thành các câu riêng biệt.
-    + Tách từ: Là quá trình tách các câu (đầu ra từ bước phân đoạn câu) thành các từ riêng biệt.
++ Initial steps:
+    + Sentence segmentation: Is the process of dividing text into individual sentences.
+    + Word tokenization: Is the process of splitting individual sentences that are output from **sentence segmentation** step into separate words.
 
 ![](images/initialSteps.png)
 
-+ Bước thường gặp:
-    + Loại bỏ stop word: Là quá trình loại bỏ các từ phổ biến, không cần thiết khỏi văn bản.
-    + Loại bỏ số/ký tự đặc biệt: Là quá trình xóa các số và dấu câu khỏi văn bản.
-    + Chuyển về chữ thường: Là quá trình chuyển tất cả ký tự trong văn bản thành chữ thường.
-    + Stemming và lemmatization: Là quá trình đưa từ về dạng gốc hoặc cơ sở.
++ Regular steps:
+    + Stop word removal: Is the process of eliminating common, non-essential words from text.
+    + Removing digits/punctuation: Is the process of deleting numbers and punctuation marks from text.
+    + Lowercasing: Is the process of converting all letters in text to lowercase.
+    + Stemming and lemmatization: Involve reducing words to their base or root forms.
 
 ![](images/regularStep.png)
 
-+ Bước khác:
-    + Gán nhãn từ loại (POS tagging): Là quá trình gán nhãn các từ trong văn bản với loại từ như danh từ, động từ, tính từ.
++ Other steps:
+    + POS tagging: Is the process of labeling words in a text with their parts of speech, like nouns, verbs, and adjectives.
 
 ![](images/PosExample.png)
 
-    + Giải quyết đồng tham chiếu: Là quá trình xác định khi các từ khác nhau cùng chỉ về một thực thể trong văn bản.
+    + Coreference resolution: Is the process of identifying when different words refer to the same entity in a text.
 
 ![](images/coreferenceResolution.png)
 
-    + Cây phân tích cú pháp: Biểu diễn cấu trúc cú pháp của một chuỗi theo ngữ pháp, các node là các thành phần và node gốc là ký hiệu bắt đầu.
+    + Parsing tree: Represents the syntactic structure of a string according to a grammar, with nodes denoting constructs and the root representing the start symbol.
 
 ![](images/parseTree.png)
 
-Tiếp theo, chúng ta sẽ chuyển sang bước kỹ thuật đặc trưng.
+For now, we will move on to the next step: feature engineering.
 
+## Feature Engineering:
+We've discussed various pre-processing steps and their usefulness. To use these pre-processed texts in machine learning (ML) models, we need feature engineering, which converts text into numerical vectors that ML algorithms can understand. This process is called "text representation".
 
-## Kỹ thuật đặc trưng
-Chúng ta đã thảo luận các bước tiền xử lý và sự hữu ích của chúng. Để sử dụng văn bản đã tiền xử lý trong các mô hình học máy (ML), cần kỹ thuật đặc trưng, chuyển văn bản thành các vector số mà thuật toán ML có thể hiểu. Quá trình này gọi là "biểu diễn văn bản".
+There are two main approaches to feature engineering:
 
-Có hai cách tiếp cận chính cho kỹ thuật đặc trưng:
++ Feature engineering for traditional ML pipelines: Are often manually designed for specific tasks. For instance, in sentiment analysis of product reviews, one might count positive and negative words to predict sentiment. Features are tailored to the task and domain knowledge, and handcrafted features make the model interpretable by showing how each feature influences predictions.
 
-+ Kỹ thuật đặc trưng cho pipeline ML truyền thống: Thường được thiết kế thủ công cho từng bài toán cụ thể. Ví dụ, trong phân tích cảm xúc đánh giá sản phẩm, có thể đếm số từ tích cực và tiêu cực để dự đoán cảm xúc. Đặc trưng được thiết kế theo bài toán và kiến thức miền, đặc trưng thủ công giúp mô hình dễ giải thích bằng cách cho thấy từng đặc trưng ảnh hưởng thế nào đến dự đoán.
++ Feature engineering for deep learning pipelines: Using pre-processed raw data and learning features from it, usually resulting in better performance. However, DL models lose interpretability because it's hard to explain their predictions. For example, in email spam detection, it's easier to identify which words influenced the decision with handcrafted features, but not with DL models.
 
-+ Kỹ thuật đặc trưng cho pipeline học sâu: Sử dụng dữ liệu thô đã tiền xử lý và học đặc trưng từ đó, thường cho hiệu suất tốt hơn. Tuy nhiên, mô hình học sâu mất khả năng giải thích vì khó giải thích dự đoán của chúng. Ví dụ, trong phát hiện email rác, dễ xác định từ nào ảnh hưởng đến quyết định với đặc trưng thủ công, nhưng khó với mô hình học sâu.
+There are various feature engineering techniques that we can mention, such as:
 
-Có nhiều kỹ thuật đặc trưng có thể kể đến như:
-
-+ Bag of Words (BoW): Là phương pháp biểu diễn văn bản bằng cách chuyển văn bản thành tập hợp các từ, bỏ qua ngữ pháp và thứ tự, đếm tần suất xuất hiện của từng từ.
++ Bag of Words (BoW): Is a method for text representation where text is converted into a set of words, ignoring grammar and order, and each word's frequency is counted.
 
 ![](images/BoW.png)
 
-+ TF-IDF (Term Frequency-Inverse Document Frequency): Là phương pháp biểu diễn văn bản đánh giá mức độ quan trọng của một từ trong tài liệu dựa trên tần suất xuất hiện trong tài liệu và độ hiếm trên toàn bộ tập tài liệu.
++ Term Frequency-Inverse Document Frequency (TF-IDF): Is a method for text representation that evaluates the importance of a word in a document based on its frequency in the document and its rarity across all documents.
 
 ![](images/TFIDF.png)
 
-+ One-Hot Encoding: Là phương pháp chuyển dữ liệu phân loại thành vector nhị phân, mỗi loại được biểu diễn bằng một vector duy nhất có một vị trí là '1', các vị trí còn lại là '0'.
++ One-Hot Encoding: Is a method of converting categorical data into binary vectors, where each category is represented by a unique vector with a single '1' and all other positions '0'.
 
 ![](images/OneHotVector.png)
 
-+ Word Embedding (Word2Vec, GloVe, FastText): Là kỹ thuật biểu diễn từ dưới dạng vector đặc, liên tục trong không gian, nắm bắt quan hệ ngữ nghĩa giữa các từ dựa trên cách sử dụng trong tập văn bản lớn.
++ Word Embeddings (Word2Vec, GloVe, FastText): Are techniques to represent words as dense vectors in a continuous space, capturing semantic relationships between words based on their usage in large text corpora.
 
 ![](images/WordEmbedding.png)
 
-Tất cả các kỹ thuật này sẽ được trình bày chi tiết hơn trong bài học **Word Embeddings**.
+All of the techniques will be dicussed deeper in the **Word Embeddings** lesson.
 
-Bây giờ, chúng ta cùng tìm hiểu bước tiếp theo trong pipeline, gọi là xây dựng mô hình.
+Now, let’s take a look at the next step in the pipeline, which we call modeling.
 
+## Modeling
 
-## Xây dựng mô hình
+With our NLP project data in hand and a grasp of necessary cleaning and preprocessing steps, the focus shifts to crafting an effective solution. Initially, simpler methods and rules suffice, particularly with limited data. As our understanding of the problem deepens and more data becomes available, we can gradually introduce complexity to enhance performance. 
 
-Khi đã có dữ liệu dự án NLP và nắm được các bước làm sạch, tiền xử lý cần thiết, trọng tâm chuyển sang xây dựng giải pháp hiệu quả. Ban đầu, các phương pháp đơn giản và quy tắc là đủ, đặc biệt khi dữ liệu còn ít. Khi hiểu rõ vấn đề hơn và có nhiều dữ liệu, có thể tăng dần độ phức tạp để cải thiện hiệu suất.
+When beginning a project with limited data, a heuristic approach can be employed, especially for data collection tasks in ML/DL models. This approach often relies on regular expressions to gather and process data effectively.
 
-Khi bắt đầu dự án với dữ liệu hạn chế, có thể dùng phương pháp heuristic, đặc biệt cho các nhiệm vụ thu thập dữ liệu cho mô hình ML/DL. Phương pháp này thường dựa vào biểu thức chính quy để thu thập và xử lý dữ liệu hiệu quả.
+After that, we can use machine learning models such as Naive Bayes, Support Vector Machine, Hidden Markov Model, Conditional Random Fields to solves problems.
 
-Sau đó, có thể sử dụng các mô hình học máy như Naive Bayes, SVM, Hidden Markov Model, Conditional Random Fields để giải quyết bài toán.
+Last but not least, there has been a significant increase in utilizing neural networks for handling intricate, unorganized data such as language. To tackle this complexity effectively, there's a demand for models with enhanced representation and learning capabilities. Some deep neural networks we can mention are as follows: Recurrent neural networks, Long Short-Term Memory, GRU and the latest are Attention, Transformer, Bert...
 
-Cuối cùng, việc sử dụng mạng nơ-ron ngày càng phổ biến để xử lý dữ liệu phức tạp, không có cấu trúc như ngôn ngữ. Để xử lý hiệu quả, cần các mô hình có khả năng biểu diễn và học tốt hơn. Một số mạng nơ-ron sâu có thể kể đến như: RNN, LSTM, GRU và mới nhất là Attention, Transformer, Bert...
+## Evaluation
+A crucial step in the NLP pipeline is evaluating the model's effectiveness, typically measured by its performance on unseen data. Evaluation metrics vary by NLP task and project phase. During model building and deployment, ML metrics are used, while in production, business metrics are also considered to measure impact.
 
+There are two type of evaluations included:
++ Intrinsic evaluation: These metrics compare the model's output against a test set with known labels to measure how well the model's output matches the labels, such as:
+    + RMSE (root mean squared error): Measures the average magnitude of prediction errors in a model, calculated as the square root of the average squared differences between predicted and actual values, use in regression problems such as temperature prediction, stock market price prediction, etc...
+    + MAPE (Mean Absolute Percentage Error): Measures the average percentage error between predicted and actual values, indicating the accuracy of a forecasting model.
+    + Accuracy: Measures the percentage of correct predictions made by a model out of all predictions, use in classification tasks, such as sentiment classification (multiclass), spam emails detection, etc ...
+    + Precision: Measures the percentage of true positive results out of all positive predictions made by the model, use in classification tasks
+    + Recall: Measures the percentage of true positive results out of all actual positive instances in the dataset, use in classification tasks.
+    + F1 score: Is a metric that combines precision and recall into a single score, representing the harmonic mean of both, use in classification tasks.
+    + AUC (Area Under the Curve): Measures the performance of a binary classification model, representing the ability to distinguish between classes. It's typically used with the ROC curve, use in classification tasks.
+    + BLEU (Bilingual Evaluation Understudy): Is a metric used to evaluate the quality of machine-translated text by comparing it to one or more reference translations. It measures how many words overlap between the generated and reference translations.
+    + ROUGE: (Recall-Oriented Understudy for Gisting Evaluation): Is a metric used to evaluate text summaries by comparing them to reference summaries, focusing on the overlap of n-grams, word sequences, and word pairs.
 
-## Đánh giá
-Một bước quan trọng trong pipeline NLP là đánh giá hiệu quả của mô hình, thường được đo bằng hiệu suất trên dữ liệu chưa từng thấy. Các chỉ số đánh giá thay đổi tùy theo nhiệm vụ NLP và giai đoạn dự án. Trong quá trình xây dựng và triển khai mô hình, dùng các chỉ số ML, còn khi vận hành thực tế, dùng thêm các chỉ số kinh doanh để đo lường tác động.
-
-Có hai loại đánh giá:
-+ Đánh giá nội tại: So sánh đầu ra mô hình với bộ kiểm thử có nhãn để đo mức độ khớp, ví dụ:
-    + RMSE: Đo độ lớn trung bình của sai số dự đoán, dùng cho bài toán hồi quy như dự đoán nhiệt độ, giá cổ phiếu...
-    + MAPE: Đo phần trăm sai số trung bình giữa giá trị dự đoán và thực tế, thể hiện độ chính xác của mô hình dự báo.
-    + Accuracy: Đo tỷ lệ dự đoán đúng trên tổng số dự đoán, dùng cho phân loại như phân tích cảm xúc, phát hiện email rác...
-    + Precision: Đo tỷ lệ dự đoán dương đúng trên tổng số dự đoán dương, dùng cho phân loại.
-    + Recall: Đo tỷ lệ dự đoán dương đúng trên tổng số trường hợp dương thực tế, dùng cho phân loại.
-    + F1 score: Kết hợp precision và recall thành một chỉ số duy nhất, là trung bình điều hòa của cả hai, dùng cho phân loại.
-    + AUC: Đo hiệu suất của mô hình phân loại nhị phân, thể hiện khả năng phân biệt giữa các lớp, thường dùng với đường cong ROC.
-    + BLEU: Đánh giá chất lượng văn bản dịch máy bằng cách so sánh với bản dịch tham chiếu, đo mức độ trùng lặp từ giữa bản dịch và tham chiếu.
-    + ROUGE: Đánh giá tóm tắt văn bản bằng cách so sánh với bản tóm tắt tham chiếu, tập trung vào mức độ trùng lặp n-gram, chuỗi từ và cặp từ.
-
-+ Đánh giá ngoại tại: Đo mục tiêu cuối cùng, ví dụ như thời gian người dùng phải xử lý email rác.
++ Extrinsic evaluation: Measures the final objective, such as the time users spend dealing with spam emails.
 
 
+## Deployment
 
-## Triển khai
+In real-world situations, NLP systems are often integrated into larger systems, such as email spam filters. After completing the processing, modeling, and evaluation steps, deploying the final solution is crucial. This involves integrating the NLP module into the larger system and ensuring its scalability and compatibility with input and output pipelines in production environments.
 
-Trong thực tế, hệ thống NLP thường được tích hợp vào các hệ thống lớn hơn, ví dụ như bộ lọc email rác. Sau khi hoàn thành các bước xử lý, xây dựng mô hình và đánh giá, việc triển khai giải pháp cuối cùng là rất quan trọng. Điều này bao gồm tích hợp module NLP vào hệ thống lớn hơn, đảm bảo khả năng mở rộng và tương thích với pipeline đầu vào/đầu ra trong môi trường sản xuất.
+The NLP module is commonly deployed as a web service, where it functions by receiving text inputs and providing categorized outputs, like spam or non-spam for emails. This service processes emails in real-time, aiding decisions on email handling. For tasks like batch processing, the NLP module might be integrated into broader task queues, as demonstrated in platforms like Google Cloud or AWS.
 
-Module NLP thường được triển khai dưới dạng dịch vụ web, nhận đầu vào là văn bản và trả về đầu ra phân loại, ví dụ như email rác hoặc không rác. Dịch vụ này xử lý email theo thời gian thực, hỗ trợ quyết định xử lý email. Với các tác vụ xử lý hàng loạt, module NLP có thể được tích hợp vào các hàng đợi tác vụ lớn hơn, như trên Google Cloud hoặc AWS.
+## Monitoring and model updating
+### Monitoring
+Similar to other software projects, thorough testing is essential before deploying any NLP model, and continuous monitoring is crucial post-deployment. However, monitoring NLP projects requires special attention to ensure the model's outputs remain meaningful over time. This includes regular checks on model behavior, especially if the model undergoes frequent training updates. Utilizing performance dashboards displaying model parameters and key indicators helps in this regard.
 
+### Model Updating
+Once the model is deployed and we start gathering new data, we’ll iterate the model based on this new data to stay current with predictions.
 
-## Giám sát và cập nhật mô hình
-### Giám sát
-Tương tự các dự án phần mềm khác, kiểm thử kỹ lưỡng là cần thiết trước khi triển khai bất kỳ mô hình NLP nào, và giám sát liên tục là rất quan trọng sau khi triển khai. Tuy nhiên, giám sát dự án NLP cần chú ý đặc biệt để đảm bảo đầu ra của mô hình luôn có ý nghĩa theo thời gian. Điều này bao gồm kiểm tra thường xuyên hành vi mô hình, nhất là khi mô hình được cập nhật huấn luyện thường xuyên. Sử dụng dashboard hiệu suất hiển thị các tham số mô hình và chỉ số chính sẽ hỗ trợ việc này.
+## Conclusion
 
-### Cập nhật mô hình
-Khi mô hình đã triển khai và bắt đầu thu thập dữ liệu mới, chúng ta sẽ lặp lại mô hình dựa trên dữ liệu mới này để dự đoán luôn phù hợp.
+In this lesson, we explored the Natural Language Processing (NLP) pipeline, from data acquisition to monitoring and model updating. Understanding this pipeline is crucial for building effective NLP applications. 
 
+## References
 
-## Kết luận
-
-Trong bài học này, chúng ta đã tìm hiểu quy trình xử lý ngôn ngữ tự nhiên (NLP), từ thu thập dữ liệu đến giám sát và cập nhật mô hình. Hiểu rõ quy trình này là điều quan trọng để xây dựng các ứng dụng NLP hiệu quả.
-
-
-## Tài liệu tham khảo
-
-+ Sowmya Vajjala, Bodhisattwa Majumder, Anuj Gupta, và Harshit Surana, Practical natural language processing: a comprehensive guide to building real-world NLP systems. Sebastopol, Ca O’reilly Media, 2020.
-+ “Natural Language Processing (NLP) Pipeline,” GeeksforGeeks, 01/06/2023. https://www.geeksforgeeks.org/natural-language-processing-nlp-pipeline/
-+ “Behind the pipeline - Hugging Face NLP Course,” huggingface.co. https://huggingface.co/learn/nlp-course/en/chapter2/2 (truy cập ngày 07/07/2024).
++ Sowmya Vajjala, Bodhisattwa Majumder, Anuj Gupta, and Harshit Surana, Practical natural language processing : a comprehensive guide to building real-world NLP sysems. Sebastopol, Ca O’reilly Media, 2020.
++ “Natural Language Processing (NLP) Pipeline,” GeeksforGeeks, Jun. 01, 2023. https://www.geeksforgeeks.org/natural-language-processing-nlp-pipeline/
++ “Behind the pipeline - Hugging Face NLP Course,” huggingface.co. https://huggingface.co/learn/nlp-course/en/chapter2/2 (accessed Jul. 07, 2024).

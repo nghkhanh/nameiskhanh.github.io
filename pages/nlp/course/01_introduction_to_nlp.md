@@ -7,139 +7,125 @@ grand_parent: NLP
 permalink: /nlp/course/01_introduction_to_nlp/
 ---
 
-# Xử lý ngôn ngữ tự nhiên trong thực tế
+# Natural Language Processing in the Real World
 
-## Giới thiệu
+## Introduction
 
-NLP, viết tắt của Xử lý ngôn ngữ tự nhiên, đóng vai trò quan trọng trong nhiều ứng dụng phần mềm hàng ngày. Một số ví dụ tiêu biểu gồm:
+NLP, short for Natural Language Processing, plays a vital role in many daily software applications. Key examples include:
 
-1. **Nền tảng Email**: Các dịch vụ như Gmail và Outlook sử dụng NLP để phân loại thư rác, hộp thư ưu tiên và tính năng tự động hoàn thành.
-2. **Trợ lý giọng nói**: Apple Siri, Google Assistant, Microsoft Cortana và Amazon Alexa dựa vào NLP để tương tác với người dùng và phản hồi lệnh.
-3. **Công cụ tìm kiếm**: Google và Bing sử dụng NLP để hiểu truy vấn, truy xuất thông tin và xếp hạng kết quả.
-4. **Dịch máy**: Google Translate và Amazon Translate áp dụng NLP để hỗ trợ giao tiếp và giải quyết các tình huống kinh doanh.
+1. **Email Platforms**: Services like Gmail and Outlook use NLP for spam classification, priority inbox, and auto-complete features.
+2. **Voice-based Assistants**: Apple Siri, Google Assistant, Microsoft Cortana, and Amazon Alexa rely on NLP for user interaction and command response.
+3. **Search Engines**: Google and Bing use NLP for query understanding, information retrieval, and result ranking.
+4. **Machine Translation**: Google Translate and Amazon Translate apply NLP to facilitate communication and solve business scenarios.
 
-Ngoài ra, còn có các ứng dụng khác của NLP:
+Additionally, there are also other Applications of NLP:
 
-1. Phân tích mạng xã hội: Các tổ chức phân tích mạng xã hội để hiểu cảm xúc của khách hàng.
-2. Thương mại điện tử: NLP trích xuất thông tin từ mô tả sản phẩm và hiểu đánh giá của người dùng.
-3. Công cụ kiểm tra chính tả và ngữ pháp: Các công cụ như Grammarly và kiểm tra chính tả trong trình soạn thảo văn bản dựa vào NLP.
+1. Social Media Analysis: Organizations analyze social media to understand customer sentiments.
+2. E-commerce: NLP extracts information from product descriptions and understands user reviews.
+5. Spelling and Grammar Tools: Tools like Grammarly and spell check in word processors rely on NLP.
 
-Danh sách này chưa đầy đủ, vì NLP vẫn tiếp tục mở rộng sang nhiều ứng dụng mới. Mục tiêu chính của chúng ta là giới thiệu các khái niệm đằng sau việc xây dựng các ứng dụng này thông qua việc thảo luận các vấn đề và giải pháp NLP khác nhau.
-
+This list is not exhaustive, as NLP continues to expand into new applications. Our main goal is to introduce the concepts behind building these applications by discussing various NLP problems and their solutions. 
 
 ## NLP
 
-Trong nhiều dự án NLP, có những nhiệm vụ cơ bản thường xuyên xuất hiện. Những nhiệm vụ này rất quan trọng và phổ biến. Nếu hiểu rõ chúng, chúng ta sẽ sẵn sàng xây dựng các ứng dụng NLP cho nhiều lĩnh vực khác nhau. Hãy cùng điểm qua các nhiệm vụ này.
+In many NLP projects, there are common fundamental tasks that keep popping up. These tasks have been looked into a lot because they're important and come up often. If we understand them well, we'll be all set to create different NLP apps for different areas. Let's take a quick look at them.
 
-### Mô hình ngôn ngữ
+### Language modeling
 
-Nhiệm vụ này liên quan đến việc dự đoán từ tiếp theo trong một câu dựa vào các từ trước đó. Mục tiêu là hiểu xác suất xuất hiện của các chuỗi từ trong ngôn ngữ. Nó hữu ích cho nhiều ứng dụng như nhận diện giọng nói, dịch thuật và sửa lỗi chính tả.
+This task involves predicting the next word in a sentence by looking at the words that came before it. The aim is to understand the likelihood of certain word sequences in a language. It's handy for many things like speech recognition, translation, and fixing spelling errors.
 
 ![](images/languageModeling.png)
 
-### Phân loại văn bản
+### Text classification
 
-Nhiệm vụ này là phân loại văn bản vào các nhóm đã định sẵn dựa trên nội dung. Nó được sử dụng rộng rãi trong NLP cho các tác vụ như nhận diện email rác và phân tích cảm xúc.
+This task involves categorizing text into predefined groups based on its content. It's widely used in NLP for tasks like identifying spam emails and analyzing sentiment.
 
 ![](images/textClassification.png)
 
-### Trích xuất thông tin
+### Information extraction
 
-Nhiệm vụ này là lấy ra các thông tin hữu ích từ văn bản, ví dụ như xác định sự kiện từ email hoặc nhận diện tên người trong các bài đăng mạng xã hội. Một trong những nhiệm vụ phổ biến nhất là Trích xuất thực thể tên (NER).
+This task involves pulling out useful details from text, like identifying events from emails or recognizing people's names in social media posts. One of the most common tasks in information extraction is Name Entity Extraction (NER).
 
 ![](images/NERintro.png)
 
-### Hệ thống hội thoại
+### Conversational agent
 
-Nhiệm vụ này là xây dựng các hệ thống có khả năng giao tiếp bằng ngôn ngữ tự nhiên, ví dụ như các ứng dụng phổ biến như Alexa và Siri.
+This task involves creating conversational systems capable of communicating in human languages, with examples including popular applications like Alexa and Siri.
 
 ![](images/dialogSystem.png)
 
-### Tóm tắt văn bản
+### Text summarization
 
-Nhiệm vụ này tập trung vào việc tạo ra bản tóm tắt ngắn gọn cho các tài liệu dài mà vẫn giữ được nội dung và thông điệp chính.
+This task focuses on generating concise summaries of lengthy documents while maintaining the essential content and overall message.
 
 ![](images/textSummarization.png)
 
-### Trả lời câu hỏi
+### Question answering
 
-Nhiệm vụ này là xây dựng hệ thống có khả năng tự động trả lời các câu hỏi được đặt ra bằng ngôn ngữ tự nhiên.
+This task involves constructing a system capable of providing automatic responses to questions asked in everyday language.
 
 ![](images/questionAnswering.png)
 
-### Dịch máy
+### Machine translation
 
-Nhiệm vụ này là dịch văn bản từ ngôn ngữ này sang ngôn ngữ khác, với các công cụ như Google Translate là ví dụ điển hình.
+This task involves translating text from one language to another, with tools like Google Translate being typical examples.
 
 ![](images/machineTranlation.png)
 
+## What is Language?
 
-## Ngôn ngữ là gì?
+Language is a complex system of communication structured around components like characters, words, and sentences. Linguistics, the study of language, provides essential insights for understanding NLP. In this section, we'll explore key linguistic concepts and their relevance to NLP tasks. Human language comprises phonemes, morphemes, lexemes, syntax, and context. NLP applications rely on understanding these elements, from basic sound units to meaningful expressions in context.
 
-Ngôn ngữ là một hệ thống giao tiếp phức tạp được cấu trúc quanh các thành phần như ký tự, từ và câu. Ngôn ngữ học, ngành nghiên cứu về ngôn ngữ, cung cấp những hiểu biết quan trọng để hiểu về NLP. Trong phần này, chúng ta sẽ khám phá các khái niệm ngôn ngữ học chính và sự liên quan của chúng đến các nhiệm vụ NLP. Ngôn ngữ con người gồm các thành phần: âm vị, hình vị, từ vị, cú pháp và ngữ cảnh. Các ứng dụng NLP dựa vào việc hiểu các yếu tố này, từ đơn vị âm thanh cơ bản đến các biểu đạt có ý nghĩa trong ngữ cảnh.
+Linguistics is the study of language and hence is a vast area in itself, and we only introduced some basic ideas to illustrate the role of linguistic knowledge in NLP.
 
-Ngôn ngữ học là ngành nghiên cứu về ngôn ngữ và rất rộng lớn, ở đây chúng ta chỉ giới thiệu một số ý tưởng cơ bản để minh họa vai trò của kiến thức ngôn ngữ học trong NLP.
-
-### Âm vị
-Âm vị là đơn vị âm thanh nhỏ nhất trong một ngôn ngữ, bản thân nó không mang ý nghĩa nhưng khi kết hợp lại sẽ tạo thành từ có nghĩa. Tiếng Anh có 44 âm vị. Bảng dưới đây minh họa các âm vị này cùng với ví dụ (bảng này lấy từ sách **Practical Natural Language Processing**).
+### Phonemes
+Phonemes are the smallest sound units in a language, and while they don't carry meaning alone, they form meaningful words when combined. English has 44 phonemes. This table below shows these phonemes along with sample words (this table is taken from the book **Practical Natural Language Processing**).
 
 ![](images/phonemes.png)
 
-Âm vị rất quan trọng cho các ứng dụng như nhận diện giọng nói, chuyển giọng nói thành văn bản và chuyển văn bản thành giọng nói.
+Phonemes are crucial for applications like speech recognition, speech-to-text transcription, and text-to-speech conversion.
 
-### Hình vị và từ vị
+### Morphemes and lexemes
 
-#### Hình vị
-Hình vị là đơn vị nhỏ nhất mang nghĩa của ngôn ngữ, được tạo thành từ các âm vị. Không phải tất cả hình vị đều là từ, nhưng tất cả tiền tố và hậu tố đều là hình vị. Ví dụ, trong từ "multimedia", "multi-" là tiền tố và hình vị bổ nghĩa cho "media".
+#### Morphemes
+A morpheme is the smallest meaningful unit of language, formed by combining phonemes. While not all morphemes are words, all prefixes and suffixes are morphemes. For instance, in "multimedia," "multi-" is a prefix and morpheme that modifies "media."
 
-#### Từ vị
-Từ vị là các biến thể của hình vị có cùng ý nghĩa, như "run" và "running". Phân tích hình thái học nghiên cứu các cấu trúc này, là nền tảng cho nhiều nhiệm vụ NLP như tách từ, rút gọn từ, học biểu diễn từ và gán nhãn từ loại.
+#### Lexemes
+Lexemes are variations of morphemes that share a common meaning, like "run" and "running." Morphological analysis studies these structures, forming the basis for many NLP tasks, including tokenization, stemming, learning word embeddings, and part-of-speech tagging.
 
-### Cú pháp
-Cú pháp là các quy tắc để xây dựng câu đúng ngữ pháp từ các từ và cụm từ. Thường được biểu diễn bằng cây phân tích cú pháp như hình dưới.
+### Syntax
+Syntax refers to the rules for constructing grammatically correct sentences from words and phrases. It is often represented using parse trees as depicted in the below image.
 
 ![](images/parseTree.png)
 
-### Ngữ cảnh
-Ngữ cảnh là cách các phần khác nhau của ngôn ngữ kết hợp để truyền đạt ý nghĩa, bao gồm tham chiếu dài hạn, kiến thức thế giới và kiến thức thông thường, vượt ra ngoài nghĩa đen của từ. Ý nghĩa của câu có thể thay đổi tùy vào ngữ cảnh vì từ và cụm từ có thể mang nhiều nghĩa, như ví dụ "Ông già" bên dưới. Ngữ cảnh gồm ngữ nghĩa (ý nghĩa trực tiếp của từ và câu) và ngữ dụng (thêm ngữ cảnh bên ngoài và kiến thức thế giới). Các nhiệm vụ NLP phức tạp như phát hiện mỉa mai và tóm tắt văn bản phụ thuộc nhiều vào việc hiểu ngữ cảnh.
+### Context
+Context involves how different parts of language come together to convey meaning, including long-term references, world knowledge, and common sense, beyond just the literal meanings of words. The meaning of a sentence can change based on context since words and phrases can have multiple meanings like the below "Old Man" example. Context is made up of semantics (the direct meaning of words and sentences) and pragmatics (adding external context and world knowledge). Complex NLP tasks like sarcasm detection and summarization rely heavily on understanding context.
 
 ![](images/oldman.png)
 
+## NLP challenging
+NLP is challenging due to the ambiguity and creativity of human language. We will delves into these characteristics, starting with language ambiguity.
 
-## Thách thức của NLP
-NLP gặp nhiều thách thức do sự mơ hồ và sáng tạo của ngôn ngữ con người. Chúng ta sẽ tìm hiểu các đặc điểm này, bắt đầu từ sự mơ hồ của ngôn ngữ.
+### Ambiguity
+Ambiguity refers to the uncertainty of meaning in language. For example, the sentence "Give me a bat", it is unclear whether bat refers to a animal bat or a cricket bat. Just by looking at the word it does not provide enough information about the meaning hence we need to know the context in which it is used. The meaning depends on the context. In a story between animal researchers, bat refers to a animal, while in a sports context, bat refers to a cricket bat.
 
-### Sự mơ hồ
-Sự mơ hồ là sự không chắc chắn về ý nghĩa trong ngôn ngữ. Ví dụ, câu "Đưa cho tôi cái gậy", không rõ "gậy" ở đây là con dơi hay cây gậy chơi thể thao. Chỉ nhìn vào từ thì không đủ thông tin để xác định ý nghĩa, do đó cần biết ngữ cảnh sử dụng. Ý nghĩa phụ thuộc vào ngữ cảnh. Trong câu chuyện giữa các nhà nghiên cứu động vật, "gậy" là con dơi, còn trong bối cảnh thể thao, "gậy" là cây gậy cricket.
+### Common knowledge
+A crucial part of human language is "common knowledge," which consists of facts most people know. This knowledge is assumed in conversations and affects sentence meanings without being explicitly stated. For example, "man bit dog" is unlikely, while "dog bit man" is plausible because we know humans rarely bite dogs, but dogs often bite humans. This shared knowledge helps humans understand language, but computers struggle with it because they lack this implicit understanding. A major challenge in NLP is encoding this common human knowledge into computational models.
 
-### Kiến thức chung
-Một phần quan trọng của ngôn ngữ con người là "kiến thức chung", gồm những sự thật mà hầu hết mọi người đều biết. Kiến thức này được ngầm hiểu trong giao tiếp và ảnh hưởng đến ý nghĩa câu mà không cần nói rõ. Ví dụ, "người cắn chó" là điều hiếm gặp, còn "chó cắn người" thì hợp lý vì chúng ta biết con người hiếm khi cắn chó, còn chó thường cắn người. Kiến thức chung này giúp con người hiểu ngôn ngữ, nhưng máy tính lại gặp khó khăn vì thiếu sự hiểu ngầm này. Một thách thức lớn của NLP là mã hóa kiến thức chung của con người vào mô hình máy tính.
+### Creativity
+Language is not only governed by rules but also includes creativity, evident in styles, dialects, genres, and variations. Poetry is a prime example of this creativity. Understanding such creativity is a difficult challenge in both NLP and AI overall.
 
-### Sự sáng tạo
-Ngôn ngữ không chỉ tuân theo quy tắc mà còn có sự sáng tạo, thể hiện qua phong cách, phương ngữ, thể loại và biến thể. Thơ ca là ví dụ điển hình cho sự sáng tạo này. Việc hiểu được sự sáng tạo là thách thức lớn trong cả NLP và AI nói chung.
+### Diversity across languages
+Most languages don't have a direct vocabulary match with others, making it difficult to transfer NLP solutions between languages. A solution effective in one language may not work in another. This necessitates either creating solution that is not depend on languages, which is challenging, or developing separate solutions for each language, which is time-consuming and labor-intensive.
 
-### Sự đa dạng giữa các ngôn ngữ
-Hầu hết các ngôn ngữ không có sự tương đồng hoàn toàn về từ vựng, khiến việc chuyển giao giải pháp NLP giữa các ngôn ngữ trở nên khó khăn. Một giải pháp hiệu quả cho một ngôn ngữ có thể không áp dụng được cho ngôn ngữ khác. Điều này đòi hỏi phải xây dựng giải pháp không phụ thuộc vào ngôn ngữ, điều này rất khó, hoặc phát triển giải pháp riêng cho từng ngôn ngữ, điều này tốn thời gian và công sức.
+NLP is challenging due to various issues, but it's also rewarding.
 
-NLP có nhiều thách thức, nhưng cũng rất thú vị và bổ ích.
+## Conclusion
 
+In this lesson, we examined the real-world applications of Natural Language Processing (NLP). We explored how NLP powers technologies like chatbots, sentiment analysis, and language translation. Understanding these applications helps us see the impact of NLP on our daily lives and its potential to solve complex problems. 
 
-## Kết luận
+## References
 
-Trong bài học này, chúng ta đã tìm hiểu các ứng dụng thực tế của Xử lý ngôn ngữ tự nhiên (NLP). Chúng ta đã khám phá cách NLP vận hành các công nghệ như chatbot, phân tích cảm xúc và dịch ngôn ngữ. Việc hiểu các ứng dụng này giúp chúng ta nhận thấy tác động của NLP đến cuộc sống hàng ngày và tiềm năng giải quyết các vấn đề phức tạp.
-
-
-## Tài liệu tham khảo
-
-+ Sowmya Vajjala, Bodhisattwa Majumder, Anuj Gupta, và Harshit Surana, Practical natural language processing: a comprehensive guide to building real-world NLP systems. Sebastopol, Ca O’reilly Media, 2020.
++ Sowmya Vajjala, Bodhisattwa Majumder, Anuj Gupta, and Harshit Surana, Practical natural language processing : a comprehensive guide to building real-world NLP sysems. Sebastopol, Ca O’reilly Media, 2020.
 + IBM, “What is Natural Language Processing?,” IBM, 2023. https://www.ibm.com/topics/natural-language-processing
-+ Coursera Staff, “What is Natural Language Processing? Definition and Examples,” Coursera, 16/06/2023. https://www.coursera.org/articles/natural-language-processing
-
-
-
-
-
-
-
-
-
++ Coursera Staff, “What is Natural Language Processing? Definition and Examples,” Coursera, Jun. 16, 2023. https://www.coursera.org/articles/natural-language-processing
