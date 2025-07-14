@@ -2,7 +2,7 @@
 layout: default
 title: 1.6 Streaming
 nav_order: 6
-parent: Data Engineer - Course
+parent: Data Engineer
 grand_parent: Data Engineer
 permalink: /data_engineer/course/6_streaming/
 ---

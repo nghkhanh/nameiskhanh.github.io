@@ -1,8 +1,8 @@
 ---
 layout: default
-title: 1.1 Docker and Postgres
+title: 1. Docker and Postgres
 nav_order: 1
-parent: Data Engineer - Course
+parent: Data Engineer
 grand_parent: Data Engineer
 permalink: /data-engineer/docker-terraform/1_intro/
 ---

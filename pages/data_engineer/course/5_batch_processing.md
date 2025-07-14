@@ -1,8 +1,8 @@
 ---
 layout: default
-title: 1.5 Batch Processing
+title: 1. Batch Processing
 nav_order: 5
-parent: Data Engineer - Course
+parent: Data Engineer
 grand_parent: Data Engineer
 permalink: /data_engineer/course/5_batch_processing/
 ---
