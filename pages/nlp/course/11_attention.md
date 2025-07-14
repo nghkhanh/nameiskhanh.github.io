@@ -19,13 +19,13 @@ Attention is a mechanism in machine learning that allows models to focus on spec
 
 In natural language processing (NLP), attention mechanisms have been particularly useful for tasks like machine translation, text summarization, and sentiment analysis.
 
-![](draw/attention.png)
+![](images/attention.png)
 
 ## How Attention works
 ### Information Retrieval
 Attention's work mechanism is similar to information retrieval, so we will discuss about Information Retrieval first.
 
-![](draw/InformationRetrieval.png)
+![](images/InformationRetrieval.png)
 
 The boy in the picture wants to search for videos related to AI so he sends his requests to YouTube and YouTube converts his requests with AI to 1 and Leetcode to 0. Then YouTube searches all videos on YouTube and gets only AI videos to respond for him. 
 
@@ -33,38 +33,38 @@ The boy in the picture wants to search for videos related to AI so he sends his 
 #### First step
 The first step in calculating attention is to create three vectors from each of the encoder’s input vectors. So for each word, we create a Query vector, a Key vector, and a Value vector. In this case, we assume that Query, Key and Value vector are the same.
 
-![](draw/AttentionStep1.png)
+![](images/AttentionStep1.png)
 
 #### Second step
 The second step in calculating attention is to calculate a score. Say we’re calculating the attention for the first word in this example, “I”. We need to score each word of the input sentence against this word. The score determines how much focus to place on other parts of the input sentence as we encode a word at a certain position.
 
 The score is calculated by taking the dot product of the query vector with the key vector of the respective word we’re scoring. So if we’re processing the attention for the word in the first position, the first score would be the dot product of q1 and k1. The second score would be the dot product of q1 and k2 and so on.
 
-![](draw/AttentionStep2.png)
+![](images/AttentionStep2.png)
 
 ### Third step
 The third steps are to divide the scores by the square root of the dimension of the key vectors.
 
-![](draw/AttentionStep3.png)
+![](images/AttentionStep3.png)
 
-![](draw/AttentionStep3+.png)
+![](images/AttentionStep3+.png)
 
 ### Forth step
 Scaled vectors will pass through a softmax operation. Softmax normalizes the scores so they’re all positive and add up to 1.
 
-![](draw/AttentionStep4.png)
+![](images/AttentionStep4.png)
 
 This softmax score determines how much each word will be expressed at this position. Clearly the word at this position will have the highest softmax score, but sometimes it’s useful to attend to another word that is relevant to the current word.
 
 ### Fifth step
 The fifth step is to multiply each value vector by the softmax scores. The intuition here is to keep intact the values of the word(s) we want to focus on, and drown-out irrelevant words (by multiplying them by tiny numbers like 0.001, for example).
 
-![](draw/AttentionStep5.png)
+![](images/AttentionStep5.png)
 
 ### Six step(if not use matrix calculation like those above pictures, we have this step)
 The sixth step is to sum up the weighted value vectors. This produces the output of the self-attention layer at this position (for the first word, in this case is "I").
 
-![](draw/AttentionStep6.png)
+![](images/AttentionStep6.png)
 
 Here we go, these are all we need to understand the attention mechanism works.
 
@@ -202,9 +202,9 @@ plt.plot(history1["accuracy"])
 plt.plot(history1["val_accuracy"])
 ```
 
-![](draw/Loss.png)
+![](images/Loss.png)
 
-![](draw/Accuracy.png)
+![](images/Accuracy.png)
 
 ### Inference
 ```python

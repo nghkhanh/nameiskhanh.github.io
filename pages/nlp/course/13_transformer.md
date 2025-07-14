@@ -18,98 +18,98 @@ In this lesson, we'll explore how Transformers work, their key components, and i
 ## Transformer architecture
 The Tranformer architecture consists of an encoder and a decoder, both composed of multiple layers of self-attention mechanisms and feedforward neural networks. Self-attention allows the model to weigh the importance of different words in a sequence, capturing contextual information effectively. This architecture is designed for sequential data processing, such as language translation and text generation.
 
-![](draw/TransformerArchitecture.png)
+![](images/TransformerArchitecture.png)
 
 We will learn Transformer Encoder and Transformer Decoder in turn.
 
 ## Transformer Encoder
 ### Encoder components
-![](draw/EncoderComponents.png)
+![](images/EncoderComponents.png)
 
 ### Encoder workflow
 #### Word Embeddings
 Similar to RNN, Transformer also uses Embedding to represent words by vectors.
-![](draw/Step1.png)
+![](images/Step1.png)
 
 #### Positional Encodings
 Because Transformer architecture does not have recurrence or convolution, to ensure the order of the sequence, we have to add information about the absolute and relative position of tokens in the sequence. 
-![](draw/Step2.png)
+![](images/Step2.png)
 
 We have two methods to build **Positional Encoding**, there are learnable positional embedding and pre-defined function. We will only mention to learnable positional embedding method because it is more popular than pre-defined function method. 
 
-![](draw/LeanableEmbedding.png)
+![](images/LeanableEmbedding.png)
 
 #### Multi-Headed Attention
 Implement Multi-Headed Attention to enhance representation of embeddings.
 
 **Note**: To learn more about Multi-Headed Attention, let's take a look at [this link](https://github.com/robusto-ai/elearning-learning-materials/blob/dunghc/transformer/Nlp/Attention/attention.md)
 
-![](draw/Multiheaded.png)
+![](images/Multiheaded.png)
 
 #### Add & Norm
 
-![](draw/AddNorm.png)
+![](images/AddNorm.png)
 
 Besides using Layer Norm, we also apply a residuals technique. This not only helps **Gradient Flow** be better, preventing vanishing gradient when training deep neuron networks, but also brings positional information from lower layer to higher layer.
 
 #### Position-wise Feed-Forward Network
 
-![](draw/Pointwise.png)
+![](images/Pointwise.png)
 
 #### Next step
 The results from **Add & Norm** will be fed into another encoder layer (which comprises of Multi-Head Attention and Position-wise Fead-Forward Network) until reach to the number of defined encoder layers.
 
 ## Transformer Decoder
 
-![](draw/Decoder.png)
+![](images/Decoder.png)
 
 ### Decoder components
 
-![](draw/DecoderComponent.png)
+![](images/DecoderComponent.png)
 
 #### Embeddings
 Just like Encoder, we also have to combine output Word Embeddings and Positional Embeddings before feeding to Multi-Headed Attention.
 
-![](draw/DecoderEmbedding.png)
+![](images/DecoderEmbedding.png)
 
 #### Decoder Training and Inference
 Depend on training or inference, Decoder will behave differently. 
 
 #### Decoder Traning
-![](draw/DecoderTraining.png)
+![](images/DecoderTraining.png)
 
 #### Decoder Inference
-![](draw/DecoderInference1.png)
+![](images/DecoderInference1.png)
 
-![](draw/DecoderInference2.png)
+![](images/DecoderInference2.png)
 
-![](draw/DecoderInference3.png)
+![](images/DecoderInference3.png)
 
-![](draw/DecoderInference4.png)
+![](images/DecoderInference4.png)
 
-![](draw/DecoderInference5.png)
+![](images/DecoderInference5.png)
 
 #### Decoder Problem with Self Attention
-![](draw/AttentionProblem.png)
+![](images/AttentionProblem.png)
 
 #### Masked Multi-Headed Attention
 Generally, it is quite similar to Multi-Headed Attention but it has additional component called **Mask**.
 
-![](draw/Mask1.png)
+![](images/Mask1.png)
 
-![](draw/Mask2.png)
+![](images/Mask2.png)
 
 #### Decoder Multi-Headed Attention
 
-![](draw/DecoderMultiheadedAttention.png)
+![](images/DecoderMultiheadedAttention.png)
 
 #### Decoder Multi-Headed Attention With Encoder
 
-![](draw/DecoderMultiheadedAttentionEncoder.png)
+![](images/DecoderMultiheadedAttentionEncoder.png)
 
 #### Linear Classifier
 
-![](draw/DecoderLinear.png)
+![](images/DecoderLinear.png)
 
 ## Implementing Transformer model
 We have talk a lot, it's time to write some scripts. In this session, we will use pretrained T5, which is an variant of Transformer, to solve translation task. We will use **HuggingFace** library for easy implementation.

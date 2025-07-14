@@ -17,42 +17,42 @@ Multi-headed attention is a key component of modern neural networks, particularl
 Although using self attention brings us a lot of advantages, there are some problems that we may consider.
 
 Let's talk a bit about **Convolution**.
-![](draw/Convolutions.png)
+![](images/Convolutions.png)
 
 Limitations of self attention:
-![](draw/AttentionProblem.png)
+![](images/AttentionProblem.png)
 
 Therefore, we need to use many attention heads to simulate the abilities of using convolutions.
-![](draw/SolvingAttentionProblem.png)
+![](images/SolvingAttentionProblem.png)
 
 ## Multi-Headed Attention
 Many attention heads expands the model’s ability to focus on different positions.
-![](draw/MultiHeaded_attention.png)
+![](images/MultiHeaded_attention.png)
 
 From original word embeddings, we divide them into 3 parts in case we use 3 attention heads.
 
-![](draw/MultiheadedAttention2.png)
+![](images/MultiheadedAttention2.png)
 
 **Note:** The number of heads must be a divisor of embedding's length
 
 ### Multi-Headed attention architecture 
 Multi-Headed attention has the core component is self attention. Besides, it has some linear layers to map to desiable dimentions.
-![](draw/MultiheadedAttentionArchitecture.png)
+![](images/MultiheadedAttentionArchitecture.png)
 
 Now, we will deep dive into each components.
 
 #### Linear layers and split into heads
 With multi-headed attention we have not only one, but multiple sets of Query/Key/Value weight matrices. Each of these sets is randomly initialized.
 
-![](draw/SplitHeads.png)
+![](images/SplitHeads.png)
 
 #### Self attention
 Calculate attention using the resulting Query/Key/Value matrices on each head.
 
-![](draw/MultiheadedAttentionCalculation.png)
+![](images/MultiheadedAttentionCalculation.png)
 
 #### Concat and Final Linear Layer
-![](draw/ConcateAndLinear.png)
+![](images/ConcateAndLinear.png)
 
 ## Implementing Multi-Headed Attention
 We will use the same datasets in the Attention lesson and then compare the result to measure how much Multi-Headed Attention mechanism improves our model. 
@@ -191,9 +191,9 @@ plt.plot(history1["accuracy"])
 plt.plot(history1["val_accuracy"])
 ```
 
-![](draw/Loss.png)
+![](images/Loss.png)
 
-![](draw/Accuracy.png)
+![](images/Accuracy.png)
 
 ### Inference
 ```python
