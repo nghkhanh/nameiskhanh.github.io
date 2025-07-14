@@ -4,7 +4,7 @@ title: 9. Long Short Term Memory
 nav_order: 9
 parent: Course
 grand_parent: NLP
-permalink: /nlp/course/09_long_short_term_memory.md
+permalink: /nlp/course/09_long_short_term_memory/
 ---
 
 # Long Short Term Memory
