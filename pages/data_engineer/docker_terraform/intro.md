@@ -4,6 +4,7 @@ title: 1.1 Intro
 nav_order: 1
 parent: 1. Docker và Terraform
 grand_parent: Data Engineer
+permalink: /data-engineer/docker-terraform/intro/
 ---
 
 # Giới thiệu về DE
@@ -18,4 +19,3 @@ Trong suốt khóa học sẽ sử dụng các phần sau:
 * [Google BigQuery](https://cloud.google.com/products/bigquery/): _data warehouse_ (kho lưu trữ trung tâm tích hợp dữ liệu từ một hoặc nhiều nguồn khác nhau).
 * [Airflow](https://airflow.apache.org/): công cụ điều phối pipeline.
 * [Kafka](https://kafka.apache.org/): nền tảng để hợp nhất, băng tải cao, độ trễ thấp để xử lý các luồng dữ liệu theo thời gian thực (streaming).
-
