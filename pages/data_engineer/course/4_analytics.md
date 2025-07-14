@@ -167,12 +167,14 @@ dbt models are mostly written in SQL (remember that a dbt model is essentially a
 Here's an example dbt model:
 
 ```sql
+{% raw %}
 {{
     config(materialized='table')
 }}
 
 SELECT *
 FROM staging.source_table
+{% endraw %}
 WHERE record_state = 'ACTIVE'
 ```
 
@@ -239,29 +241,35 @@ sources:
 And here's how you would reference a source in a `FROM` clause:
 
 ```sql
+{% raw %}
 FROM {{ source('staging','yellow_tripdata') }}
+{% endraw %}
 ```
 * The first argument of the `source()` function is the source name, and the second is the table name.
 
 In the case of seeds, assuming you've got a `taxi_zone_lookup.csv` file in your `seeds` folder which contains `locationid`, `borough`, `zone` and `service_zone`:
 
 ```sql
+{% raw %}
 SELECT
     locationid,
     borough,
     zone,
     replace(service_zone, 'Boro', 'Green') as service_zone
-FROM {{ ref('taxi_zone_lookup) }}
+FROM {{ ref('taxi_zone_lookup') }}
+{% endraw %}
 ```
 
 The `ref()` function references underlying tables and views in the Data Warehouse. When compiled, it will automatically build the dependencies and resolve the correct schema fo us. So, if BigQuery contains a schema/dataset called `dbt_dev` inside the `my_project` database which we're using for development and it contains a table called `stg_green_tripdata`, then the following code...
 
 ```sql
+{% raw %}
 WITH green_data AS (
     SELECT *,
         'Green' AS service_type
     FROM {{ ref('stg_green_tripdata') }}
 ),
+{% endraw %}
 ```
 
 ...will compile to this:
@@ -304,9 +312,11 @@ sources:
 ```sql
 -- sgt_green_tripdata.sql
 
+{% raw %}
 {{ config(materialized='view') }}
 
 select * from {{ source('staging', 'green_tripdata') }}
+{% endraw %}
 limit 100
 ```
 * This query will create a ***view*** in the `staging` dataset/schema in our database.
@@ -331,13 +341,16 @@ Macros allow us to add features to SQL that aren't otherwise available, such as:
 Macros are defined in separate `.sql` files which are typically stored in a `macros` directory.
 
 There are 3 kinds of Jinja _delimiters_:
+{% raw %}
 * `{% ... %}` for ***statements*** (control blocks, macro definitions)
 * `{{ ... }}` for ***expressions*** (literals, math, comparisons, logic, macro calls...)
 * `{# ... #}` for comments.
+{% endraw %}
 
 Here's a macro definition example:
 
 ```sql
+{% raw %}
 {# This macro returns the description of the payment_type #}
 
 {% macro get_payment_type_description(payment_type) %}
@@ -352,6 +365,7 @@ Here's a macro definition example:
     end
 
 {% endmacro %}
+{% endraw %}
 ```
 * The `macro` keyword states that the line is a macro definition. It includes the name of the macro as well as the parameters.
 * The code of the macro itself goes between 2 statement delimiters. The second statement delimiter contains an `endmacro` keyword.
@@ -360,16 +374,19 @@ Here's a macro definition example:
 
 Here's how we use the macro:
 ```sql
+{% raw %}
 select
     {{ get_payment_type_description('payment-type') }} as payment_type_description,
     congestion_surcharge::double precision
 from {{ source('staging','green_tripdata') }}
+{% endraw %}
 where vendorid is not null
 ```
 * We pass a `payment-type` variable which may be an integer from 1 to 6.
 
 And this is what it would compile to:
 ```sql
+{% raw %}
 select
     case payment_type
         when 1 then 'Credit card'
@@ -381,6 +398,7 @@ select
     end as payment_type_description,
     congestion_surcharge::double precision
 from {{ source('staging','green_tripdata') }}
+{% endraw %}
 where vendorid is not null
 ```
 * The macro is replaced by the code contained within the macro definition as well as any variables that we may have passed to the macro parameters.
@@ -402,8 +420,10 @@ After declaring your packages, you need to install them by running the `dbt deps
 
 You may access macros inside a package in a similar way to how Python access class methods:
 ```sql
+{% raw %}
 select
     {{ dbt_utils.surrogate_key(['vendorid', 'lpep_pickup_datetime']) }} as tripid,
+{% endraw %}
     cast(vendorid as integer) as vendorid,
     -- ...
 ```
@@ -426,11 +446,13 @@ Variables can be defined in 2 different ways:
 
 Variables can be used with the `var()` macro. For example:
 ```sql
+{% raw %}
 {% if var('is_test_run', default=true) %}
 
     limit 100
 
 {% endif %}
+{% endraw %}
 ```
 * In this example, the default value for `is_test_run` is `true`; in the absence of a variable definition either on the `dbt_project.yml` file or when running the project, then `is_test_run` would be `true`.
 * Since we passed the value `false` when runnning `dbt build`, then the `if` statement would evaluate to `false` and the code within would not run.
@@ -444,6 +466,7 @@ The models we've created in the _staging area_ are for normalizing the fields of
 The `ref()` macro is used for referencing any undedrlying tables and views that we've created, so we can reference seeds as well as models using this macro:
 
 ```sql
+{% raw %}
 {{ config(materialized='table') }}
 
 select
@@ -452,15 +475,18 @@ select
     zone,
     replace(service_zone, 'Boro', 'Green') as service_zone
 from {{ ref('taxi_zone_lookup') }}
+{% endraw %}
 ```
 * This model references the `taxi_zone_lookup` table created from the taxi zone lookup CSV seed.
 
 ```sql
+{% raw %}
 with green_data as (
     select *, 
         'Green' as service_type 
     from {{ ref('stg_green_tripdata') }}
 ), 
+{% endraw %}
 ```
 * This snippet references the `sgt_green_tripdata` model that we've created before. Since a model outputs a table/view, we can use it in the `FROM` clause of any query.
 
