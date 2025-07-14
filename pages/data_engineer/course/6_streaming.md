@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 1.6 Streaming
+title: 6 Streaming
 nav_order: 6
 parent: Course
 grand_parent: Data Engineer

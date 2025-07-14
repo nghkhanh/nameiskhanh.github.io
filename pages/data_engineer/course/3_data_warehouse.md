@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 1. Data Warehouse
+title: 3. Data Warehouse
 nav_order: 3
 parent: Course
 grand_parent: Data Engineer

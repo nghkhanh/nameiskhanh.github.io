@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 1. Data Ingestion
+title: 2. Data Ingestion
 nav_order: 2
 parent: Course
 grand_parent: Data Engineer

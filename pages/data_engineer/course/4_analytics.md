@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 1. Analytics Engineering
+title: 4. Analytics Engineering
 nav_order: 4
 parent: Course
 grand_parent: Data Engineer
