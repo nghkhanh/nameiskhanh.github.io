@@ -384,7 +384,7 @@ The status of each task can be seen in both views as you trigger a DAG.
       bash_command=f'curl -sSL {URL_TEMPLATE} > {OUTPUT_FILE_TEMPLATE}'
     )
   ```
-  * We want to periodically download data each month and the filename changes according to the name and month. We can use _templating_ to parametrize the filename.
+  <!-- * We want to periodically download data each month and the filename changes according to the name and month. We can use _templating_ to parametrize the filename.
     * Airflow uses the [Jinja template engine](https://jinja.palletsprojects.com/en/3.0.x/).
     * {% raw %}
     Jinja templates make use of `{% ... %}` for statements and `{{ ... }}` for expressions.
@@ -393,7 +393,7 @@ The status of each task can be seen in both views as you trigger a DAG.
     * We use a template to rename the file with the current year and month that the task is running:
       * `execution_date` is an Airflow variable that returns the _execution date_ (or _logical date_ in newer versions of Airflow) of the task, which denotes the current data interval as specified by the `start_date` of the DAG and the number of executions. In this example, this is useful to download past data, since we can trigger this DAG manually and in each execution the execution date will increase by the amount specified in the `schedule_interval`, thus allowing us to download data for multiple months by simply rerunning the DAG.
         * Do not confuse this variable with the actual current date!
-      * `strftime()` is a Python function that returns a string representing a date. You can check how to define the format of the string [in this link](https://docs.python.org/3/library/datetime.html#strftime-strptime-behavior). In this example we're outputting the year and month.   
+      * `strftime()` is a Python function that returns a string representing a date. You can check how to define the format of the string [in this link](https://docs.python.org/3/library/datetime.html#strftime-strptime-behavior). In this example we're outputting the year and month.    -->
   * `curl` command:
     * Like all other commands, options can be stacked if there aren't additional parameters. In this case, `-sS` is the same as `-s -S`.
     * `-s` is the same as `--silent`; it won't output any progress meters on the console.
