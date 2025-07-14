@@ -1,9 +1,10 @@
 ---
 layout: default
-title: 3. Quy trình NLP
-nav_order: 3
-parent: NLP
-permalink: /nlp/03_nlp_pipeline/
+title: 2. Pipeline NLP
+nav_order: 2
+parent: Course
+grand_parent: NLP
+permalink: /nlp/course/02_nlp_pipeline/
 ---
 
 

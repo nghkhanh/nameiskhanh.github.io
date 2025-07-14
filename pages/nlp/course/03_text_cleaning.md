@@ -1,9 +1,10 @@
 ---
 layout: default
-title: 4. Text Cleaning
-nav_order: 4
-parent: NLP
-permalink: /nlp/04_text_cleaning/
+title: 3. Text cleaning
+nav_order: 3
+parent: Course
+grand_parent: NLP
+permalink: /nlp/course/03_text_cleaning/
 ---
 
 # Text Extraction and Cleanup

@@ -1,9 +1,10 @@
 ---
 layout: default
-title: 5. Text Preprocessing
-nav_order: 5
-parent: NLP
-permalink: /nlp/05_text_preprocessing/
+title: 4. Text Processing
+nav_order: 4
+parent: Course
+grand_parent: NLP
+permalink: /nlp/course/04_textprocessing/
 ---
 
 # Text Preprocessing
