@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 1. Giới thiệu
+title: 1. Introduction
 nav_order: 1
 parent: Course
 grand_parent: NLP
