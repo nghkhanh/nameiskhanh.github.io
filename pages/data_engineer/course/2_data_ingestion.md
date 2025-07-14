@@ -1,35 +1,11 @@
->Previous: [Introduction to Data Engineering](1_intro.md)
-
->[Back to index](README.md)
-
->Next: [Data Warehouse](3_data_warehouse.md)
-
-### Table of contents
-
-- [Data Ingestion](#data-ingestion)
-- [Data Lake](#data-lake)
-  - [What is a Data Lake?](#what-is-a-data-lake)
-  - [Data Lake vs Data Warehouse](#data-lake-vs-data-warehouse)
-  - [ETL vs ELT](#etl-vs-elt)
-  - [Data Swamp - Data Lakes gone wrong](#data-swamp---data-lakes-gone-wrong)
-  - [Data Lake Cloud Providers](#data-lake-cloud-providers)
-- [Orchestration with Airflow](#orchestration-with-airflow)
-  - [Introduction to Workflow Orchestration](#introduction-to-workflow-orchestration)
-  - [Airflow architecture](#airflow-architecture)
-  - [Setting up Airflow with Docker](#setting-up-airflow-with-docker)
-    - [Pre-requisites](#pre-requisites)
-    - [Setup (full version)](#setup-full-version)
-    - [Setup (lite version)](#setup-lite-version)
-    - [Execution](#execution)
-  - [Creating a DAG](#creating-a-dag)
-  - [Running DAGs](#running-dags)
-  - [Airflow and DAG tips and tricks](#airflow-and-dag-tips-and-tricks)
-- [Airflow in action](#airflow-in-action)
-  - [Ingesting data to local Postgres with Airflow](#ingesting-data-to-local-postgres-with-airflow)
-  - [Ingesting data to GCP](#ingesting-data-to-gcp)
-- [GCP's Transfer Service](#gcps-transfer-service)
-  - [Creating a Transfer Service from GCP's web UI](#creating-a-transfer-service-from-gcps-web-ui)
-  - [Creating a Transfer Service with Terraform](#creating-a-transfer-service-with-terraform)
+---
+layout: default
+title: 1.2 Data Ingestion
+nav_order: 2
+parent: Data Engineer - Course
+grand_parent: Data Engineer
+permalink: /data_engineer/course/2_data_ingestion/
+---
 
 # Data Ingestion
 

@@ -1,44 +1,11 @@
->Previous: [Data Warehouse](3_data_warehouse.md)
-
->[Back to index](README.md)
-
->Next: [Batch Processing](5_batch_processing.md)
-
->>Extra: [Preparing Data for Spark](extra1_preparing_data.md)
-
-### Table of contents
-
-- [Introduction to Analytics Engineering](#introduction-to-analytics-engineering)
-  - [What is Analytics Engineering?](#what-is-analytics-engineering)
-  - [Data Modeling Concepts](#data-modeling-concepts)
-    - [ETL vs ELT](#etl-vs-elt)
-    - [Dimensional Modeling](#dimensional-modeling)
-- [Introduction to dbt](#introduction-to-dbt)
-  - [What is dbt?](#what-is-dbt)
-  - [How does dbt work?](#how-does-dbt-work)
-  - [How to use dbt?](#how-to-use-dbt)
-- [Setting up dbt](#setting-up-dbt)
-  - [dbt Cloud](#dbt-cloud)
-  - [dbt Core](#dbt-core)
-- [Developing with dbt](#developing-with-dbt)
-  - [Anatomy of a dbt model](#anatomy-of-a-dbt-model)
-  - [The FROM clause](#the-from-clause)
-  - [Defining a source and creating a model](#defining-a-source-and-creating-a-model)
-  - [Macros](#macros)
-  - [Packages](#packages)
-  - [Variables](#variables)
-  - [Referencing older models in new models](#referencing-older-models-in-new-models)
-- [Testing and documenting dbt models](#testing-and-documenting-dbt-models)
-  - [Testing](#testing)
-  - [Documentation](#documentation)
-- [Deployment of a dbt project](#deployment-of-a-dbt-project)
-  - [Deployment basics](#deployment-basics)
-  - [Continuous Integration](#continuous-integration)
-  - [Deployment using dbt Cloud](#deployment-using-dbt-cloud)
-  - [Deployment using dbt Core (local)](#deployment-using-dbt-core-local)
-- [Data visualization](#data-visualization)
-  - [Google Data Studio](#google-data-studio)
-  - [Metabase](#metabase)
+---
+layout: default
+title: 1.4 Analytics Engineering
+nav_order: 4
+parent: Data Engineer - Course
+grand_parent: Data Engineer
+permalink: /data_engineer/course/4_analytics/
+---
 
 # Introduction to Analytics Engineering
 

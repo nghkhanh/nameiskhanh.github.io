@@ -1,63 +1,11 @@
->Previous: [Batch Processing](5_batch_processing.md)
-
->[Back to index](README.md)
-
->Next: Coming soong
-
-### Table of contents
-
-- [Introduction to Streaming](#introduction-to-streaming)
-- [Introduction to Apache Kafka](#introduction-to-apache-kafka)
-  - [What is Kafka?](#what-is-kafka)
-  - [Basic Kafka components](#basic-kafka-components)
-    - [Message](#message)
-    - [Topic](#topic)
-    - [Broker and Cluster](#broker-and-cluster)
-    - [Logs](#logs)
-    - [Intermission: visualizing the concepts so far](#intermission-visualizing-the-concepts-so-far)
-    - [`__consumer_offsets`](#__consumer_offsets)
-    - [Consumer Groups](#consumer-groups)
-    - [Partitions](#partitions)
-    - [Replication](#replication)
-  - [Kafka configurations](#kafka-configurations)
-    - [Topic configurations](#topic-configurations)
-    - [Consumer configurations](#consumer-configurations)
-    - [Producer configurations](#producer-configurations)
-- [Kafka install and demo](#kafka-install-and-demo)
-  - [Installing Kafka](#installing-kafka)
-  - [Demo - Setting up a producer and consumer](#demo---setting-up-a-producer-and-consumer)
-- [Avro and Schema Registry](#avro-and-schema-registry)
-  - [Why are schemas needed?](#why-are-schemas-needed)
-  - [Introduction to Avro](#introduction-to-avro)
-  - [Schema compatibility](#schema-compatibility)
-  - [Avro schema evolution](#avro-schema-evolution)
-  - [Schema registry](#schema-registry)
-  - [Dealing with incompatible schemas](#dealing-with-incompatible-schemas)
-  - [Avro demo](#avro-demo)
-    - [`docker-compose.yml`](#docker-composeyml)
-    - [Defining schemas](#defining-schemas)
-    - [Producer](#producer)
-    - [Consumer](#consumer)
-    - [Run the demo](#run-the-demo)
-- [Kafka Streams](#kafka-streams)
-  - [What is Kafka Streams?](#what-is-kafka-streams)
-  - [Streams vs State](#streams-vs-state)
-  - [Streams topologies and features](#streams-topologies-and-features)
-  - [Kafka Streams Demo (1)](#kafka-streams-demo-1)
-  - [Joins in Streams](#joins-in-streams)
-  - [Timestamps](#timestamps)
-  - [Windowing](#windowing)
-  - [Kafka Streams demo (2) - windowing](#kafka-streams-demo-2---windowing)
-  - [Additional Streams features](#additional-streams-features)
-    - [Stream tasks and threading model](#stream-tasks-and-threading-model)
-    - [Joins](#joins)
-    - [Global KTable](#global-ktable)
-    - [Interactive queries](#interactive-queries)
-    - [Processing guarantees](#processing-guarantees)
-- [Kafka Connect](#kafka-connect)
-- [KSQL](#ksql)
-
-# Introduction to Streaming
+---
+layout: default
+title: 1.6 Streaming
+nav_order: 6
+parent: Data Engineer - Course
+grand_parent: Data Engineer
+permalink: /data_engineer/course/6_streaming/
+---
 
 # Introduction to Apache Kafka
 

@@ -1,9 +1,11 @@
->Previous: [Analytics Engineering](4_analytics.md)
-
->[Back to index](README.md)
->>Extra: [Preparing Data for Spark](extra1_preparing_data.md)
-
->Next: [Streaming](6_streaming.md)
+---
+layout: default
+title: 1.5 Batch Processing
+nav_order: 5
+parent: Data Engineer - Course
+grand_parent: Data Engineer
+permalink: /data_engineer/course/5_batch_processing/
+---
 
 # Introduction to Batch Processing
 

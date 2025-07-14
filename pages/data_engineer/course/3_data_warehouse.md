@@ -1,30 +1,11 @@
->Previous: [Data Ingestion](2_data_ingestion.md)
-
->[Back to index](README.md)
-
->Next: [Analytics Engineering](4_analytics.md)
-
-### Table of contents
-
-- [Data Warehouse](#data-warehouse)
-- [OLAP vs OLTP](#olap-vs-oltp)
-- [What is a Data Warehouse?](#what-is-a-data-warehouse)
-- [BigQuery](#bigquery)
-  - [Pricing](#pricing)
-  - [External tables](#external-tables)
-  - [Partitions](#partitions)
-  - [Clustering](#clustering)
-  - [Partitioning vs Clustering](#partitioning-vs-clustering)
-  - [Best practices](#best-practices)
-  - [Internals](#internals)
-    - [BigQuery Architecture](#bigquery-architecture)
-    - [Column-oriented vs record-oriented storage](#column-oriented-vs-record-oriented-storage)
-- [Machine Learning with BigQuery](#machine-learning-with-bigquery)
-  - [Introduction to BigQuery ML](#introduction-to-bigquery-ml)
-  - [BigQuery ML deployment](#bigquery-ml-deployment)
-- [Integrating BigQuery with Airflow](#integrating-bigquery-with-airflow)
-  - [Airflow setup](#airflow-setup)
-  - [Creating a Cloud Storage to BigQuery DAG](#creating-a-cloud-storage-to-bigquery-dag)
+---
+layout: default
+title: 1.3 Data Warehouse
+nav_order: 3
+parent: Data Engineer - Course
+grand_parent: Data Engineer
+permalink: /data_engineer/course/3_data_warehouse/
+---
 
 # Data Warehouse
 
