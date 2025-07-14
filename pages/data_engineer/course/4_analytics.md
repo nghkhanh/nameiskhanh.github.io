@@ -2,7 +2,7 @@
 layout: default
 title: 1. Analytics Engineering
 nav_order: 4
-parent: Data Engineer
+parent: Course
 grand_parent: Data Engineer
 permalink: /data_engineer/course/4_analytics/
 ---
