@@ -2,7 +2,7 @@
 layout: default
 title: 14. NER
 nav_order: 14
-parent: Course
+parent: NLP Course
 grand_parent: NLP
 permalink: /nlp/course/14_ner/
 ---

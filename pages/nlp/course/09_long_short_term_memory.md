@@ -2,7 +2,7 @@
 layout: default
 title: 9. Long Short Term Memory
 nav_order: 9
-parent: Course
+parent: NLP Course
 grand_parent: NLP
 permalink: /nlp/course/09_long_short_term_memory/
 ---

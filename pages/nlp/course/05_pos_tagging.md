@@ -2,7 +2,7 @@
 layout: default
 title: 5. Parts-Of-Speech
 nav_order: 5
-parent: Course
+parent: NLP Course
 grand_parent: NLP
 permalink: /nlp/course/05_pos_tagging/
 ---

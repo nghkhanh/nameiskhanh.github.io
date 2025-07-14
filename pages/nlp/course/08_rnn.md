@@ -2,7 +2,7 @@
 layout: default
 title: 8. Recurrent Neural Network
 nav_order: 8
-parent: Course
+parent: NLP Course
 grand_parent: NLP
 permalink: /nlp/course/08_rnn/
 ---

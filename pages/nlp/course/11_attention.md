@@ -2,7 +2,7 @@
 layout: default
 title: 11. Attention
 nav_order: 11
-parent: Course
+parent: NLP Course
 grand_parent: NLP
 permalink: /nlp/course/11_attention/
 ---

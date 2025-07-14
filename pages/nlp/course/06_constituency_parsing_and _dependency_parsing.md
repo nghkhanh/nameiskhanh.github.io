@@ -2,7 +2,7 @@
 layout: default
 title: 6. Parsing
 nav_order: 6
-parent: Course
+parent: NLP Course
 grand_parent: NLP
 permalink: nlp/course/06_constituency_parsing_and _dependency_parsing/
 ---

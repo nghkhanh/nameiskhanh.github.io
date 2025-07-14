@@ -2,7 +2,7 @@
 layout: default
 title: 3. Text cleaning
 nav_order: 3
-parent: Course
+parent: NLP Course
 grand_parent: NLP
 permalink: /nlp/course/03_text_cleaning/
 ---

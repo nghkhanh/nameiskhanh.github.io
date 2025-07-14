@@ -2,7 +2,7 @@
 layout: default
 title: 4. Text Processing
 nav_order: 4
-parent: Course
+parent: NLP Course
 grand_parent: NLP
 permalink: /nlp/course/04_textprocessing/
 ---

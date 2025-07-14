@@ -2,7 +2,7 @@
 layout: default
 title: 12. Multi-Headed Attention
 nav_order: 12
-parent: Course
+parent: NLP Course
 grand_parent: NLP
 permalink: /nlp/course/12_multiheaded_attention/
 ---

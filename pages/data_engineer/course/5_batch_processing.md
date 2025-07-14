@@ -2,7 +2,7 @@
 layout: default
 title: 5. Batch Processing
 nav_order: 5
-parent: Course
+parent: DE Course
 grand_parent: Data Engineer
 permalink: /data_engineer/course/5_batch_processing/
 ---

@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Course
+title: NLP Course
 nav_order: 1
 has_children: true
 parent: NLP
 permalink: /nlp/course/
 ---
 
-# Course
+# NLP Course

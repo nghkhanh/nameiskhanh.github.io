@@ -2,7 +2,7 @@
 layout: default
 title: 2. Pipeline NLP
 nav_order: 2
-parent: Course
+parent: NLP Course
 grand_parent: NLP
 permalink: /nlp/course/02_nlp_pipeline/
 ---

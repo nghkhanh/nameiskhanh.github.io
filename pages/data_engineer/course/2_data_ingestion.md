@@ -2,7 +2,7 @@
 layout: default
 title: 2. Data Ingestion
 nav_order: 2
-parent: Course
+parent: DE Course
 grand_parent: Data Engineer
 permalink: /data_engineer/course/2_data_ingestion/
 ---

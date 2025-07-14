@@ -2,7 +2,7 @@
 layout: default
 title: 1. Introduction
 nav_order: 1
-parent: Course
+parent: NLP Course
 grand_parent: NLP
 permalink: /nlp/course/01_introduction_to_nlp/
 ---

@@ -2,7 +2,7 @@
 layout: default
 title: 3. Data Warehouse
 nav_order: 3
-parent: Course
+parent: DE Course
 grand_parent: Data Engineer
 permalink: /data_engineer/course/3_data_warehouse/
 ---
