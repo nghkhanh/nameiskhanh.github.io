@@ -2,7 +2,7 @@
 layout: default
 title: 1. Kỹ thuật viết code chuẩn
 nav_order: 1
-parent: tips
+parent: Tips
 grand_parent: Coding Python
 permalink: /python/tips/1_write_code/
 ---
