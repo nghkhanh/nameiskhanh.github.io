@@ -7,7 +7,7 @@ grand_parent: Coding Python
 permalink: /python/tips/1_write_code/
 ---
 
-# 📝 **Chương trình buổi học**
+# **Chương trình buổi học**
 
 - **Phần 1:** Cơ bản về Clean Code và PEP-8
 - **Phần 2:** Viết Code Pythonic
@@ -16,14 +16,14 @@ permalink: /python/tips/1_write_code/
 
 ---
 
-## 🧼 **Phần 1: Cơ bản về Clean Code và PEP-8**
+## **Phần 1: Cơ bản về Clean Code và PEP-8**
 
 ### **1. Clean Code là gì?**
 
 - Clean code là mã nguồn rõ ràng, dễ đọc, dễ bảo trì, có khả năng mở rộng và dễ dàng kiểm thử.
 - Nó được viết theo cách mà người khác (đồng nghiệp) hoặc chính bạn trong tương lai có thể dễ dàng hiểu, cải tiến hoặc bảo trì.
 
-![pic1.png](attachment:f8bab760-3274-4c12-9f6f-064726b7f7b0:pic1.png)
+![pic1.png](images/pic1.png)
 
 ### **2. Nguyên tắc cốt lõi của Clean Code (3D1C)**
 
@@ -45,28 +45,28 @@ permalink: /python/tips/1_write_code/
 - Clean code sử dụng tên biến/hàm có ý nghĩa, thêm tài liệu mô tả và tuân thủ các quy ước định dạng để tăng khả năng đọc hiểu.
 - Ví dụ:
 
-![pic2.png](attachment:a9c361f7-d445-482b-9e21-7e223fa65ab1:pic2.png)
+![pic2.png](images/pic2.png)
 
 ### **5. Case study: Code dễ mở rộng**
 
 - Code dễ mở rộng cho phép thêm chức năng mới mà không cần sửa đổi code hiện có. Thiết kế này sử dụng các hàm riêng biệt và cấu trúc dữ liệu như dictionary để quản lý các phép toán, giúp tuân thủ nguyên tắc "Open-Closed Principle".
 - Ví dụ:
 
-![pic3.png](attachment:e25366ce-3606-4c3e-9e3a-10e4950c0d83:pic3.png)
+![pic3.png](images/pic3.png)
 
 1. **Khó mở rộng (Bad example):** Sử dụng nhiều `elif` trong một hàm `calculate` cho các phép toán.
 2. **Dễ mở rộng (Good example):** Tách mỗi phép toán thành một hàm riêng (`add`, `subtract`, `multiply`) và lưu chúng vào một dictionary `operations`. Hàm `calculate` sẽ gọi hàm tương ứng từ dictionary.
 
 ### **6. Khi nào có thể "bỏ qua" Clean Code?**
 
-![pic4.png](attachment:7b97b49d-d857-4f5d-bd52-334226e2de76:pic4.png)
+![pic4.png](images/pic4.png)
 
 ### **7. Giới thiệu về PEP-8**
 
 - PEP-8 (Python Enhancement Proposal 8) là tiêu chuẩn định dạng code Python chính thức, quy định cách trình bày code để đảm bảo tính nhất quán và dễ đọc trên toàn dự án. Được tạo ra bởi Guido van Rossum - cha đẻ của Python.
 - Ví dụ:
 
-![pic5.png](attachment:e62dd2e9-6aaf-48d9-8813-108724359867:pic5.png)
+![pic5.png](images/pic5.png)
 
 ### **8. Quy tắc đặt tên (Naming Convention)**
 
@@ -114,7 +114,7 @@ permalink: /python/tips/1_write_code/
 
 ### **10. Giới hạn độ dài dòng code**
 
-![pic6.png](attachment:62b6c9bb-40e7-43a2-a22c-10dd6312e542:pic6.png)
+![pic6.png](images/pic6.png)
 
 Việc giới hạn giúp ta chia màn hình code → đọc được nhiều file nhưng vẫn giữ đủ nội dung trong từng dòng code để đọc → tránh quá nhỏ khiến lướt nhiều hoặc quá dài thì ko đủ split màn hình
 
@@ -124,7 +124,7 @@ Việc giới hạn giúp ta chia màn hình code → đọc được nhiều fi
 2. **Thư viện bên thứ ba:** Các package được cài qua pip như `requests`, `numpy`, `pandas...`
 3. **Module nội bộ:** Các module tự viết trong dự án của bạn.
 
-![pic7.png](attachment:9239faa2-a81a-4ff7-bbd7-d37817293da6:pic7.png)
+![pic7.png](images/pic7.png)
 
 ### **12. Dòng trắng và cấu trúc Hàm/Class**
 
@@ -233,7 +233,7 @@ Việc giới hạn giúp ta chia màn hình code → đọc được nhiều fi
 
 ### **14. Công cụ kiểm tra PEP-8 và code cơ bản**
 
-![pic8.png](attachment:b16180bb-a58a-4d44-ad20-c6bfa4f611fa:d6ea5660-a255-48c8-a503-00af54f85dd8.png)
+![pic8.png](images/pic8.png)
 
 !!! Bài tập thực hành
 
@@ -282,26 +282,26 @@ print(calculate_BMI(height=170, weight=70))
 - Pythonic nghĩa là tận dụng tối đa tính năng và đặc điểm riêng của Python để viết code.
 - Code Pythonic dễ đọc, dễ hiểu, ngắn gọn như đọc tiếng Anh, đồng thời tuân thủ các quy ước và triết lý của Python.
 
-![pic9.png](attachment:5c24bd8a-0580-4ffa-ae7f-4cbb53f00ef8:pic9.png)
+![pic9.png](images/pic9.png)
 
 ### **3. Indexes và Slices**
 
 - Python cung cấp cách truy cập mạnh mẽ vào các phần tử trong sequences (list, tuple, string) thông qua indexes và slicing.
 - Cú pháp slicing `sequence[start:stop:step]` giúp thao tác với dữ liệu linh hoạt và Pythonic.
 
-![pic10.png](attachment:1bb4e629-b6da-43a9-aa20-24f8a37a2eac:pic10.png)
+![pic10.png](images/pic10.png)
 
 ### **4. List, Dict, Set Comprehensions**
 
 - Giúp code gọn và nhanh hơn.
 
-![pic11.png](attachment:86e67fd1-61ac-4925-bc02-db85c85cc0fc:pic11.png)
+![pic11.png](images/pic11.png)
 
 ### **5. Context Managers (with)**
 
 - Context Manager là cơ chế quản lý tài nguyên thông qua câu lệnh `with`, giúp tự động giải phóng tài nguyên (đóng file, đóng kết nối DB, giải phóng lock...) khi khối lệnh kết thúc, kể cả khi có lỗi xảy ra.
 
-![pic12.png](attachment:28b6f678-a8ac-4cfb-acb5-6b7bf4f402c1:pic12.png)
+![pic12.png](images/pic12.png)
 
 - **Ưu điểm:** Đảm bảo tài nguyên luôn được giải phóng đúng cách, tránh memory leak, giúp code ngắn gọn và an toàn hơn khi xử lý ngoại lệ.
 - **Ứng dụng phổ biến:** Quản lý file, kết nối database, lock thread, benchmark thời gian, tạm thay đổi cấu hình, transaction database.
@@ -310,27 +310,27 @@ print(calculate_BMI(height=170, weight=70))
 
 - **Trường hợp 1: So sánh với None**
     
-    ![pic13.png](attachment:fd311e50-3c99-4801-83b1-1893de7420c2:pic13.png)
+    ![pic13.png](images/pic13.png)
     
     - **Giải thích:** `None` là singleton object, phải dùng `is`/`is not` để so sánh về mặt identity.
 - **Trường hợp 2: So sánh Boolean**
     
-    ![pic14.png](attachment:daa2f7e5-bd0a-47d5-b715-a2d2275f54fa:pic14.png)
+    ![pic14.png](images/pic14.png)
     
     - **Giải thích:** Boolean tự thân đã có giá trị truth, không cần so sánh thêm.
 - **Trường hợp 3: Kiểm tra chuỗi/list/dict rỗng**
     
-    ![pic15.png](attachment:04c98914-88c2-413a-b752-9985e98cf0c4:pic15.png)
+    ![pic15.png](images/pic15.png)
     
     - **Giải thích:** Chuỗi/list/dict rỗng được đánh giá là `False`, không rỗng là `True` trong ngữ cảnh boolean.
 - **Trường hợp 4: Kiểm tra trong collection**
     
-    ![pic16.png](attachment:2e1163aa-1034-4a6e-9c1c-137e14167d9b:pic16.png)
+    ![pic16.png](images/pic16.png)
     
     - **Giải thích:** Sử dụng toán tử `in` trực tiếp, hiệu quả và dễ đọc hơn.
 - **Trường hợp 5: Chaining comparison (So sánh chuỗi)**
     
-    ![pic17.png](attachment:a2aca88e-694f-4fdb-a1d1-8eaf4fda1c89:pic17.png)
+    ![pic17.png](images/pic17.png)
     
     - **Giải thích:** Python cho phép "chain" các phép so sánh, giống như toán học, giúp dễ đọc và hiểu hơn.
 
@@ -338,7 +338,7 @@ print(calculate_BMI(height=170, weight=70))
 
 - Sử dụng `@property` cho phép sử dụng method như thuộc tính, giúp code gọn, dễ kiểm soát truy cập. Tuân theo quy chuẩn sử dụng dấu underscore giúp tránh lỗi khi thiết kế class.
 
-![pic18.png](attachment:8f3c6fb7-971f-4670-8d6c-964a7098dacd:pic18.png)
+![pic18.png](images/pic18.png)
 
 - **Dấu underscore:**
     - **`_var` (Single Underscore):** Quy ước cho biến private hoặc "internal use" trong module, class. Không thực sự ngăn truy cập từ bên ngoài, nhưng là dấu hiệu "không nên sử dụng trực tiếp".
@@ -378,7 +378,7 @@ max_num = max(numbers) # 20
 
 - **Nguyên tắc:** "Tránh lặp lại code, mỗi phần kiến thức trong hệ thống phải có một biểu diễn duy nhất, rõ ràng, và có thẩm quyền”.
 
-![pic19.png](attachment:b4b6636c-2605-4b5d-ac43-8835c4b9e124:pic19.png)
+![pic19.png](images/pic19.png)
 
 - **Lợi ích:** Giảm lỗi khi cần thay đổi logic, code ngắn gọn, dễ bảo trì hơn, tăng khả năng tái sử dụng code.
 - **Cách áp dụng:** Tách các đoạn code lặp lại thành functions, classes, hoặc modules riêng để tái sử dụng.
@@ -387,7 +387,7 @@ max_num = max(numbers) # 20
 
 - **Nguyên tắc:** Khuyên lập trình viên không nên thêm chức năng cho đến khi thực sự cần thiết.
 
-![pic1.png](attachment:a982149e-214a-40e7-917b-16b26c3336ef:eb963280-7a74-493a-871c-31a724992f07.png)
+![pic20.png](images/pic20.png)
 
 - **Lợi ích:** Tránh lãng phí thời gian phát triển các tính năng không cần thiết, giảm thiểu technical debt, giữ code đơn giản, dễ bảo trì hơn.
 - **Khi nào áp dụng:** Khi bạn đang muốn thêm một tính năng "phòng khi cần" mà chưa có yêu cầu cụ thể.
@@ -396,7 +396,7 @@ max_num = max(numbers) # 20
 
 - **Nguyên tắc:** Ưu tiên giải pháp đơn giản và dễ hiểu nhất. Tránh các giải pháp phức tạp khi không cần thiết.
 
-![pic2.png](attachment:eec4b9fe-281f-43dc-a10b-b82f3c1e1b3a:pic2.png)
+![pic21.png](images/pic21.png)
 
 - **Lợi ích:** Code đơn giản dễ dàng đọc, debug, bảo trì và mở rộng. Giảm thiểu bug và tăng hiệu suất làm việc nhóm.
 - **Khi nào áp dụng:** Tận dụng triết lý "Đơn giản hơn tốt hơn phức tạp" của Python để viết code rõ ràng, ngắn gọn.
@@ -405,7 +405,7 @@ max_num = max(numbers) # 20
 
 - **Nguyên tắc:** Kỹ thuật viết code luôn giả định rằng sẽ có lỗi xảy ra. Bao gồm kiểm tra đầu vào, xử lý ngoại lệ và kiểm tra điều kiện biên để tránh lỗi không mong muốn.
 
-![pic3.png](attachment:ac392987-34a9-42d7-8b7f-fd51f6cb7a44:pic3.png)
+![pic22.png](images/pic22.png)
 
 - **Nguyên tắc cơ bản:** Luôn kiểm tra đầu vào, xác thực dữ liệu từ người dùng, file, API và các nguồn bên ngoài. Không bao giờ tin tưởng input từ bất kỳ nguồn nào.
 - **Lợi ích:** Tạo ra code bền vững, có khả năng ứng phó với các tình huống không lường trước và dễ dàng debug khi có vấn đề.
@@ -415,7 +415,7 @@ max_num = max(numbers) # 20
 
 - Luôn bắt lỗi cụ thể thay vì chung chung (`Exception`). Không bao giờ "bỏ qua lỗi" mà không xử lý hoặc ghi log.
 
-![pic4.png](attachment:4c456229-329c-4156-8317-58537bbd7bb3:pic4.png)
+![pic24.png](images/pic23.png)
 
 - **Xử lý lỗi tốt:** Không chỉ là bắt lỗi mà còn là truyền thông tin lỗi đúng cách. Sử dụng `logging` thay vì `print` và tạo custom exceptions khi cần thiết để làm rõ ngữ cảnh lỗi.
 
@@ -423,7 +423,7 @@ max_num = max(numbers) # 20
 
 - **Nguyên tắc:** Phân chia code thành các module, class hoặc hàm riêng biệt, mỗi phần chỉ đảm nhiệm một chức năng cụ thể. Giúp dễ bảo trì, dễ kiểm thử và tăng khả năng tái sử dụng.
 
-![pic5.png](attachment:ea63d6a9-572f-44c5-8486-b41b968a8a33:pic5.png)
+![pic5.png](images/pic24.png)
 
 ### **8. Sử dụng Logging và Print hợp lý**
 
@@ -471,7 +471,7 @@ def greeting(name, language):
 - **Dễ Bảo Trì Và Test:** Khi mỗi class chỉ làm một việc, code dễ hiểu và dễ sửa. Các đơn vị nhỏ cũng dễ kiểm thử hơn.
 - **Ví dụ:**
 
-![pic6.png](attachment:53d70a2e-cd3e-4302-a3d7-18a45129bb62:pic6.png)
+![pic6.png](images/pic25.png)
 
 ### **4. Open/Closed Principle (OCP)**
 
@@ -512,11 +512,11 @@ def greeting(name, language):
     - **Command Pattern:** Đóng gói yêu cầu thành đối tượng độc lập. Tách biệt Invoker và Receiver, hỗ trợ lưu lệnh, nhật ký hóa thao tác, giao dịch phân tán. Dễ mở rộng lệnh mới, tuân thủ OCP. Ứng dụng: GUI (nút), giao dịch tài chính, undo/redo.
     - **Template Method Pattern:** Định nghĩa khung thuật toán cố định. Lớp con tùy chỉnh các bước cụ thể, tái sử dụng code. Hook methods để kiểm soát các bước trong thuật toán. Thường dùng cho thuật toán xử lý dữ liệu tuần tự: đọc, xử lý, ghi.
 
-![pic7.png](attachment:db4195bf-57f4-41e8-b4e8-742cb8670236:pic7.png)
+![pic7.png](images/pic26.png)
 
 ### **9. Cách Dùng Design Patterns Hiệu Quả**
 
-![pic8.png](attachment:cf87748f-b079-40b4-830f-08285e22dee4:pic8.png)
+![pic8.png](images/pic27.png)
 
 ---
 
@@ -531,7 +531,7 @@ def greeting(name, language):
 
 ## 📚 **Tài liệu tham khảo**
 
-![pic9.png](attachment:1e209e55-233a-47ef-9fd1-80cc2cd30728:pic9.png)
+![pic9.png](images/pic29.png)
 
 1. Clean Code in Python, Mariano Anaya.
 2. Effective-Python, Brett Slatkin.
