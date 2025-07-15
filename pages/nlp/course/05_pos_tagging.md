@@ -11,7 +11,7 @@ permalink: /nlp/course/05_pos_tagging/
 
 ## Introduction
 
-One essential task in Natural Language Processing (NLP) is Parts of Speech (PoS) tagging, which involves assigning grammatical categories like nouns, verbs, adjectives, and adverbs to each word in a text. This helps machines better understand and process human language by improving their grasp of phrase structure and meaning.
+One <span title="thiết yếu">essential</span> task in Natural Language Processing (NLP) is Parts of Speech (PoS) tagging, which involves assigning grammatical categories like nouns, verbs, adjectives, and adverbs to each word in a text. This helps machines better understand and process human language by improving their grasp of phrase structure and meaning.
 
 PoS tagging is crucial for NLP applications like machine translation, sentiment analysis, and information retrieval. It connects language to machine understanding, allowing for the development of advanced language processing systems and deeper linguistic analysis.
 
