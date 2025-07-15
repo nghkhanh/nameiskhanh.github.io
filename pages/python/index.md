@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Python và thuật toán
+title: Coding Python
 nav_order: 3
 has_children: true
 permalink: /python/
 ---
 
-# Python và thuật toán
+# Python
 
