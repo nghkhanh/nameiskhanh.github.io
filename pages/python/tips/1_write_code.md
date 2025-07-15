@@ -7,7 +7,7 @@ grand_parent: Coding Python
 permalink: /python/tips/1_write_code/
 ---
 
-# **Chương trình buổi học**
+# **Nội dung**
 
 - **Phần 1:** Cơ bản về Clean Code và PEP-8
 - **Phần 2:** Viết Code Pythonic
@@ -267,7 +267,7 @@ print(calculate_BMI(height=170, weight=70))
 
 ---
 
-## 🐍 **Phần 2: Viết Code Pythonic**
+## **Phần 2: Viết Code Pythonic**
 
 ### **1. The Zen of Python (Triết lý Python)**
 
@@ -367,7 +367,7 @@ max_num = max(numbers) # 20
 
 ---
 
-## ✨ **Phần 3: Nguyên lý chung để viết code tốt**
+## **Phần 3: Nguyên lý chung để viết code tốt**
 
 ### **1. Tổng quan các nguyên lý chung**
 
@@ -447,7 +447,7 @@ def greeting(name, language):
 
 ---
 
-## 🏗️ **Phần 4: Nguyên tắc SOLID và Design Patterns (Nâng Cao)**
+## **Phần 4: Nguyên tắc SOLID và Design Patterns (Nâng Cao)**
 
 ### **1. Giới thiệu SOLID Principles**
 
@@ -520,7 +520,7 @@ def greeting(name, language):
 
 ---
 
-## 🎯 **Tổng kết buổi học**
+## **Tổng kết buổi học**
 
 - **Phần 1: Clean Code & Formatting:** Tiêu chuẩn PEP-8, tài liệu hóa code với docstring và type annotations, công cụ kiểm tra code và tích hợp CI.
 - **Phần 2: Pythonic Code:** List/Dict comprehensions, context managers, properties, assignment expressions và các kỹ thuật lập trình đặc trưng của Python.
