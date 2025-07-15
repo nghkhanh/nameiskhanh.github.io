@@ -2,7 +2,7 @@
 layout: default
 title: 1. Daily Data Science
 nav_order: 1
-parent: books
+parent: Books
 grand_parent: NLP
 permalink: /nlp/course/01_daily_of_ds/
 ---
