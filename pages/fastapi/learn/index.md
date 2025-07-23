@@ -7,4 +7,4 @@ parent: fastapi
 permalink: /fastapi/learn/
 ---
 
-# Tips
+# Fast API - Learn
