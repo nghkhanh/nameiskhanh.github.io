@@ -11,62 +11,74 @@ permalink: /nlp/course/11_attention/
 
 ## Introduction
 
-The title also refers to a renowned paper that marks a significant advancement in the NLP domain. The introduction of Attention not only enhances word embedding but also addresses the constraints of CBOW and Skip Gram.
+Tiêu đề này cũng đề cập đến một bài báo nổi tiếng đánh dấu bước tiến quan trọng trong lĩnh vực Xử lý ngôn ngữ tự nhiên (NLP - Natural Language Processing). Việc giới thiệu Attention (Cơ chế chú ý) không chỉ giúp cải thiện biểu diễn từ (word embedding - nhúng từ) mà còn khắc phục các hạn chế của mô hình CBOW và Skip Gram.
 
 ## What is Attention?
 
-Attention is a mechanism in machine learning that allows models to focus on specific parts of input data while processing it. It helps the model assign different weights to different parts of the input, allowing it to prioritize relevant information and ignore irrelevant details. This enables the model to make more accurate predictions or generate more meaningful outputs. 
 
-In natural language processing (NLP), attention mechanisms have been particularly useful for tasks like machine translation, text summarization, and sentiment analysis.
+Attention (Cơ chế chú ý) là một cơ chế trong học máy (machine learning) cho phép mô hình tập trung vào những phần quan trọng của dữ liệu đầu vào trong quá trình xử lý. Nó giúp mô hình gán các trọng số khác nhau cho từng phần của đầu vào, từ đó ưu tiên thông tin liên quan và bỏ qua các chi tiết không cần thiết. Điều này giúp mô hình dự đoán chính xác hơn hoặc tạo ra các kết quả đầu ra có ý nghĩa hơn.
+
+Trong lĩnh vực xử lý ngôn ngữ tự nhiên (NLP), cơ chế Attention đặc biệt hữu ích cho các bài toán như dịch máy (machine translation), tóm tắt văn bản (text summarization) và phân tích cảm xúc (sentiment analysis).
 
 ![](images/attention.png)
 
-## How Attention works
-### Information Retrieval
-Attention's work mechanism is similar to information retrieval, so we will discuss about Information Retrieval first.
+
+## Attention hoạt động như thế nào?
+### Truy hồi thông tin (Information Retrieval)
+Cơ chế hoạt động của Attention khá giống với truy hồi thông tin (information retrieval), vì vậy chúng ta sẽ nói về truy hồi thông tin trước.
 
 ![](images/InformationRetrieval.png)
 
-The boy in the picture wants to search for videos related to AI so he sends his requests to YouTube and YouTube converts his requests with AI to 1 and Leetcode to 0. Then YouTube searches all videos on YouTube and gets only AI videos to respond for him. 
+
+Cậu bé trong hình muốn tìm kiếm các video liên quan đến AI, nên cậu gửi yêu cầu lên YouTube. YouTube sẽ chuyển yêu cầu của cậu thành các giá trị, ví dụ AI là 1 và Leetcode là 0. Sau đó, YouTube sẽ tìm kiếm tất cả các video và chỉ trả về các video liên quan đến AI cho cậu bé.
 
 ### Attention workflow
-#### First step
-The first step in calculating attention is to create three vectors from each of the encoder’s input vectors. So for each word, we create a Query vector, a Key vector, and a Value vector. In this case, we assume that Query, Key and Value vector are the same.
+### Quy trình hoạt động của Attention
+#### Bước 1
+Bước đầu tiên trong việc tính toán Attention là tạo ra ba vector từ mỗi vector đầu vào của encoder. Như vậy, với mỗi từ, chúng ta tạo ra một vector Truy vấn (Query), một vector Khóa (Key) và một vector Giá trị (Value). Trong ví dụ này, ta giả sử Query, Key và Value là giống nhau.
 
 ![](images/AttentionStep1.png)
 
-#### Second step
-The second step in calculating attention is to calculate a score. Say we’re calculating the attention for the first word in this example, “I”. We need to score each word of the input sentence against this word. The score determines how much focus to place on other parts of the input sentence as we encode a word at a certain position.
 
-The score is calculated by taking the dot product of the query vector with the key vector of the respective word we’re scoring. So if we’re processing the attention for the word in the first position, the first score would be the dot product of q1 and k1. The second score would be the dot product of q1 and k2 and so on.
+#### Bước 2
+Bước tiếp theo là tính toán điểm số (score). Giả sử chúng ta đang tính attention cho từ đầu tiên trong ví dụ này, "I". Ta cần tính điểm cho từng từ trong câu đầu vào so với từ này. Điểm số này quyết định mức độ tập trung vào các phần khác nhau của câu khi mã hóa một từ ở vị trí nhất định.
+
+Điểm số được tính bằng cách lấy tích vô hướng (dot product) giữa vector truy vấn (query) và vector khóa (key) của từng từ. Ví dụ, nếu đang xử lý attention cho từ ở vị trí đầu tiên, điểm đầu tiên sẽ là tích vô hướng giữa q1 và k1, điểm thứ hai là giữa q1 và k2, v.v.
 
 ![](images/AttentionStep2.png)
 
-### Third step
-The third steps are to divide the scores by the square root of the dimension of the key vectors.
+
+### Bước 3
+Bước này là chia các điểm số vừa tính được cho căn bậc hai của kích thước vector khóa (key vector dimension). Việc này giúp ổn định giá trị điểm số khi số chiều của vector lớn.
 
 ![](images/AttentionStep3.png)
 
 ![](images/AttentionStep3+.png)
 
-### Forth step
-Scaled vectors will pass through a softmax operation. Softmax normalizes the scores so they’re all positive and add up to 1.
+
+### Bước 4
+Các điểm số sau khi được chia sẽ đi qua hàm softmax. Softmax sẽ chuẩn hóa các điểm số này thành các giá trị dương và tổng của chúng bằng 1.
 
 ![](images/AttentionStep4.png)
 
-This softmax score determines how much each word will be expressed at this position. Clearly the word at this position will have the highest softmax score, but sometimes it’s useful to attend to another word that is relevant to the current word.
+
+Giá trị softmax này quyết định mức độ mỗi từ sẽ được thể hiện tại vị trí hiện tại. Thông thường, từ tại vị trí đó sẽ có điểm softmax cao nhất, nhưng đôi khi cũng cần chú ý đến các từ khác có liên quan.
 
 ### Fifth step
-The fifth step is to multiply each value vector by the softmax scores. The intuition here is to keep intact the values of the word(s) we want to focus on, and drown-out irrelevant words (by multiplying them by tiny numbers like 0.001, for example).
+
+### Bước 5
+Bước này là nhân mỗi vector giá trị (value vector) với điểm softmax tương ứng. Ý tưởng ở đây là giữ nguyên giá trị của những từ mà ta muốn tập trung, và làm giảm ảnh hưởng của các từ không liên quan (bằng cách nhân với các số rất nhỏ như 0.001).
 
 ![](images/AttentionStep5.png)
 
-### Six step(if not use matrix calculation like those above pictures, we have this step)
-The sixth step is to sum up the weighted value vectors. This produces the output of the self-attention layer at this position (for the first word, in this case is "I").
+
+### Bước 6 (nếu không sử dụng phép tính ma trận như các hình trên)
+Bước cuối cùng là cộng tất cả các vector giá trị đã được nhân trọng số lại với nhau. Kết quả này chính là đầu ra của lớp self-attention tại vị trí đó (ví dụ với từ đầu tiên là "I").
 
 ![](images/AttentionStep6.png)
 
-Here we go, these are all we need to understand the attention mechanism works.
+
+Như vậy, trên đây là toàn bộ các bước để hiểu cách cơ chế Attention hoạt động.
 
 ## Implementing attention
 We are going to build a simple Attention model to solve sentiment analysis problem. Let's start.
@@ -113,7 +125,7 @@ data = pd.concat([imdb,amazon,yelp])
 
 ### Preprocessing datasets
 ```python
-# Cleaning text
+# Làm sạch dữ liệu văn bản
 def clean_text(dataset):
     for i in range(dataset.shape[0]):
         sentence=dataset.iloc[i,0]
@@ -123,32 +135,34 @@ def clean_text(dataset):
 
 corpus = clean_text(data)
 
-# Build tokenizer
+# Xây dựng tokenizer (bộ mã hóa từ)
 tokenizer = Tokenizer(num_words=1000,filters='!"#$%&()*+,-./:;<=>?@[\\]^_`{|}~\t\n')
 tokenizer.fit_on_texts(corpus['text'])
 
-# Convert text to number sequences
+# Chuyển văn bản thành chuỗi số
 text_matrix = tokenizer.texts_to_sequences(corpus['text'])
 text_pad = pad_sequences(text_matrix, maxlen=32, padding='post') 
 ```
 
 ### Creating data to train the model
 ```python
+# Tạo dữ liệu huấn luyện cho mô hình
 x_train = np.array(text_pad)
 y_train = np.array(corpus['label'])
 ```
 
 ### Building an small attention model
 ```python
+# Xây dựng một mô hình attention nhỏ
 vocab_length = 3000
-# model with attention mechanism
+# Mô hình với cơ chế attention
 inputs = Input(shape=(text_pad.shape[1],))
 x = Embedding(input_dim=vocab_length+1, output_dim=32,\
              input_length=text_pad.shape[1], embeddings_regularizer=tf.keras.regularizers.l2(.001))(inputs)
 x1 = tf.keras.layers.Conv1D(
     filters=100,
     kernel_size=4,
-    # Use 'same' padding so outputs have the same shape as inputs.
+    # Sử dụng padding 'same' để đầu ra có cùng kích thước với đầu vào
     padding='same')(x)
 atte_layer = Attention()([x1, x1])
 flatten = Flatten()(atte_layer)
@@ -161,45 +175,48 @@ ________________________________________________________________________________
  Layer (type)                Output Shape                 Param #   Connected to                  
 ==================================================================================================
  input_18 (InputLayer)       [(None, 32)]                 0         []                            
-                                                                                                  
+                                                                                                 
  embedding_19 (Embedding)    (None, 32, 32)               96032     ['input_18[0][0]']            
-                                                                                                  
+                                                                                                 
  conv1d_5 (Conv1D)           (None, 32, 100)              12900     ['embedding_19[0][0]']        
-                                                                                                  
+                                                                                                 
  attention_13 (Attention)    (None, 32, 100)              0         ['conv1d_5[0][0]',            
                                                                      'conv1d_5[0][0]']            
-                                                                                                  
+                                                                                                 
  flatten_3 (Flatten)         (None, 3200)                 0         ['attention_13[0][0]']        
-                                                                                                  
+                                                                                                 
  dense_7 (Dense)             (None, 1)                    3201      ['flatten_3[0][0]']           
-                                                                                                  
+                                                                                                 
 ==================================================================================================
-Total params: 112133 (438.02 KB)
-Trainable params: 112133 (438.02 KB)
-Non-trainable params: 0 (0.00 Byte)
+Tổng số tham số: 112133 (438.02 KB)
+Tham số huấn luyện được: 112133 (438.02 KB)
+Tham số không huấn luyện: 0 (0.00 Byte)
 ```
 
 ### Training the attention model
-```python
-model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy']  )
 history = model.fit(x_train,y_train,epochs=10, validation_split=0.2,verbose=1,batch_size=64,shuffle=True).history
+```python
+# Huấn luyện mô hình attention
+model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+history = model.fit(x_train, y_train, epochs=10, validation_split=0.2, verbose=1, batch_size=64, shuffle=True).history
 ```
 
 ### Visualize training model's history
 ```python
+# Trực quan hóa quá trình huấn luyện mô hình
 plt.figure()
-plt.ylabel("Loss (training and validation)")
-plt.xlabel("Training Steps")
+plt.ylabel("Loss (training and validation) - Độ mất mát (huấn luyện và kiểm tra)")
+plt.xlabel("Training Steps - Số bước huấn luyện")
 plt.ylim([0,2])
-plt.plot(history1["loss"])
-plt.plot(history1["val_loss"])
+plt.plot(history["loss"])
+plt.plot(history["val_loss"])
 
 plt.figure()
-plt.ylabel("Accuracy (training and validation)")
-plt.xlabel("Training Steps")
+plt.ylabel("Accuracy (training and validation) - Độ chính xác (huấn luyện và kiểm tra)")
+plt.xlabel("Training Steps - Số bước huấn luyện")
 plt.ylim([0,1])
-plt.plot(history1["accuracy"])
-plt.plot(history1["val_accuracy"])
+plt.plot(history["accuracy"])
+plt.plot(history["val_accuracy"])
 ```
 
 ![](images/Loss.png)
@@ -208,24 +225,25 @@ plt.plot(history1["val_accuracy"])
 
 ### Inference
 ```python
+# Dự đoán (Inference)
 def inference(text):
-    text = []
-    text_matrix = tokenizer.texts_to_sequences(sentence)
+    # Hàm dự đoán cảm xúc cho một câu đầu vào
+    text_matrix = tokenizer.texts_to_sequences([text])
     text_pad = pad_sequences(text_matrix, maxlen=32, padding='post')
     result = model.predict(text_pad)
     if result[0][0] > 0.5:
-        return "Positive"
+        return "Tích cực (Positive)"
     else:
-        return "Negative"
+        return "Tiêu cực (Negative)"
 
 print(inference("Saw the movie today and thought it was a good effort, good messages for kids."))
-----> Positive
+# Kết quả: Tích cực (Positive)
 ```
 
-## Conclusion
+## Kết luận
 
-In conclusion, we have discussed about how attention mechanisms work as well as how they empower neural networks to focus on the most relevant parts of input data. By dynamically weighting elements, attention improves tasks like translation and summarization, making models smarter and more efficient.
+Tóm lại, chúng ta đã tìm hiểu về cách cơ chế Attention hoạt động cũng như cách nó giúp mạng nơ-ron tập trung vào những phần quan trọng nhất của dữ liệu đầu vào. Bằng cách gán trọng số động cho các thành phần, Attention giúp cải thiện các tác vụ như dịch máy và tóm tắt văn bản, làm cho mô hình thông minh và hiệu quả hơn.
 
-## References
+## Tài liệu tham khảo
 
 + A. Vaswani et al., “Attention Is All You Need,” arXiv.org, Jun. 12, 2017. https://arxiv.org/abs/1706.03762

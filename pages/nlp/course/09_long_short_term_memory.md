@@ -7,74 +7,81 @@ grand_parent: NLP
 permalink: /nlp/course/09_long_short_term_memory/
 ---
 
-# Long Short Term Memory
 
-## Introduction
+# Long Short Term Memory (LSTM - Bộ nhớ ngắn dài hạn)
 
-Long Short-Term Memory (LSTM) networks enhance Recurrent Neural Networks by effectively handling long-term dependencies using gate mechanisms. This makes them ideal for tasks like language translation, speech recognition, and time series prediction. Let's dive into how these powerful networks work!
 
-## What is Long Short Term Memory?
-As we discussed in **Recurrent Neural Network** lesson, **long range dependencies** as well as **Gradient Vanishing** are  popular problems when training RNN models , the appearance of **Long Short Term Memory** is a savior.
+## Giới thiệu (Introduction)
 
-Long Short-Term Memory (LSTM) is a type of recurrent neural network (RNN) designed to overcome the limitations of traditional RNNs in sequential data. It achieves this by using a memory cell that can maintain information over long periods, allowing it to remember relevant context even when the input sequence is lengthy. LSTMs accomplish this through a series of specialized gates that control the flow of information into and out of the memory cell, enabling effective learning and retention of sequential patterns.
+Long Short-Term Memory (LSTM) là một mạng nơ-ron hồi tiếp (Recurrent Neural Network - RNN) được cải tiến để xử lý hiệu quả các phụ thuộc dài hạn (long-term dependencies) nhờ cơ chế cổng (gate mechanism). Điều này giúp LSTM lý tưởng cho các bài toán như dịch ngôn ngữ, nhận diện giọng nói, dự đoán chuỗi thời gian... Hãy cùng tìm hiểu cách hoạt động của mạng mạnh mẽ này!
 
-## Why we need to use Long Short Term Memory?
+
+## LSTM là gì? (What is Long Short Term Memory?)
+Như đã đề cập trong bài **Recurrent Neural Network**, các vấn đề **phụ thuộc dài hạn** (long range dependencies) và **tiêu biến gradient** (Gradient Vanishing) rất phổ biến khi huấn luyện RNN. Sự xuất hiện của **Long Short Term Memory** là vị cứu tinh.
+
+LSTM là một loại mạng nơ-ron hồi tiếp (RNN) được thiết kế để khắc phục hạn chế của RNN truyền thống khi xử lý dữ liệu tuần tự. LSTM sử dụng một ô nhớ (memory cell) có thể lưu trữ thông tin trong thời gian dài, cho phép ghi nhớ ngữ cảnh quan trọng ngay cả khi chuỗi đầu vào rất dài. LSTM đạt được điều này nhờ một loạt các cổng chuyên biệt (specialized gates) kiểm soát luồng thông tin vào/ra ô nhớ, giúp học và lưu giữ các mẫu tuần tự hiệu quả.
+
+
+## Tại sao cần dùng LSTM? (Why we need to use Long Short Term Memory?)
 ![](images/LSTMAdvantages.png)
 
-## Long Short Term Memory Architecture
+
+## Kiến trúc của LSTM (Long Short Term Memory Architecture)
 ![](images/LSTMArchitecute.png)
 
-## How Long Short Term Memory works?
-### Forget Gate
+
+## LSTM hoạt động như thế nào? (How Long Short Term Memory works?)
+### Cổng quên (Forget Gate)
 
 ![](images/LSTMForgetGate.png)
 
-This equation represents the forget gate in a Long Short-Term Memory (LSTM) network. It calculates the forget gate's activation by combining the current input $x_{t}$ and the previous hidden state $h_{t-1}$, and then applying the sigmoid function to control the amount of information to forget from the previous cell state.
+Phương trình này biểu diễn cổng quên trong LSTM. Nó tính toán giá trị kích hoạt của cổng quên bằng cách kết hợp đầu vào hiện tại $x_{t}$ và trạng thái ẩn trước đó $h_{t-1}$, sau đó áp dụng hàm sigmoid để kiểm soát lượng thông tin cần quên từ trạng thái ô nhớ trước đó.
 
-### Input Gate
+### Cổng vào (Input Gate)
 ![](images/LSTMInputGate.png)
 
-These equations represent the input gate and the candidate cell state in a Long Short-Term Memory (LSTM) network with:
-+ Input Gate: This equation calculates the input gate's activation, combining the current input $x_{t}$ and the previous hidden state $h_{t-1}$, and then applying the sigmoid function to control how much new information to allow into the cell state.
-+ Candidate Cell State: This equation calculates the candidate cell state by combining the current input $x_{t}$ and the previous hidden state $h_{t-1}$, and then applying the $tanh$ function to produce the new information to be added to the cell state.
+Các phương trình này biểu diễn cổng vào và trạng thái ô nhớ ứng viên trong LSTM:
++ Cổng vào: Tính toán giá trị kích hoạt của cổng vào bằng cách kết hợp $x_{t}$ và $h_{t-1}$, áp dụng hàm sigmoid để kiểm soát lượng thông tin mới được đưa vào ô nhớ.
++ Trạng thái ô nhớ ứng viên: Tính toán trạng thái ô nhớ ứng viên bằng cách kết hợp $x_{t}$ và $h_{t-1}$, áp dụng hàm $tanh$ để sinh thông tin mới cần thêm vào ô nhớ.
 
-### Update Operation
+### Cập nhật trạng thái (Update Operation)
 ![](images/LSTMUpdateOperation.png)
 
-This equation updates the cell state $C_{t}$ by combining:
-+ The previous cell state $C_{t-1}$ scaled by the forget gate $f_{t}$, deciding how much of the previous state to keep.
-+ The candidate cell state $\tilde{C}_{t}$ scaled by the input gate $i_{t}$, deciding how much new information to add.
+Phương trình này cập nhật trạng thái ô nhớ $C_{t}$ bằng cách kết hợp:
++ Trạng thái ô nhớ trước $C_{t-1}$ nhân với cổng quên $f_{t}$ (quyết định giữ lại bao nhiêu thông tin cũ).
++ Trạng thái ô nhớ ứng viên $\tilde{C}_{t}$ nhân với cổng vào $i_{t}$ (quyết định thêm bao nhiêu thông tin mới).
 
-### Output Gate
+### Cổng ra (Output Gate)
 ![](images/LSTMOutputGate.png)
 
-These equations represent the output gate and the hidden state in a Long Short-Term Memory (LSTM) network with:
-+ Output Gate: This equation calculates the output gate's activation by combining the current input $x_{t}$ and the previous hidden state $h_{t-1}$​, and then applying the sigmoid function to control the output from the cell state.
-+ Hidden State: This equation determines the hidden state $h_{t}$ by applying the $tanh$ function to the cell state $C_{t}$ to produce an output candidate, and then scaling it by the output gate's activation $o_{t}$. This determines what portion of the cell state will be passed to the next time step and as the output of the LSTM at the current time step.
+Các phương trình này biểu diễn cổng ra và trạng thái ẩn trong LSTM:
++ Cổng ra: Tính toán giá trị kích hoạt của cổng ra bằng cách kết hợp $x_{t}$ và $h_{t-1}$, áp dụng hàm sigmoid để kiểm soát đầu ra từ ô nhớ.
++ Trạng thái ẩn: Xác định trạng thái ẩn $h_{t}$ bằng cách áp dụng hàm $tanh$ lên $C_{t}$ để tạo ứng viên đầu ra, sau đó nhân với giá trị kích hoạt của cổng ra $o_{t}$. Điều này quyết định phần nào của ô nhớ sẽ được truyền sang bước tiếp theo và làm đầu ra tại thời điểm hiện tại.
 
-
-### Make a decision
+### Quyết định cuối cùng (Make a decision)
 ![](images/LSTMDecision.png)
 
-### Sentence Classification
+### Phân loại câu (Sentence Classification)
 ![](images/SentenceProblem.png)
 
-## Implement LSTM Model
-In this session, we will build a LSTM model for Sarcasm Detection. This lab was implemented on **Google Colab**.
+
+## Triển khai mô hình LSTM (Implement LSTM Model)
+Trong phần này, chúng ta sẽ xây dựng một mô hình LSTM để phát hiện châm biếm (Sarcasm Detection). Bài lab này được thực hiện trên **Google Colab**.
 
 ### Download dataset
-We will use **News Headlines Dataset** for this project. This dataset is collected from two news website are [TheOnion](https://www.theonion.com/) and [HuffPost](https://www.huffpost.com/).
-Each record of the dataset consists of three attributes:
-- **is_sarcastic**: 1 if the record is sarcastic otherwise 0
-- **headline**: the headline of the news article
-- **article_link**: link to the original news article. Useful in collecting supplementary data
+
+Chúng ta sẽ sử dụng **News Headlines Dataset** cho dự án này. Bộ dữ liệu này được thu thập từ hai trang tin [TheOnion](https://www.theonion.com/) và [HuffPost](https://www.huffpost.com/).
+Mỗi bản ghi gồm 3 thuộc tính:
+- **is_sarcastic**: 1 nếu là châm biếm, 0 nếu không
+- **headline**: tiêu đề bài báo
+- **article_link**: liên kết đến bài báo gốc (hữu ích để thu thập thêm dữ liệu)
 
 ```python
 !wget https://raw.githubusercontent.com/dunghoang369/data/master/Sarcasm_Headlines_Dataset.json
 ```
 
 
-### Import necessary libraries
+### Import các thư viện cần thiết (Import necessary libraries)
 ```python
 import json
 import numpy as np
@@ -86,14 +93,14 @@ from sklearn.metrics import classification_reportEach record consists of three a
 from tensorflow.keras.layers import Embedding, RNN, Dense, LSTM, Bidirectional
 ```
 
-### Load dataset
+### Tải dữ liệu (Load dataset)
 ```python
 df = pd.read_json("Sarcasm_Headlines_Dataset.json", lines=True)
 datastore = df.to_json()
 datastore = json.loads(datastore)
 ```
 
-### Split features
+### Tách đặc trưng (Split features)
 ```python
 article_link_datastore = datastore["article_link"]
 headline_datastore = datastore["headline"]
@@ -108,7 +115,8 @@ for key in article_link_datastore:
     urls.append(article_link_datastore[key])
     labels.append(sarcastic_datastore[key])
 
-# Print some samples
+
+# In ra một số mẫu dữ liệu
 print("Sample 1: ", sentences[0], urls[0], labels[0])
 print("Sample 2: ", sentences[1], urls[1], labels[1])
 
@@ -116,7 +124,7 @@ Sample 1: former versace store clerk sues over secret 'black code' for minority 
 Sample 2: the 'roseanne' revival catches up to our thorny political mood, for better and worse, https://www.huffingtonpost.com/entry/roseanne-revival-review_us_5ab3a497e4b054d118e04365, 0
 ```
 
-### Define some hyperparameters
+### Định nghĩa các siêu tham số (Define some hyperparameters)
 ```python
 vocab_size = 1000
 embedding_dim = 16
@@ -127,7 +135,7 @@ oov_tok = "<OOV>"
 training_size = 20000
 ```
 
-### Split train, test datasets
+### Chia tập train, test (Split train, test datasets)
 ```python
 training_sentences = np.array(sentences[:training_size])
 training_labels = np.array(labels[:training_size])
@@ -135,7 +143,7 @@ test_sentences = np.array(sentences[training_size:])
 test_labels = np.array(labels[training_size:])
 ```
 
-### Build tokenizer
+### Xây dựng tokenizer (Build tokenizer)
 ```python
 tokenizer = tf.keras.preprocessing.text.Tokenizer(vocab_size, oov_token=oov_tok)
 tokenizer.fit_on_texts(training_sentences)
@@ -143,14 +151,15 @@ training_sequences = tokenizer.texts_to_sequences(training_sentences)
 test_sequences = tokenizer.texts_to_sequences(test_sentences)
 ```
 
-### Padding whole dataset
+### Padding toàn bộ tập dữ liệu (Padding whole dataset)
 ```python
 training_padded = tf.keras.preprocessing.sequence.pad_sequences(training_sequences, maxlen=max_length, padding='post', truncating='post')
 test_padded = tf.keras.preprocessing.sequence.pad_sequences(test_sequences, maxlen=max_length, padding='post', truncating='post')
 ```
-We will pad 0 to the back of each sequence in **train_dataset** and **test_dataset** to create the same length senquences in one batch.
 
-### Build Bidirectional LSTM
+Chúng ta sẽ thêm số 0 vào cuối mỗi chuỗi trong **train_dataset** và **test_dataset** để tạo các chuỗi có cùng độ dài trong một batch.
+
+### Xây dựng mô hình LSTM hai chiều (Build Bidirectional LSTM)
 ```python
 model = tf.keras.models.Sequential()
 model.add(tf.keras.layers.Embedding(vocab_size, embedding_dim, input_length=120))
@@ -180,7 +189,7 @@ _________________________________________________________________
 ```
 
 
-### Train the model
+### Huấn luyện mô hình (Train the model)
 ```python
 # Set up callbacks
 checkpoint = tf.keras.callbacks.ModelCheckpoint('best.h5',
@@ -197,7 +206,7 @@ model.compile(optimizer=tf.keras.optimizers.Adam(),
 model.fit(training_padded, training_labels, batch_size=32, epochs=50, callbacks=callbacks, validation_data=(test_padded, test_labels))
 ```
 
-### Evaluate  the model
+### Đánh giá mô hình (Evaluate the model)
 ```python
 predictions = model.predict(test_padded)
 predictions = np.array([1 if prediction[0] > 0.5 else 0 for prediction in predictions])
@@ -213,7 +222,7 @@ print(classification_report(test_labels, predictions))
    macro avg       0.80      0.80      0.80      6709
 weighted avg       0.80      0.80      0.80      6709
 ```
-### Inference
+### Suy luận (Inference)
 ```python
 def inference(text):
   text = np.array([text])
@@ -230,11 +239,12 @@ def inference(text):
 Label: Sarcastic
 ```
 
-## Conclusion
 
-In conclusion, today's lesson Long Short-Term Memory (LSTM) networks has provided a deep dive into their structure and functionality. We explored how LSTMs use gates—forget, input, and output—to effectively manage long-term dependencies and overcome the limitations of traditional RNNs.
+## Kết luận (Conclusion)
 
-## References
+Tóm lại, bài học hôm nay về Long Short-Term Memory (LSTM) đã giúp bạn hiểu sâu về cấu trúc và chức năng của nó. Chúng ta đã khám phá cách LSTM sử dụng các cổng—quên, vào, ra—để quản lý hiệu quả các phụ thuộc dài hạn và khắc phục hạn chế của RNN truyền thống.
+
+## Tài liệu tham khảo (References)
 
 + C. Olah, “Understanding LSTM Networks,” Github.io, Aug. 27, 2015. https://colah.github.io/posts/2015-08-Understanding-LSTMs/
 + M. Phi, “Illustrated Guide to LSTM’s and GRU’s: A step by step explanation,” Medium, Jul. 10, 2019. https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21

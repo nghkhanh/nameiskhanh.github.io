@@ -7,90 +7,99 @@ grand_parent: NLP
 permalink: nlp/course/06_constituency_parsing_and _dependency_parsing/
 ---
 
-# Constituency Parsing and Dependency Parsing
 
-## Introduction
+# Constituency Parsing (Phân tích thành phần) và Dependency Parsing (Phân tích phụ thuộc)
 
-In computational linguistics, parsing involves creating a parse tree that shows the syntactical structure of a sentence. A parse tree illustrates the relationships between words and phrases based on formal grammar.
 
-The two main parsing methods are constituency and dependency parsing, each producing different types of trees due to their distinct grammatical assumptions. Both methods aim to extract syntactic information.
+## Giới thiệu (Introduction)
 
-## Constituency Parsing
+Trong ngôn ngữ học tính toán (computational linguistics), parsing (phân tích cú pháp) là quá trình tạo ra một cây phân tích cú pháp (parse tree) thể hiện cấu trúc ngữ pháp của một câu. Cây phân tích này minh họa mối quan hệ giữa các từ và cụm từ dựa trên ngữ pháp hình thức.
 
-A constituency parse tree, based on context-free grammars, divides a sentence into sub-phrases (constituents) that belong to specific grammatical categories.
+Hai phương pháp parsing chính là constituency parsing (phân tích thành phần) và dependency parsing (phân tích phụ thuộc), mỗi phương pháp tạo ra một loại cây khác nhau do giả định ngữ pháp khác nhau. Cả hai đều nhằm mục đích trích xuất thông tin cú pháp.
 
-In English, phrases like "a cat," "a cat on the table," and "the nice cat" are noun phrases, while "play football" and "go to school" are verb phrases.
 
-Grammar specifies how to construct valid sentences using a set of rules. For instance, the rule VP → V NP indicates that a verb phrase (VP) can be formed by combining a verb (V) with a noun phrase (NP).
+## Constituency Parsing (Phân tích thành phần)
 
-These rules can be used both to generate valid sentences and to analyze a sentence's syntactical structure according to the grammar.
+Cây phân tích thành phần (constituency parse tree), dựa trên ngữ pháp phi ngữ cảnh (context-free grammars), chia một câu thành các cụm con (constituents) thuộc các loại ngữ pháp cụ thể.
 
-An example of a constituency parse tree:
+Trong tiếng Anh, các cụm như "a cat", "a cat on the table", "the nice cat" là cụm danh từ (noun phrase - NP), còn "play football", "go to school" là cụm động từ (verb phrase - VP).
+
+Ngữ pháp quy định cách tạo câu hợp lệ bằng một tập các luật. Ví dụ, luật VP → V NP nghĩa là một cụm động từ (VP) có thể tạo thành từ một động từ (V) kết hợp với một cụm danh từ (NP).
+
+Các luật này vừa dùng để sinh câu hợp lệ, vừa để phân tích cấu trúc cú pháp của câu theo ngữ pháp.
+
+Ví dụ về cây phân tích thành phần:
 
 ![](images/parseTree.png)
 
-A constituency parse tree always has the sentence's words as its terminal nodes. Each word typically has a parent node showing its part-of-speech tag, like noun, verb or adjective, though this detail might be omitted in some representations.
+Cây phân tích thành phần luôn có các từ của câu là nút lá (terminal nodes). Mỗi từ thường có một nút cha thể hiện nhãn từ loại (part-of-speech tag) như danh từ, động từ, tính từ... (có thể bị lược bỏ trong một số biểu diễn).
 
-Non-terminal nodes in a constituency parse tree represent the sentence's constituents, typically including verb phrases (VP), noun phrases (NP), and prepositional phrases (PP).
+Các nút không lá (non-terminal nodes) đại diện cho các thành phần của câu, thường gồm cụm động từ (VP), cụm danh từ (NP), cụm giới từ (PP).
 
-In this example, at the first level below the root, our sentence has been split into a noun phrase, made up of the single word “The cat”, and a verb phrase, “sat on the table”. This means that the grammar contains a rule like S → NP VP, meaning that a sentence can be created with the concatenation of a noun phrase and a verb phrase. Similarly, the noun phrase and the verb phrase are divided into smaller parts, which also maps to another rule in the grammar.
+Trong ví dụ này, ngay dưới gốc cây, câu được chia thành một cụm danh từ "The cat" và một cụm động từ "sat on the table". Điều này nghĩa là ngữ pháp có luật S → NP VP, tức là một câu có thể tạo thành từ một cụm danh từ và một cụm động từ. Tương tự, các cụm này lại được chia nhỏ hơn, tương ứng với các luật khác trong ngữ pháp.
 
-In summary, constituency parsing uses context-free grammar to create hierarchical trees that represent a sentence's syntax, dividing it into its phrasal components.
+Tóm lại, constituency parsing sử dụng ngữ pháp phi ngữ cảnh để tạo ra cây phân cấp thể hiện cú pháp của câu, chia nhỏ thành các thành phần cụm.
 
-### Applications of Constituency Parsing
-Constituency parsing identifies sentence parts (noun phrases, verbs, clauses) and groups them into a tree structure showing their grammatical relationships.
 
-The following are some of the applications of constituency parsing:
+### Ứng dụng của Constituency Parsing
+Constituency parsing giúp xác định các thành phần của câu (cụm danh từ, động từ, mệnh đề...) và nhóm chúng thành cấu trúc cây thể hiện quan hệ ngữ pháp.
 
-1. Natural Language Processing (NLP): It is used in NLP tasks like text summarization, machine translation, question answering, and text classification.
-2. Information Retrieval: It extracts information from large texts and indexes it for efficient retrieval.
-3. Text-to-Speech: It aids in creating human-like speech by understanding text grammar and structure.
-4. Sentiment Analysis: It helps understand if a text is positive, negative, or neutral by figuring out the feelings conveyed by its parts.
+Một số ứng dụng của constituency parsing:
 
-## Dependency Parsing
+1. Xử lý ngôn ngữ tự nhiên (NLP): Dùng trong các tác vụ như tóm tắt văn bản, dịch máy, trả lời câu hỏi, phân loại văn bản.
+2. Truy xuất thông tin (Information Retrieval): Trích xuất thông tin từ văn bản lớn và lập chỉ mục để truy xuất hiệu quả.
+3. Chuyển văn bản thành giọng nói (Text-to-Speech): Hỗ trợ tạo giọng nói tự nhiên nhờ hiểu ngữ pháp và cấu trúc câu.
+4. Phân tích cảm xúc (Sentiment Analysis): Giúp xác định cảm xúc tích cực, tiêu cực hay trung tính bằng cách phân tích các thành phần của câu.
 
-Unlike constituency parsing, dependency parsing doesn't use phrasal constituents or sub-phrases. Instead, it represents sentence structure through dependencies between words, shown as directed, typed edges in a graph.
 
-A dependency parse tree is a graph G = (V, E) where the vertices V are the words in the sentence, and the edges E connect pairs of words. The graph must meet three conditions:
+## Dependency Parsing (Phân tích phụ thuộc)
 
-+ There must be one root node that has no incoming edges.
-+ For each node v in V, there must be a path from the root R to v.
-+ Each node except the root must have exactly 1 incoming edge.
+Khác với constituency parsing, dependency parsing không sử dụng các cụm từ (phrasal constituents) mà thể hiện cấu trúc câu thông qua các quan hệ phụ thuộc (dependencies) giữa các từ, được biểu diễn bằng các cạnh có hướng và nhãn trong đồ thị.
 
-Each edge in E has a type that specifies the grammatical relationship between the two connected words.
+Cây phân tích phụ thuộc (dependency parse tree) là một đồ thị G = (V, E) với V là các từ trong câu, E là các cạnh nối các cặp từ. Đồ thị này phải thỏa mãn 3 điều kiện:
 
-An example of a dependency parse tree:
++ Có một nút gốc (root) không có cạnh vào.
++ Với mỗi nút v trong V, phải có đường đi từ gốc R đến v.
++ Mỗi nút (trừ gốc) chỉ có đúng 1 cạnh vào.
+
+Mỗi cạnh trong E có một loại (type) xác định quan hệ ngữ pháp giữa hai từ được nối.
+
+Ví dụ về cây phân tích phụ thuộc:
 
 ![](images/dependencyParsing.png)
 
-The result is quite different because this method uses the verb of the sentence as the tree's root, with the edges between words showing their relationships.
+Kết quả rất khác biệt vì phương pháp này dùng động từ làm gốc cây, các cạnh thể hiện quan hệ giữa các từ.
 
-For example, the word “sat” has an outgoing edge of type subj to the word “cat”, meaning that “cat” is the subject of the verb “sat”. In this case, we say that “cat” depends on “sat”.
+Ví dụ, từ “sat” có cạnh ra loại subj tới từ “cat”, nghĩa là “cat” là chủ ngữ của động từ “sat”. Khi đó, ta nói “cat” phụ thuộc vào “sat”.
 
-### Applications of Dependency Parsing
-Dependency parsing analyzes sentence structure by identifying word dependencies and representing them as a directed graph.
 
-The following are some of the applications of dependency parsing:
-1. Named Entity Recognition (NER): It helps identify and classify named entities like people, places, and organizations in a text.
-2. Part-of-Speech (POS) Tagging: It identifies and classifies each word's part of speech in a sentence, such as nouns, verbs, and adjectives.
-3. Machine Translation: It aids in translating sentences by analyzing word dependencies and generating corresponding dependencies in the target language.
-4. Text Generation: It generates text by analyzing word dependencies and creating new words that fit the structure.
+### Ứng dụng của Dependency Parsing
+Dependency parsing phân tích cấu trúc câu bằng cách xác định các quan hệ phụ thuộc giữa các từ và biểu diễn chúng dưới dạng đồ thị có hướng.
 
-## Constituency Parsing and Dependency Parsing
+Một số ứng dụng của dependency parsing:
+1. Nhận diện thực thể (Named Entity Recognition - NER): Giúp xác định và phân loại các thực thể như người, địa điểm, tổ chức trong văn bản.
+2. Gán nhãn từ loại (Part-of-Speech - POS Tagging): Xác định và phân loại từ loại của từng từ trong câu như danh từ, động từ, tính từ...
+3. Dịch máy (Machine Translation): Hỗ trợ dịch câu bằng cách phân tích quan hệ phụ thuộc và sinh ra các quan hệ tương ứng ở ngôn ngữ đích.
+4. Sinh văn bản (Text Generation): Sinh văn bản mới dựa trên phân tích quan hệ phụ thuộc và tạo ra các từ phù hợp với cấu trúc.
 
-| Characteristic | Constituency Parsing | Dependency Parsing |
+
+## So sánh Constituency Parsing và Dependency Parsing
+
+| Đặc điểm (Characteristic) | Constituency Parsing (Phân tích thành phần) | Dependency Parsing (Phân tích phụ thuộc) |
 | --- | --- | --- |
-| `Tree Structure` | Constituency parsing creates a hierarchical tree of nested phrases. | Dependency parsing creates a flatter tree where each word points to its head, focusing on word-to-word relationships. |
-| `Focus` | Constituency parsing focuses on phrase structure and hierarchy. | Dependency parsing focuses on word relationships and grammatical functions. |
-| `Complexity` | Constituency parsing can be more complex due to nested structures. | Dependency parsing is often simpler and more intuitive for representing direct word relationships. |
+| `Cấu trúc cây (Tree Structure)` | Tạo cây phân cấp các cụm lồng nhau. | Tạo cây phẳng hơn, mỗi từ trỏ tới từ "gốc" của nó, tập trung vào quan hệ từ-từ. |
+| `Trọng tâm (Focus)` | Tập trung vào cấu trúc cụm và phân cấp. | Tập trung vào quan hệ giữa các từ và chức năng ngữ pháp. |
+| `Độ phức tạp (Complexity)` | Có thể phức tạp hơn do cấu trúc lồng nhau. | Thường đơn giản và trực quan hơn khi biểu diễn quan hệ trực tiếp giữa các từ. |
 
-## Conclusion
 
-In this lesson, we covered Constituency Parsing and Dependency Parsing, two essential techniques for analyzing the syntactic structure of sentences. Constituency Parsing breaks down sentences into sub-phrases, revealing their hierarchical structure, while Dependency Parsing focuses on the relationships between individual words.
+## Kết luận (Conclusion)
 
-Understanding these parsing methods enables us to gain deeper insights into sentence structure and meaning. 
+Trong bài học này, chúng ta đã tìm hiểu về Constituency Parsing (phân tích thành phần) và Dependency Parsing (phân tích phụ thuộc)—hai kỹ thuật quan trọng để phân tích cấu trúc cú pháp của câu. Constituency Parsing chia nhỏ câu thành các cụm, thể hiện cấu trúc phân cấp, còn Dependency Parsing tập trung vào quan hệ giữa từng từ.
 
-## References
+Hiểu rõ các phương pháp này giúp chúng ta phân tích sâu hơn về cấu trúc và ý nghĩa của câu.
+
+
+## Tài liệu tham khảo (References)
 
 + “Constituency Parsing and Dependency Parsing,” GeeksforGeeks, Jan. 26, 2023. https://www.geeksforgeeks.org/constituency-parsing-and-dependency-parsing/
 + F. Elia, “Constituency vs Dependency Parsing | Baeldung on Computer Science,” www.baeldung.com, Jun. 17, 2020. https://www.baeldung.com/cs/constituency-vs-dependency-parsing

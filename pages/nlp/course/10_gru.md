@@ -7,62 +7,69 @@ grand_parent: NLP
 permalink: /nlp/course/10_gru/
 ---
 
-# Gated Recurrent Unit
 
-## Introduction
+# Gated Recurrent Unit (GRU - Đơn vị hồi tiếp có cổng)
 
-Gated Recurrent Units (GRUs) are a simplified and efficient variant of Long Short-Term Memory (LSTM) networks. They use fewer gates and parameters, making them faster and easier to train while still effectively managing long-term dependencies in sequential data. 
 
-We'll explore the architecture of GRUs, understand how they work, and see their applications in tasks like language modeling and time series prediction. Let's dive in.
+## Giới thiệu (Introduction)
 
-## What is Gated Recurrent Unit? 
-Gated Recurrent Unit (GRU) is a type of recurrent neural network (RNN) architecture. It has a similar mechanism to Long Short Term Memory but has fewer parameters and does not use Cell State. GRU is designed to address the vanishing gradient problem, which can occur in traditional RNNs.
+Gated Recurrent Unit (GRU) là một biến thể đơn giản và hiệu quả của mạng Long Short-Term Memory (LSTM). GRU sử dụng ít cổng (gate) và tham số hơn, giúp huấn luyện nhanh hơn và dễ dàng hơn nhưng vẫn quản lý tốt các phụ thuộc dài hạn (long-term dependencies) trong dữ liệu tuần tự.
 
-Similar to LSTM, GRU utilizes gating mechanisms to selectively update and forget information over time, allowing it to retain important information over long sequences while efficiently handling short-term dependencies. In simpler terms, it's like a smart memory system in a network that decides what to remember and what to forget as it processes sequential data.
+Chúng ta sẽ tìm hiểu kiến trúc của GRU, cách hoạt động và ứng dụng trong các bài toán như mô hình ngôn ngữ (language modeling) và dự đoán chuỗi thời gian (time series prediction).
 
-## Gated Recurrent Unit Architecture
+
+## GRU là gì? (What is Gated Recurrent Unit?)
+Gated Recurrent Unit (GRU) là một loại kiến trúc mạng nơ-ron hồi tiếp (Recurrent Neural Network - RNN). GRU có cơ chế tương tự LSTM nhưng ít tham số hơn và không sử dụng trạng thái ô nhớ (Cell State). GRU được thiết kế để giải quyết vấn đề tiêu biến gradient (vanishing gradient) thường gặp ở RNN truyền thống.
+
+Tương tự LSTM, GRU sử dụng các cơ chế cổng (gating mechanisms) để chọn lọc cập nhật và quên thông tin theo thời gian, giúp ghi nhớ thông tin quan trọng trong chuỗi dài và xử lý hiệu quả các phụ thuộc ngắn hạn. Nói đơn giản, GRU giống như một hệ thống bộ nhớ thông minh trong mạng, quyết định nên nhớ gì và quên gì khi xử lý dữ liệu tuần tự.
+
+
+## Kiến trúc của GRU (Gated Recurrent Unit Architecture)
 ![](images/GRUArchitecture.png)
 
-## How Gated Recurrent Unit works?
-### Reset Gate
+
+## GRU hoạt động như thế nào? (How Gated Recurrent Unit works?)
+### Cổng đặt lại (Reset Gate)
 ![](images/GRUResetGate.png)
 
-This equation calculates the reset gate's activation by combining the previous hidden state and the current input, and then applying the sigmoid function to determine the extent to which the past information should be reset or forgotten.
+Phương trình này tính toán giá trị kích hoạt của cổng đặt lại bằng cách kết hợp trạng thái ẩn trước đó và đầu vào hiện tại, sau đó áp dụng hàm sigmoid để xác định mức độ thông tin quá khứ cần được đặt lại hoặc quên.
 
-### Update Gate
+### Cổng cập nhật (Update Gate)
 ![](images/GRUUpateGate.png)
 
-This equation calculates the update gate's activation by combining the previous hidden state and the current input, and then applying the sigmoid function to determine how much of the previous state should be retained and how much new information should be added.
+Phương trình này tính toán giá trị kích hoạt của cổng cập nhật bằng cách kết hợp trạng thái ẩn trước đó và đầu vào hiện tại, sau đó áp dụng hàm sigmoid để xác định giữ lại bao nhiêu trạng thái cũ và thêm bao nhiêu thông tin mới.
 
-### Candidate Activation Vector
+### Vector kích hoạt ứng viên (Candidate Activation Vector)
 ![](images/GRUCandidateActivationVector.png)
 
-This equation calculates the candidate hidden state by first scaling the previous hidden state $h_{t-1}$ with the reset gate $r_{t}$. This allows the model to forget parts of the previous state as needed. The scaled hidden state and the current input $x_{t}$ are then concatenated and passed through the weight matrix $W$ and the $tanh$ activation function to produce the candidate hidden state $\tilde{h}_{t}$.
+Phương trình này tính toán trạng thái ẩn ứng viên bằng cách nhân trạng thái ẩn trước $h_{t-1}$ với cổng đặt lại $r_{t}$ (cho phép mô hình quên một phần trạng thái cũ nếu cần). Sau đó, trạng thái đã được nhân và đầu vào $x_{t}$ được kết hợp, đưa qua ma trận trọng số $W$ và hàm kích hoạt $tanh$ để tạo ra trạng thái ẩn ứng viên $\tilde{h}_{t}$.
 
-### Update Operation
+### Cập nhật trạng thái (Update Operation)
 ![](images/GRUUpdateOperation.png)
 
-The equation blends the old hidden state $h_{t-1}$ with the new candidate $\tilde{h}_{t}$ based on the update gate $z_{t}$. If $z_{t}$ is close to 1, the new state $h_{t}$ mostly uses the candidate $\tilde{h}_{t}$. If $z_{t}$ is close to 0, it keeps more of the old state $h_{t-1}$.
+Phương trình này trộn trạng thái ẩn cũ $h_{t-1}$ với ứng viên mới $\tilde{h}_{t}$ dựa trên cổng cập nhật $z_{t}$. Nếu $z_{t}$ gần 1, trạng thái mới $h_{t}$ chủ yếu dùng ứng viên $\tilde{h}_{t}$. Nếu $z_{t}$ gần 0, giữ lại nhiều trạng thái cũ $h_{t-1}$ hơn.
 
-### Make a decision
+### Quyết định cuối cùng (Make a decision)
 ![](images/GRUDecision.png)
 
-## Implement GRU Model
-In this session, we will build a GRU model for Sarcasm Detection to compare with the LSTM model on the previous lesson. This lab was implemented on **Google Colab**.
+
+## Triển khai mô hình GRU (Implement GRU Model)
+Trong phần này, chúng ta sẽ xây dựng một mô hình GRU để phát hiện châm biếm (Sarcasm Detection) và so sánh với mô hình LSTM ở bài trước. Bài lab này được thực hiện trên **Google Colab**.
 
 ### Download dataset
-We will use **News Headlines Dataset** for this project. This dataset is collected from two news website are [TheOnion](https://www.theonion.com/) and [HuffPost](https://www.huffpost.com/).
-Each record of the dataset consists of three attributes:
-- **is_sarcastic**: 1 if the record is sarcastic otherwise 0
-- **headline**: the headline of the news article
-- **article_link**: link to the original news article. Useful in collecting supplementary data
+
+Chúng ta sẽ sử dụng **News Headlines Dataset** cho dự án này. Bộ dữ liệu được thu thập từ hai trang tin [TheOnion](https://www.theonion.com/) và [HuffPost](https://www.huffpost.com/).
+Mỗi bản ghi gồm 3 thuộc tính:
+- **is_sarcastic**: 1 nếu là châm biếm, 0 nếu không
+- **headline**: tiêu đề bài báo
+- **article_link**: liên kết đến bài báo gốc (hữu ích để thu thập thêm dữ liệu)
 
 ```python
 !wget https://raw.githubusercontent.com/dunghoang369/data/master/Sarcasm_Headlines_Dataset.json
 ```
 
 
-### Import necessary libraries
+### Import các thư viện cần thiết (Import necessary libraries)
 ```python
 import json
 import numpy as np
@@ -74,14 +81,14 @@ from sklearn.metrics import classification_reportEach record consists of three a
 from tensorflow.keras.layers import Embedding, Dense, GRU, Bidirectional
 ```
 
-### Load dataset
+### Tải dữ liệu (Load dataset)
 ```python
 df = pd.read_json("Sarcasm_Headlines_Dataset.json", lines=True)
 datastore = df.to_json()
 datastore = json.loads(datastore)
 ```
 
-### Split features
+### Tách đặc trưng (Split features)
 ```python
 article_link_datastore = datastore["article_link"]
 headline_datastore = datastore["headline"]
@@ -96,7 +103,8 @@ for key in article_link_datastore:
     urls.append(article_link_datastore[key])
     labels.append(sarcastic_datastore[key])
 
-# Print some samples
+
+# In ra một số mẫu dữ liệu
 print("Sample 1: ", sentences[0], urls[0], labels[0])
 print("Sample 2: ", sentences[1], urls[1], labels[1])
 
@@ -104,7 +112,7 @@ Sample 1: former versace store clerk sues over secret 'black code' for minority 
 Sample 2: the 'roseanne' revival catches up to our thorny political mood, for better and worse, https://www.huffingtonpost.com/entry/roseanne-revival-review_us_5ab3a497e4b054d118e04365, 0
 ```
 
-### Define some hyperparameters
+### Định nghĩa các siêu tham số (Define some hyperparameters)
 ```python
 vocab_size = 1000
 embedding_dim = 16
@@ -115,7 +123,7 @@ oov_tok = "<OOV>"
 training_size = 20000
 ```
 
-### Split train, test datasets
+### Chia tập train, test (Split train, test datasets)
 ```python
 training_sentences = np.array(sentences[:training_size])
 training_labels = np.array(labels[:training_size])
@@ -123,7 +131,7 @@ test_sentences = np.array(sentences[training_size:])
 test_labels = np.array(labels[training_size:])
 ```
 
-### Build tokenizer
+### Xây dựng tokenizer (Build tokenizer)
 ```python
 tokenizer = tf.keras.preprocessing.text.Tokenizer(vocab_size, oov_token=oov_tok)
 tokenizer.fit_on_texts(training_sentences)
@@ -131,14 +139,15 @@ training_sequences = tokenizer.texts_to_sequences(training_sentences)
 test_sequences = tokenizer.texts_to_sequences(test_sentences)
 ```
 
-### Padding whole dataset
+### Padding toàn bộ tập dữ liệu (Padding whole dataset)
 ```python
 training_padded = tf.keras.preprocessing.sequence.pad_sequences(training_sequences, maxlen=max_length, padding='post', truncating='post')
 test_padded = tf.keras.preprocessing.sequence.pad_sequences(test_sequences, maxlen=max_length, padding='post', truncating='post')
 ```
-We will pad 0 to the back of each sequence in **train_dataset** and **test_dataset** to create the same length senquences in one batch.
 
-### Build Bidirectional GRU
+Chúng ta sẽ thêm số 0 vào cuối mỗi chuỗi trong **train_dataset** và **test_dataset** để tạo các chuỗi có cùng độ dài trong một batch.
+
+### Xây dựng mô hình GRU hai chiều (Build Bidirectional GRU)
 ```python
 model = tf.keras.models.Sequential()
 model.add(tf.keras.layers.Embedding(vocab_size, embedding_dim, input_length=120))
@@ -166,10 +175,11 @@ Trainable params: 27185 (106.19 KB)
 Non-trainable params: 0 (0.00 Byte)
 _________________________________________________________________
 ```
-Compared with the LSTM model, the GRU model has fewer trainable parameters so it will be trained faster.
+
+So với mô hình LSTM, GRU có ít tham số huấn luyện hơn nên sẽ huấn luyện nhanh hơn.
 
 
-### Train the model
+### Huấn luyện mô hình (Train the model)
 ```python
 # Set up callbacks
 checkpoint = tf.keras.callbacks.ModelCheckpoint('best.h5',
@@ -186,7 +196,7 @@ model.compile(optimizer=tf.keras.optimizers.Adam(),
 model.fit(training_padded, training_labels, batch_size=32, epochs=50, callbacks=callbacks, validation_data=(test_padded, test_labels))
 ```
 
-### Evaluate the model
+### Đánh giá mô hình (Evaluate the model)
 ```python
 predictions = model.predict(test_padded)
 predictions = np.array([1 if prediction[0] > 0.5 else 0 for prediction in predictions])
@@ -202,7 +212,7 @@ print(classification_report(test_labels, predictions))
    macro avg       0.79      0.79      0.79      6709
 weighted avg       0.79      0.79      0.79      6709
 ```
-### Inference
+### Suy luận (Inference)
 ```python
 def inference(text):
   text = np.array([text])
@@ -219,16 +229,18 @@ def inference(text):
 Label: Sarcastic
 ```
 
-### Conclusion
-Base on the evaluation, we can conclude that the LSTM model is a bit better than the GRU model but the LSTM model size is larger and the training progress take more time. This is the tradeoff between 2 models.
 
-## Conclusion
+### Kết luận so sánh (Conclusion)
+Dựa trên đánh giá, có thể kết luận mô hình LSTM tốt hơn GRU một chút nhưng kích thước lớn hơn và thời gian huấn luyện lâu hơn. Đây là sự đánh đổi giữa hai mô hình.
 
-In conclusion, the lesson on Gated Recurrent Units (GRUs) has demonstrated how these networks handle long-term dependencies in data. We learned about the reset and update gates, and how they help blend old and new information to update the hidden state efficiently. 
 
-GRUs are simpler and faster to train compared to LSTMs, making them a great choice for many sequence-based tasks.
+## Kết luận (Conclusion)
 
-## References
+Tóm lại, bài học về Gated Recurrent Unit (GRU) đã cho thấy cách mạng này xử lý các phụ thuộc dài hạn trong dữ liệu. Chúng ta đã tìm hiểu về cổng đặt lại (reset gate), cổng cập nhật (update gate) và cách chúng giúp kết hợp thông tin cũ mới để cập nhật trạng thái ẩn hiệu quả.
+
+GRU đơn giản hơn, huấn luyện nhanh hơn LSTM, là lựa chọn tốt cho nhiều bài toán chuỗi.
+
+## Tài liệu tham khảo (References)
 
 + M. Phi, “Illustrated Guide to LSTM’s and GRU’s: A step by step explanation,” Medium, Jul. 10, 2019. https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21
 + Anishnama, “Understanding Gated Recurrent Unit (GRU) in Deep Learning,” Medium, May 04, 2023. https://medium.com/@anishnama20/understanding-gated-recurrent-unit-gru-in-deep-learning-2e54923f3e2

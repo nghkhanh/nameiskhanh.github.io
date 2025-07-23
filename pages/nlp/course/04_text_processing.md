@@ -29,12 +29,14 @@ When processing text from Wikipedia pages for biographical information, our craw
 
 Not every NLP pipeline includes all steps, but the first two are usually present. Let's explore what each step involves.
 
-## Preliminaries
 
-NLP software usually starts by breaking text into sentences (sentence segmentation) and then into words (word tokenization). While these tasks may seem simple, they require special attention, as we'll explore in the next subsections.
+## Bước khởi đầu (Preliminaries)
 
-### Sentence segmentation
-We can generally segment sentences by breaking text at full stops and question marks. However, abbreviations, titles (Dr., Mr.), or ellipses (...) can complicate this rule. Fortunately, most NLP libraries, like the Natural Language Tool Kit (NLTK), already have solutions for these issues. The code example below demonstrates using NLTK for sentence and word splitting with the example document as input:
+Phần mềm NLP thường bắt đầu bằng việc tách văn bản thành các câu (sentence segmentation) và sau đó thành các từ (word tokenization). Mặc dù các nhiệm vụ này có vẻ đơn giản, nhưng thực tế cần chú ý đặc biệt, như sẽ trình bày ở các phần tiếp theo.
+
+
+### Tách câu (Sentence segmentation)
+Thông thường, ta có thể tách câu bằng cách chia văn bản tại dấu chấm câu hoặc dấu hỏi. Tuy nhiên, các từ viết tắt, danh xưng (Dr., Mr.) hoặc dấu ba chấm (...) có thể làm phức tạp quy tắc này. May mắn là hầu hết các thư viện NLP như Natural Language Tool Kit (NLTK) đã có giải pháp cho các vấn đề này. Ví dụ dưới đây minh họa cách sử dụng NLTK để tách câu và tách từ với một tài liệu mẫu:
 
 ```python
 import nltk
@@ -79,8 +81,9 @@ which outputs:
  'In later chapters, we’ll discuss specific pipelines for various NLP tasks (e.g., Chapters 4–7).']
 ```
 
-### Word tokenization
-Just like sentence tokenization, word tokenization can start with a simple rule: splitting text at punctuation marks. The NLTK library helps us do this. For example:
+
+### Tách từ (Word tokenization)
+Tương tự như tách câu, tách từ có thể bắt đầu bằng quy tắc đơn giản: chia văn bản tại các dấu câu. Thư viện NLTK hỗ trợ thực hiện điều này. Ví dụ:
 
 ```python
 for sentence in my_sentences:
@@ -95,7 +98,8 @@ In the previous chapter, we saw examples of some common NLP applications that we
 ['In', 'the', 'previous', 'chapter', ',', 'we', 'saw', 'examples', 'of', 'some', 'common', 'NLP', 'applications', 'that', 'we', 'might', 'encounter', 'in', 'everyday', 'life', '.']
 ```
 
-While readily available solutions work for most needs and include tokenizers and sentence splitters, they aren't perfect. For instance, NLTK might split "Mr. Jack O’Neil" into three tokens: "O", "’", and "Neil". It can also incorrectly tokenize "$10,000" and "€1000". Additionally, for tweets, it might split hashtags into separate tokens.
+
+Mặc dù các giải pháp có sẵn đáp ứng hầu hết nhu cầu và bao gồm các bộ tách từ, tách câu, nhưng chúng không hoàn hảo. Ví dụ, NLTK có thể tách "Mr. Jack O’Neil" thành ba token: "O", "’", và "Neil". Nó cũng có thể tách sai "$10,000" và "€1000". Ngoài ra, với tweet, nó có thể tách hashtag thành các token riêng biệt.
 
 ```python
 print(word_tokenize("Mr. Jack O’Neil"))
@@ -111,18 +115,21 @@ which will output respectively:
 ['#', 'robusto.ai']
 ```
 
-In such cases, custom tokenizers are necessary. After sentence tokenization, we'll demonstrate word tokenization.
 
-## Frequent Steps
-In an NLP pipeline, pre-processing often includes removing stop words—common words like "a," "an," "the," etc., which don't help categorize content. For instance, in categorizing news articles into politics, sports, business, and other categories, these words aren't useful. There's no standard list of stop words, and they can vary by context. For example, "news" might be a stop word for categorizing articles but not for extracting information from job offer letters.
+Trong các trường hợp này, cần xây dựng bộ tách từ (tokenizer) tùy chỉnh. Sau khi tách câu, ta sẽ thực hiện tách từ.
 
-In certain situations, the case of letters might not affect the task. Therefore, text is often converted to lowercase. Removing punctuation and numbers is another typical step in various NLP tasks like text classification, information retrieval, and social media analytics. 
 
-### Stemming and lemmatization
-#### Stemming
-Stemming involves removing word suffixes to simplify words to a common base form. For instance, "car" and "cars" both become "car." While stemming rules may not always yield linguistically accurate forms, it's widely applied in search engines to match queries with relevant documents and in text classification to streamline feature spaces for machine learning models.
+## Các bước thường gặp (Frequent Steps)
+Trong pipeline NLP, tiền xử lý thường bao gồm loại bỏ từ dừng (stop word)—các từ phổ biến như "a", "an", "the"... vốn không giúp ích cho việc phân loại nội dung. Ví dụ, khi phân loại bài báo thành chính trị, thể thao, kinh doanh..., các từ này không hữu ích. Không có danh sách từ dừng chuẩn, và chúng có thể thay đổi tùy ngữ cảnh. Ví dụ, "news" có thể là từ dừng khi phân loại bài báo nhưng không phải khi trích xuất thông tin từ thư mời làm việc.
 
-Below is a code example demonstrating the application of a widely used stemming technique known as Porter Stemmer through NLTK:
+Trong một số trường hợp, việc phân biệt chữ hoa/thường không ảnh hưởng đến nhiệm vụ, do đó văn bản thường được chuyển về chữ thường (lowercase). Loại bỏ dấu câu và số cũng là bước phổ biến trong các bài toán NLP như phân loại văn bản, truy xuất thông tin, phân tích mạng xã hội.
+
+
+### Rút gọn từ và chuẩn hóa từ gốc (Stemming and lemmatization)
+#### Rút gọn từ (Stemming)
+Stemming là quá trình loại bỏ hậu tố của từ để đưa về dạng gốc chung. Ví dụ, "car" và "cars" đều thành "car". Quy tắc stemming có thể không luôn chính xác về mặt ngôn ngữ, nhưng được ứng dụng rộng rãi trong công cụ tìm kiếm để khớp truy vấn với tài liệu liên quan, và trong phân loại văn bản để giảm số lượng đặc trưng cho mô hình học máy.
+
+Dưới đây là ví dụ sử dụng kỹ thuật stemming phổ biến là Porter Stemmer qua NLTK:
 
 ```python
 from nltk.stem.porter import PorterStemmer
@@ -137,12 +144,14 @@ which outputs:
 car revolut
 ```
 
-The stemming process converts "cars" to "car" and "revolution" to "revolut," which isn't linguistically accurate. While this might not impact a search engine's effectiveness, in certain situations, having the correct linguistic form is essential. This is where lemmatization, a process similar to stemming but more linguistically accurate, comes into play.
 
-#### Lemmatization
-Lemmatization involves reducing various forms of a word to its base form or lemma, similar to stemming but with distinctions. For instance, while stemming keeps "better" unchanged, lemmatization transforms it into "good." Unlike stemming, lemmatization demands deeper linguistic understanding, and creating effective lemmatizers remains a challenge in ongoing NLP research.
+Quá trình stemming chuyển "cars" thành "car" và "revolution" thành "revolut", điều này không chính xác về mặt ngôn ngữ. Tuy nhiên, với công cụ tìm kiếm thì không ảnh hưởng nhiều, nhưng trong một số trường hợp, cần giữ đúng dạng ngôn ngữ. Khi đó, ta dùng lemmatization—quá trình tương tự nhưng chính xác hơn về mặt ngôn ngữ học.
 
-Here's an example of how we can utilize a lemmatizer relying on WordNet, demonstrated using NLTK:
+
+#### Chuẩn hóa từ gốc (Lemmatization)
+Lemmatization là quá trình đưa các dạng khác nhau của một từ về dạng gốc (lemma), tương tự stemming nhưng có sự khác biệt. Ví dụ, stemming giữ nguyên "better", còn lemmatization chuyển thành "good". Lemmatization đòi hỏi hiểu biết sâu hơn về ngôn ngữ học, và việc xây dựng bộ lemmatizer hiệu quả vẫn là thách thức trong nghiên cứu NLP.
+
+Dưới đây là ví dụ sử dụng lemmatizer dựa trên WordNet với NLTK:
 
 ```python
 import nltk
@@ -157,7 +166,8 @@ which outputs:
 good
 ```
 
-And this code snippet shows a lemmatizer using SpaCy:
+
+Và đoạn mã sau minh họa lemmatizer sử dụng SpaCy:
 
 ```python
 import spacy
@@ -172,21 +182,25 @@ which outputs:
 better well
 ```
 
-NLTK outputs "good," while spaCy outputs "better well," and both are considered correct. Lemmatization, requiring more linguistic analysis, might take longer compared to stemming and is usually employed only when essential. The lemmatizer choice is flexible; we can opt for NLTK or spaCy based on the framework used for other preprocessing steps, aiming for consistency across the pipeline.
 
-These are the typical pre-processing steps, but they don't cover everything. Depending on the data's characteristics, additional pre-processing steps might be necessary. Let's explore some of those additional steps.
+NLTK trả về "good", còn spaCy trả về "better well", cả hai đều được coi là đúng. Lemmatization cần phân tích ngôn ngữ sâu hơn, thường chậm hơn stemming và chỉ dùng khi thực sự cần thiết. Việc chọn lemmatizer linh hoạt, có thể dùng NLTK hoặc spaCy tùy framework tiền xử lý khác để đảm bảo nhất quán toàn pipeline.
 
-## Other Pre-Processing Steps
-Until now, we've covered typical pre-processing steps in NLP, assuming we're working with standard English text. But what if we're dealing with different types of text? In such cases, we'll need additional pre-processing steps, which we'll explore next with some examples.
-### Text normalization
-Imagine we're analyzing social media posts to detect news events, where the language used differs significantly from formal writing, like in newspapers. Social media text often contains variations like different spellings, abbreviated forms, varied casing, and diverse formats for numbers. To effectively process such data, we aim to standardize text into a unified format, a process known as text normalization. This involves converting text to lowercase or uppercase, replacing digits with their textual equivalents, expanding abbreviations, and more. Tools like SpaCy offer dictionaries mapping variant spellings to a single standard form.
+Đây là các bước tiền xử lý phổ biến, nhưng chưa phải tất cả. Tùy đặc điểm dữ liệu, có thể cần thêm các bước tiền xử lý khác. Hãy cùng tìm hiểu một số bước bổ sung.
 
-### Language detection
-Much of the content on the web exists in languages other than English. For instance, when gathering product reviews online, we often encounter reviews in various languages. This poses a challenge for NLP pipelines designed for English text. To address this, language detection serves as the initial step in the pipeline. After identifying the language, subsequent pipeline steps can be tailored accordingly to handle text in the detected language.
 
-## Advanced Processing
+## Các bước tiền xử lý khác (Other Pre-Processing Steps)
+Đến đây, chúng ta đã đề cập các bước tiền xử lý phổ biến trong NLP, giả định làm việc với văn bản tiếng Anh chuẩn. Nhưng nếu xử lý các loại văn bản khác thì sao? Khi đó, cần thêm các bước tiền xử lý bổ sung, ví dụ:
 
-Let's say we're tasked with creating a system to recognize names of people and organizations in a large collection of company documents. The usual pre-processing steps we've talked about may not apply here. To spot names, we need POS tagging, which helps identify proper nouns. But how do we incorporate POS tagging into our project's pre-processing phase? Pre-trained POS taggers are readily available in NLP libraries like NLTK, spaCy, and Parsey McParseface Tagger. This allows us to avoid creating our own POS-tagging solutions. Below is an example code snippet showcasing several pre-built pre-processing functions using the spaCy NLP library.
+### Chuẩn hóa văn bản (Text normalization)
+Giả sử ta phân tích bài đăng mạng xã hội để phát hiện sự kiện, nơi ngôn ngữ sử dụng khác biệt nhiều so với văn viết chuẩn như báo chí. Văn bản mạng xã hội thường có nhiều biến thể: chính tả khác nhau, viết tắt, kiểu chữ đa dạng, định dạng số khác nhau... Để xử lý hiệu quả, ta cần chuẩn hóa văn bản về một dạng thống nhất (text normalization): chuyển về chữ thường/hoa, thay số bằng chữ, mở rộng viết tắt... Các công cụ như SpaCy có từ điển ánh xạ các biến thể về một dạng chuẩn.
+
+### Nhận diện ngôn ngữ (Language detection)
+Phần lớn nội dung trên web không phải tiếng Anh. Ví dụ, khi thu thập đánh giá sản phẩm, ta thường gặp nhiều ngôn ngữ khác nhau. Điều này gây khó khăn cho pipeline NLP thiết kế cho tiếng Anh. Để giải quyết, nhận diện ngôn ngữ là bước đầu tiên trong pipeline. Sau khi xác định ngôn ngữ, các bước tiếp theo sẽ được điều chỉnh phù hợp.
+
+
+## Xử lý nâng cao (Advanced Processing)
+
+Giả sử bạn cần xây dựng hệ thống nhận diện tên người và tổ chức trong tập tài liệu lớn của công ty. Các bước tiền xử lý thông thường có thể không áp dụng được. Để nhận diện tên, ta cần gán nhãn từ loại (POS tagging) để xác định danh từ riêng. Vậy làm sao tích hợp POS tagging vào pipeline tiền xử lý? Các bộ gán nhãn POS đã được huấn luyện sẵn trong thư viện NLP như NLTK, spaCy, Parsey McParseface Tagger, giúp bạn không phải tự xây dựng từ đầu. Dưới đây là ví dụ sử dụng các hàm tiền xử lý có sẵn trong spaCy:
 
 ```python
 import spacy
@@ -222,11 +236,13 @@ Chaplin Chaplin PROPN True False
 Sr Sr PROPN True False
 ```
 
-## Conclusion
 
-In this lesson, we covered text preprocessing, a critical step in the NLP pipeline. We explored from basic techniques, such as tokenization, stop word removal, stemming and lemmatization, removing digits/punctuation, lowercasing, to advance techniques , such as POS tagging, parsing, coreference resolution. These preprocessing steps are essential for converting raw text into a clean, structured format that can be effectively used by machine learning models. 
+## Kết luận (Conclusion)
 
-## References
+Trong bài học này, chúng ta đã tìm hiểu về tiền xử lý văn bản—một bước quan trọng trong pipeline NLP. Chúng ta đã khám phá từ các kỹ thuật cơ bản như tách từ, loại bỏ từ dừng, rút gọn từ, chuẩn hóa từ gốc, loại bỏ số/ký tự đặc biệt, chuyển về chữ thường, đến các kỹ thuật nâng cao như gán nhãn từ loại (POS tagging), phân tích cú pháp (parsing), giải quyết đồng tham chiếu (coreference resolution). Các bước tiền xử lý này rất cần thiết để chuyển văn bản thô thành dạng sạch, có cấu trúc, giúp mô hình học máy xử lý hiệu quả.
+
+
+## Tài liệu tham khảo (References)
 
 + Sowmya Vajjala, Bodhisattwa Majumder, Anuj Gupta, and Harshit Surana, Practical natural language processing : a comprehensive guide to building real-world NLP sysems. Sebastopol, Ca O’reilly Media, 2020.
 + “Getting started with Text Preprocessing,” kaggle.com. https://www.kaggle.com/code/sudalairajkumar/getting-started-with-text-preprocessing

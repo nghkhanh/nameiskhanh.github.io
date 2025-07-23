@@ -7,98 +7,108 @@ grand_parent: NLP
 permalink: /nlp/course/05_pos_tagging/
 ---
 
-# POS(Parts-Of-Speech) Tagging in NLP
 
-## Introduction
+# Gán nhãn từ loại (POS - Parts-Of-Speech) trong NLP
 
-One <span title="thiết yếu">essential</span> task in Natural Language Processing (NLP) is Parts of Speech (PoS) tagging, which involves assigning grammatical categories like nouns, verbs, adjectives, and adverbs to each word in a text. This helps machines better understand and process human language by improving their grasp of phrase structure and meaning.
 
-PoS tagging is crucial for NLP applications like machine translation, sentiment analysis, and information retrieval. It connects language to machine understanding, allowing for the development of advanced language processing systems and deeper linguistic analysis.
+## Giới thiệu (Introduction)
 
-## What is POS Tagging?
+Một nhiệm vụ <span title="thiết yếu">thiết yếu</span> trong Xử lý Ngôn ngữ Tự nhiên (NLP) là gán nhãn từ loại (Parts of Speech - PoS tagging), tức là gán các loại từ ngữ pháp như danh từ, động từ, tính từ, trạng từ cho từng từ trong văn bản. Điều này giúp máy tính hiểu và xử lý ngôn ngữ con người tốt hơn nhờ nắm được cấu trúc và ý nghĩa của cụm từ.
 
-PoS tagging in NLP assigns each word in a document a specific part of speech, such as adverb, adjective, or verb. This adds syntactic and semantic information, making it easier to understand the sentence's structure and meaning.
+PoS tagging rất quan trọng cho các ứng dụng NLP như dịch máy (machine translation), phân tích cảm xúc (sentiment analysis), và truy xuất thông tin (information retrieval). Nó kết nối ngôn ngữ với khả năng hiểu của máy, cho phép phát triển các hệ thống xử lý ngôn ngữ nâng cao và phân tích ngôn ngữ sâu hơn.
 
-In NLP, PoS tagging is useful for tasks like machine translation, named entity recognition, and information extraction. It helps clarify ambiguous terms and reveals a sentence's grammatical structure.
+
+## Gán nhãn từ loại là gì? (What is POS Tagging?)
+
+PoS tagging trong NLP là quá trình gán cho mỗi từ trong tài liệu một loại từ cụ thể, như trạng từ, tính từ, động từ... Việc này bổ sung thông tin cú pháp và ngữ nghĩa, giúp dễ dàng hiểu cấu trúc và ý nghĩa câu.
+
+Trong NLP, PoS tagging hữu ích cho các nhiệm vụ như dịch máy, nhận diện thực thể (named entity recognition), và trích xuất thông tin. Nó giúp làm rõ các từ mơ hồ và thể hiện cấu trúc ngữ pháp của câu.
 
 ![](images/pos.png)
 
-## Example of POS Tagging
-Consider the sentence: "The big brown capybara is on the street."
+
+## Ví dụ về gán nhãn từ loại (Example of POS Tagging)
+Xét câu sau: "The big brown capybara is on the street."
 
 ![](images/PosExample.png)
 
-This tagging helps machines understand not only individual words but also their connections within phrases, providing valuable insights into grammatical structure. Such data is crucial for various NLP tasks like text summarization, sentiment analysis, and machine translation.
 
-## POS Tagging Pipeline
+Việc gán nhãn này giúp máy không chỉ hiểu từng từ mà còn hiểu mối liên hệ giữa các từ trong cụm, cung cấp thông tin giá trị về cấu trúc ngữ pháp. Dữ liệu này rất quan trọng cho các nhiệm vụ NLP như tóm tắt văn bản, phân tích cảm xúc, và dịch máy.
 
-A pipeline for Part-of-Speech (POS) tagging typically involves several key steps:
+
+## Quy trình gán nhãn từ loại (POS Tagging Pipeline)
+
+Một pipeline cho nhiệm vụ gán nhãn từ loại (POS tagging) thường gồm các bước chính sau:
 
 ![](images/POSTaggingPipeline.png)
 
-+ Text Preprocessing: Clean and preprocess the text by removing punctuation, converting text to lowercase, and tokenizing the text into individual words.
 
-+ Tokenization: Split the text into tokens (words or phrases) that will be analyzed.
++ Tiền xử lý văn bản (Text Preprocessing): Làm sạch và tiền xử lý văn bản bằng cách loại bỏ dấu câu, chuyển về chữ thường, và tách từ (tokenization).
 
-+ POS Tagging: Use a POS tagging algorithm or library (such as NLTK, SpaCy, or Stanford NLP) to assign POS tags to each token. This can involve using pre-trained models or training a custom model.
++ Tách từ (Tokenization): Chia văn bản thành các token (từ hoặc cụm từ) để phân tích.
 
-+ Post-Processing: Refine and validate the tagged output, correcting any errors and ensuring consistency.
++ Gán nhãn từ loại (POS Tagging): Sử dụng thuật toán hoặc thư viện gán nhãn từ loại (như NLTK, SpaCy, Stanford NLP) để gán nhãn cho từng token. Có thể dùng mô hình huấn luyện sẵn hoặc tự huấn luyện.
 
-+ Output: Generate the final tagged text, which can be used for further natural language processing tasks or analysis.
++ Hậu xử lý (Post-Processing): Tinh chỉnh và kiểm tra kết quả gán nhãn, sửa lỗi và đảm bảo nhất quán.
 
-## Types of POS Tagging in NLP
-Part-of-Speech (PoS) tagging, which assigns grammatical categories to words in a text, is crucial in Natural Language Processing (NLP). Various PoS tagging methods exist, each with its own approach. 
-Here are some common types.
-
-### Rule-Based Tagging
-
-Rule-Based POS Tagging uses predefined linguistic rules and lexicons to assign part-of-speech tags to words in a text. It relies on hand-crafted rules and dictionaries to determine the correct tags based on word morphology and context.
-
-For example, a rule-based POS tagger might assign the "noun" tag to words that end in "‑tion" or "‑ment," identifying typical suffixes for nouns. This method is transparent and interpretable because it doesn't depend on training data.
++ Đầu ra (Output): Sinh ra văn bản đã gán nhãn, dùng cho các tác vụ NLP tiếp theo hoặc phân tích.
 
 
-### Transformation Based Tagging
+## Các loại gán nhãn từ loại trong NLP (Types of POS Tagging in NLP)
+Gán nhãn từ loại (PoS tagging) là nhiệm vụ gán loại từ ngữ pháp cho các từ trong văn bản, rất quan trọng trong NLP. Có nhiều phương pháp gán nhãn từ loại khác nhau, mỗi phương pháp có cách tiếp cận riêng. Dưới đây là một số loại phổ biến.
 
-Transformation-Based Tagging, also known as Brill Tagging, iteratively applies predefined transformation rules to improve initial POS tags assigned by a simple method, refining the tags based on contextual patterns.
 
-For instance, a verb's tag might change to a noun if it follows a determiner like "the." These rules are applied systematically, updating the tags after each transformation.
+### Gán nhãn dựa trên luật (Rule-Based Tagging)
 
-Transformation Based Tagging can be more accurate than rule-based tagging, especially for complex grammar, but it may need a large set of rules and more computational power for optimal performance.
+Phương pháp này sử dụng các luật ngôn ngữ học và từ điển được xác định trước để gán nhãn từ loại cho từ trong văn bản. Nó dựa vào các quy tắc thủ công và từ điển để xác định nhãn dựa trên hình thái và ngữ cảnh của từ.
 
-### Statistical POS Tagging
+Ví dụ, một bộ gán nhãn dựa trên luật có thể gán nhãn "danh từ" cho các từ kết thúc bằng "-tion" hoặc "-ment". Phương pháp này minh bạch, dễ giải thích vì không phụ thuộc vào dữ liệu huấn luyện.
 
-Statistical part-of-speech (POS) tagging uses probabilistic models and machine learning to assign grammatical categories to words in a text, unlike rule-based tagging which relies on predefined rules and annotated corpora.
 
-Statistical POS tagging algorithms learn the probability of word-tag sequences to capture language patterns. Popular models include CRFs and Hidden Markov Models (HMMs). During training, the algorithm uses labeled examples to estimate the likelihood of a specific tag given the word and its context.
 
-Using the trained model, statistical POS tagging predicts the most likely tags for new text. It is particularly effective for languages with complex grammar, as it handles linguistic ambiguity and captures subtle language patterns well.
+### Gán nhãn dựa trên biến đổi (Transformation Based Tagging)
 
-#### Hidden Markov Model POS tagging
-Hidden Markov Models (HMMs) are used for part-of-speech (POS) tagging in NLP. They are trained on large annotated text corpora to recognize patterns in parts of speech. Using this training, HMMs predict the POS tag for a word based on the probabilities of various tags in its context.
+Phương pháp này còn gọi là Brill Tagging, áp dụng lặp lại các luật biến đổi được xác định trước để cải thiện nhãn từ loại ban đầu, dựa trên các mẫu ngữ cảnh.
 
-An HMM-based POS tagger uses states for potential POS tags and transitions between them. It learns the probabilities of these transitions and word emissions during training. When tagging new text, it applies the Viterbi algorithm to determine the most likely sequence of POS tags based on these probabilities.
+Ví dụ, nhãn động từ có thể được đổi thành danh từ nếu nó đứng sau một từ xác định như "the". Các luật này được áp dụng tuần tự, cập nhật nhãn sau mỗi lần biến đổi.
 
-HMMs are widely used in NLP for handling complex sequential data, but their performance depends on the quality and amount of annotated training data.
+Phương pháp này có thể chính xác hơn gán nhãn dựa trên luật, nhất là với ngữ pháp phức tạp, nhưng cần nhiều luật và tài nguyên tính toán hơn để đạt hiệu quả tối ưu.
 
-## Parts-of-Speech implementation
-We will leverage **NLTK** nad **Spacy** libraries to implement Parts-of-Speech tagging in **Python**
 
-### Implementation of Parts-of-Speech tagging using NLTK in Python
-#### Installing packages
+### Gán nhãn từ loại dựa trên thống kê (Statistical POS Tagging)
+
+Phương pháp này sử dụng mô hình xác suất và học máy để gán nhãn từ loại, thay vì dựa vào luật thủ công. Các thuật toán học xác suất của chuỗi từ-nhãn để nắm bắt mẫu ngôn ngữ. Các mô hình phổ biến gồm CRFs và Hidden Markov Models (HMMs).
+
+Trong quá trình huấn luyện, thuật toán sử dụng dữ liệu đã gán nhãn để ước lượng xác suất một nhãn xuất hiện với từ và ngữ cảnh cụ thể. Khi áp dụng, mô hình dự đoán nhãn có xác suất cao nhất cho văn bản mới. Phương pháp này đặc biệt hiệu quả với ngôn ngữ có ngữ pháp phức tạp, vì xử lý tốt sự mơ hồ và các mẫu ngôn ngữ tinh vi.
+
+
+#### Gán nhãn từ loại bằng mô hình Markov ẩn (Hidden Markov Model POS tagging)
+Hidden Markov Models (HMMs) được sử dụng rộng rãi cho gán nhãn từ loại trong NLP. Chúng được huấn luyện trên tập văn bản lớn đã gán nhãn để nhận diện mẫu từ loại. Dựa vào huấn luyện này, HMM dự đoán nhãn từ loại cho một từ dựa trên xác suất các nhãn trong ngữ cảnh.
+
+Một bộ gán nhãn HMM sử dụng các trạng thái cho các nhãn từ loại tiềm năng và chuyển đổi giữa chúng. Nó học xác suất chuyển đổi và xác suất sinh từ trong quá trình huấn luyện. Khi gán nhãn văn bản mới, nó dùng thuật toán Viterbi để tìm chuỗi nhãn từ loại có xác suất cao nhất.
+
+HMM rất phổ biến trong NLP để xử lý dữ liệu chuỗi phức tạp, nhưng hiệu quả phụ thuộc vào chất lượng và số lượng dữ liệu huấn luyện.
+
+
+## Triển khai gán nhãn từ loại (Parts-of-Speech implementation)
+Chúng ta sẽ sử dụng thư viện **NLTK** và **SpaCy** để thực hiện gán nhãn từ loại trong **Python**.
+
+### Triển khai gán nhãn từ loại bằng NLTK trong Python
+#### Cài đặt thư viện
 ```python
 !pip install nltk
 nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
 ```
 
-#### Import packages
+#### Import thư viện
 ```python
 import nltk
 from nltk.tokenize import word_tokenize
 from nltk import pos_tag
 ```
 
-#### Implementation
+#### Triển khai
 ```python
 # Sample text
 text = "The big brown capybara is on the street."
@@ -149,26 +159,27 @@ street: NN
 .: .
 ```
 
-Firstly, we employ the **word_tokenize** method to tokenize the input text into words. 
 
-Then, utilize the **pos_tag** function from **NLTK** to conduct part-of-speech tagging on the tokenized words.
+Đầu tiên, ta dùng hàm **word_tokenize** để tách văn bản thành các từ.
 
-Finally, we display the original text and the resulting POS tags separately, exhibiting each word with its associated part-of-speech tag on different lines.
+Sau đó, sử dụng hàm **pos_tag** từ **NLTK** để gán nhãn từ loại cho các từ đã tách.
 
-### Implementation of Parts-of-Speech tagging using Spacy in Python
-#### Installing packages
+Cuối cùng, in ra văn bản gốc và kết quả gán nhãn, mỗi từ cùng nhãn từ loại trên từng dòng riêng biệt.
+
+### Triển khai gán nhãn từ loại bằng SpaCy trong Python
+#### Cài đặt thư viện
 ```python
 !pip install spacy
 !python -m spacy download en_core_web_sm
 ```
 
-#### Import packages 
+#### Import thư viện
 ```python
 #importing libraries 
 import spacy
 ```
 
-#### Implementation
+#### Triển khai
 ```python 
 # Load the English language model
 nlp = spacy.load("en_core_web_sm")
@@ -201,19 +212,22 @@ street: NOUN
 .: PUNCT
 ```
 
-We utilize the **SpaCy** library and load the English language model "en_core_web_sm" with **spacy.load("en_core_web_sm")**.
-Next, the sample text is processed using the loaded model to generate a **Doc** object that is containing linguistic annotations.
-Then, we print the original text and iterate through the processed Doc tokens, showcasing each token's text and its corresponding part-of-speech tag (token.pos_).
 
-**Note**: POS tagging models in the NLTK and spaCy libraries rely on statistical approaches, particularly employing trained Hidden Markov Models (HMM).
+Ta sử dụng thư viện **SpaCy** và tải mô hình tiếng Anh "en_core_web_sm" bằng **spacy.load("en_core_web_sm")**.
+Tiếp theo, văn bản mẫu được xử lý qua mô hình để tạo ra đối tượng **Doc** chứa các chú thích ngôn ngữ học.
+Sau đó, in ra văn bản gốc và lặp qua các token trong Doc, hiển thị từng token và nhãn từ loại tương ứng (token.pos_).
 
-## Conclusion
+**Lưu ý**: Các mô hình POS tagging trong NLTK và SpaCy đều dựa trên phương pháp thống kê, đặc biệt là sử dụng mô hình Markov ẩn (HMM) đã huấn luyện.
 
-In this lesson, we delved into Part-of-Speech (POS) tagging, a fundamental task in NLP that involves labeling words in a sentence with their corresponding parts of speech, such as nouns, verbs, adjectives, and more as well as various methods of implementing POS tagging.
 
-With this understanding, we can now enhance our text analysis by accurately identifying the grammatical structure of sentences.
+## Kết luận (Conclusion)
 
-## References
+Trong bài học này, chúng ta đã tìm hiểu về gán nhãn từ loại (POS tagging)—một nhiệm vụ nền tảng trong NLP, giúp gán nhãn các từ trong câu với loại từ tương ứng như danh từ, động từ, tính từ... cũng như các phương pháp triển khai POS tagging.
+
+Với kiến thức này, chúng ta có thể nâng cao phân tích văn bản bằng cách xác định chính xác cấu trúc ngữ pháp của câu.
+
+
+## Tài liệu tham khảo (References)
 
 + Geeksforgeeks, “NLP | Part of Speech - Default Tagging,” GeeksforGeeks, Jan. 28, 2019. https://www.geeksforgeeks.org/nlp-part-of-speech-default-tagging/
 + S. Mudadla, “What is Parts of Speech (POS) Tagging Natural Language Processing?In,” Medium, Nov. 09, 2023. https://medium.com/@sujathamudadla1213/what-is-parts-of-speech-pos-tagging-natural-language-processing-in-2b8f4b07b186

@@ -7,15 +7,17 @@ grand_parent: NLP
 permalink: /nlp/course/03_text_cleaning/
 ---
 
-# Text Extraction and Cleanup
-We discussed some techniques for cleaning raw text in the NLP Pipeline, but it's crucial to emphasize that this step is vital because "garbage in, garbage out." Therefore, we will delve deeper into this step and explore common methods for text cleaning.
 
-Text extraction and cleanup involve removing non-textual information like markup and metadata from raw text and converting it to the needed format. This process varies based on the data format, such as PDFs, HTML, or continuous data streams. For example, the HTML data format as shown in the image below.
+# Trích xuất và làm sạch văn bản (Text Extraction and Cleanup)
+Chúng ta đã thảo luận một số kỹ thuật làm sạch văn bản thô trong quy trình NLP Pipeline, nhưng cần nhấn mạnh rằng bước này cực kỳ quan trọng vì "rác vào thì rác ra" (garbage in, garbage out). Do đó, chúng ta sẽ đi sâu hơn vào bước này và khám phá các phương pháp phổ biến để làm sạch văn bản.
+
+Trích xuất và làm sạch văn bản liên quan đến việc loại bỏ thông tin không phải văn bản như markup (thẻ đánh dấu) và metadata (siêu dữ liệu) khỏi văn bản thô và chuyển đổi nó sang định dạng cần thiết. Quá trình này thay đổi tùy theo định dạng dữ liệu, ví dụ như PDF, HTML hoặc các luồng dữ liệu liên tục. Ví dụ, định dạng dữ liệu HTML như hình dưới đây.
 
 ![](images/html.png)
 
-## HTML Parsing and Cleanup
-Suppose we're building a forum search engine for programming questions using Stack Overflow as a source. To extract question and answer pairs, we can leverage the HTML tags specific to questions and answers on the site. Instead of writing our own HTML parser, we can use libraries like Beautiful Soup and Scrapy. Here's a code example using Beautiful Soup to extract question and answer pairs from a Stack Overflow page.
+
+## Phân tích và làm sạch HTML (HTML Parsing and Cleanup)
+Giả sử chúng ta đang xây dựng một công cụ tìm kiếm diễn đàn cho các câu hỏi lập trình, sử dụng Stack Overflow làm nguồn dữ liệu. Để trích xuất các cặp câu hỏi và trả lời, ta có thể tận dụng các thẻ HTML đặc trưng cho câu hỏi và trả lời trên trang. Thay vì tự viết trình phân tích HTML, ta có thể dùng các thư viện như Beautiful Soup và Scrapy. Dưới đây là ví dụ sử dụng Beautiful Soup để trích xuất cặp câu hỏi và trả lời từ một trang Stack Overflow.
 
 ```python
 from bs4 import BeautifulSoup
@@ -33,7 +35,8 @@ answertext = answer.find("div", {"class": "s-prose js-post-body"})
 print("Best answer: \n", answertext.get_text().strip())
 ```
 
-We're using our understanding of HTML structure to extract the needed information. This code produces the following output:
+
+Chúng ta sử dụng hiểu biết về cấu trúc HTML để trích xuất thông tin cần thiết. Đoạn mã trên sẽ cho ra kết quả như sau:
 
 ```python
 Question: 
@@ -60,18 +63,20 @@ To save typing, you can import the datetime object from the datetime module:
 Then remove the prefix datetime. from all of the above.
 ```
 
-In this example, we needed to extract a specific question and answer. For other tasks, like extracting postal addresses from web pages, we might first get all the text from the page. HTML libraries usually have functions to remove HTML tags and return the text content. However, this can result in noisy output, including unwanted JavaScript. To avoid this, we should extract content from tags that usually contain text.
 
-## Unicode Normalization
-While cleaning up HTML tags in our code, we may come across various Unicode characters, such as symbols and emojis. 
+Trong ví dụ này, chúng ta cần trích xuất một cặp câu hỏi và trả lời cụ thể. Với các tác vụ khác, như trích xuất địa chỉ từ trang web, ta có thể lấy toàn bộ văn bản từ trang. Các thư viện HTML thường có hàm loại bỏ thẻ HTML và trả về nội dung văn bản. Tuy nhiên, điều này có thể tạo ra kết quả nhiễu, bao gồm cả JavaScript không mong muốn. Để tránh điều này, nên trích xuất nội dung từ các thẻ thường chứa văn bản.
+
+
+## Chuẩn hóa Unicode (Unicode Normalization)
+Khi làm sạch các thẻ HTML trong mã, chúng ta có thể gặp nhiều ký tự Unicode khác nhau, như ký hiệu và emoji.
 
 ![](images/Icon.png)
 
-This above image shows some examples of these characters.
+Hình trên minh họa một số ví dụ về các ký tự này.
 
-To handle non-text symbols and special characters, we use Unicode normalization, converting visible text into a binary format for storage, known as text encoding. Ignoring encoding can cause processing errors later in the pipeline.
+Để xử lý các ký hiệu không phải văn bản và ký tự đặc biệt, ta sử dụng chuẩn hóa Unicode (Unicode normalization), chuyển văn bản hiển thị thành định dạng nhị phân để lưu trữ, gọi là mã hóa văn bản (text encoding). Nếu bỏ qua mã hóa, có thể gây lỗi xử lý ở các bước sau của pipeline.
 
-Different operating systems have various default encoding schemes. When dealing with multilingual or social media text, it's often necessary to convert between these schemes during text extraction. Here's an example of Unicode handling:
+Các hệ điều hành khác nhau có các kiểu mã hóa mặc định khác nhau. Khi xử lý văn bản đa ngôn ngữ hoặc từ mạng xã hội, thường cần chuyển đổi giữa các kiểu mã hóa này trong quá trình trích xuất văn bản. Dưới đây là ví dụ xử lý Unicode:
 
 ```python
 text = "I love 🍕 ! Shall we book a 🚙 to pizza?"
@@ -85,10 +90,12 @@ which outputs:
 b'I love \xf0\x9f\x8d\x95 ! Shall we book a \xf0\x9f\x9a\x99 to pizza?'
 ```
 
-The processed text is now machine-readable and ready for use in downstream pipelines.
 
-## Regex or Regular Expression
-Regular expressions serve as useful tools for recognizing particular patterns within text strings. For example, if our data contains phone numbers, email addresses, or URLs, we can identify them using regular expressions. We have the flexibility to decide whether to keep or remove these identified text patterns based on our requirements. Here is an example of using Regex to extract informative content.
+Văn bản sau xử lý giờ đã ở dạng máy tính có thể đọc được và sẵn sàng cho các bước tiếp theo trong pipeline.
+
+
+## Biểu thức chính quy (Regex - Regular Expression)
+Biểu thức chính quy (Regex) là công cụ hữu ích để nhận diện các mẫu (pattern) cụ thể trong chuỗi văn bản. Ví dụ, nếu dữ liệu chứa số điện thoại, email hoặc URL, ta có thể nhận diện chúng bằng Regex. Ta có thể linh hoạt quyết định giữ lại hay loại bỏ các mẫu văn bản này tùy theo yêu cầu. Dưới đây là ví dụ sử dụng Regex để trích xuất nội dung hữu ích.
 
 ```python
 import re 
@@ -118,21 +125,25 @@ Hello everyone
 Let's learning together with Robusto AI
 ```
 
-The processed text is now solely containing needed information.
 
-## Spelling Correction
-In today's fast-paced digital environment, errors in spelling are common due to quick typing and mistakes resulting from pressing the wrong keys. This issue is widespread across various platforms such as search engines, mobile-based text chatbots, and social media. Despite addressing HTML tags and Unicode characters, spelling errors persist as a distinct challenge, potentially affecting the linguistic comprehension of the data. Additionally, shorthand language used in social media microblogs can complicate language processing and context comprehension.
-
-While shorthand language is commonly used in chat interfaces, unintentional typing errors, known as fat-finger problems, are frequent in search engines. Although we acknowledge this issue, there isn't a foolproof solution yet. However, efforts can be made to minimize its impact. Microsoft has introduced a REST API that offers potential spell-checking capabilities, which can be accessed using Python.
-
-**Note:** For more details, let's visit [**Microsoft tutorials**](https://learn.microsoft.com/en-us/previous-versions/azure/cognitive-services/Bing-Spell-Check/quickstarts/python).
-
-## Conclusion
-
-In this lesson, we focused on text cleaning, a vital step in the NLP pipeline. We learned how to parse HTML when crawling text from the Internet, handle misspellings, normalize text, and use regex to capture valuable information. Proper text cleaning ensures that our data is accurate and ready for analysis, significantly improving model performance.
+Văn bản sau xử lý giờ chỉ còn lại thông tin cần thiết.
 
 
-## References
+## Sửa lỗi chính tả (Spelling Correction)
+Trong môi trường số hiện đại, lỗi chính tả rất phổ biến do gõ nhanh hoặc bấm nhầm phím. Vấn đề này xuất hiện ở nhiều nền tảng như công cụ tìm kiếm, chatbot trên điện thoại, mạng xã hội... Dù đã xử lý thẻ HTML và ký tự Unicode, lỗi chính tả vẫn là một thách thức riêng, có thể ảnh hưởng đến khả năng hiểu ngôn ngữ của dữ liệu. Ngoài ra, ngôn ngữ viết tắt trên mạng xã hội cũng làm phức tạp việc xử lý và hiểu ngữ cảnh.
+
+Ngôn ngữ viết tắt thường dùng trong giao diện chat, còn lỗi gõ nhầm (fat-finger problems) lại phổ biến ở công cụ tìm kiếm. Dù đã nhận diện vấn đề này, hiện chưa có giải pháp hoàn hảo. Tuy nhiên, có thể giảm thiểu tác động của nó. Microsoft đã cung cấp REST API hỗ trợ kiểm tra chính tả, có thể truy cập bằng Python.
+
+**Lưu ý:** Để biết thêm chi tiết, hãy xem [**hướng dẫn của Microsoft**](https://learn.microsoft.com/en-us/previous-versions/azure/cognitive-services/Bing-Spell-Check/quickstarts/python).
+
+
+## Kết luận
+
+Trong bài học này, chúng ta tập trung vào làm sạch văn bản, một bước quan trọng trong quy trình NLP pipeline. Chúng ta đã học cách phân tích HTML khi thu thập văn bản từ Internet, xử lý lỗi chính tả, chuẩn hóa văn bản và sử dụng regex để trích xuất thông tin giá trị. Làm sạch văn bản đúng cách giúp dữ liệu chính xác, sẵn sàng cho phân tích và nâng cao hiệu quả mô hình.
+
+
+
+## Tài liệu tham khảo
 
 + Sowmya Vajjala, Bodhisattwa Majumder, Anuj Gupta, and Harshit Surana, Practical natural language processing : a comprehensive guide to building real-world NLP sysems. Sebastopol, Ca O’reilly Media, 2020.
 + “Text Cleaning for NLP: A Tutorial,” MonkeyLearn Blog, May 31, 2021. https://monkeylearn.com/blog/text-cleaning/

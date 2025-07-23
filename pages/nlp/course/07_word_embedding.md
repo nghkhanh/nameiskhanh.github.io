@@ -7,43 +7,50 @@ grand_parent: NLP
 permalink: /nlp/course/07_word_embedding/
 ---
 
-# Word Embeddding
 
-## Introduction
+# Word Embedding (Biểu diễn từ)
 
-Word Embeddings is a powerful technique in NLP for representing words in a continuous vector space. Unlike traditional text representations, word embeddings capture semantic relationships between words, allowing models to understand context and meaning. In this lesson, we'll explore popular methods like Word2Vec and GloVe, understand how embeddings are trained, and see their applications in various NLP tasks.
 
-By the end, we'll be equipped to use word embeddings to enhance our text analysis and machine learning models.
+## Giới thiệu (Introduction)
 
-## Natural Language Processing
-Natural Language Processing (NLP) is a branch of Artificial Intelligence. It can help machines have a capable of reading, understanding and infering our languages.
+Word Embedding là một kỹ thuật mạnh mẽ trong NLP (Xử lý ngôn ngữ tự nhiên) để biểu diễn các từ trong không gian vector liên tục. Khác với các cách biểu diễn truyền thống, word embedding giúp mô hình nắm bắt được mối quan hệ ngữ nghĩa (semantic relationships) giữa các từ, cho phép hiểu được ngữ cảnh và ý nghĩa. Trong bài này, chúng ta sẽ tìm hiểu các phương pháp phổ biến như Word2Vec và GloVe, cách huấn luyện embedding, cũng như ứng dụng của chúng trong các bài toán NLP.
+
+Kết thúc bài học, bạn sẽ có thể sử dụng word embedding để nâng cao phân tích văn bản và các mô hình machine learning.
+
+
+## Xử lý ngôn ngữ tự nhiên (Natural Language Processing)
+NLP (Natural Language Processing - Xử lý ngôn ngữ tự nhiên) là một nhánh của Trí tuệ nhân tạo (Artificial Intelligence - AI). Nó giúp máy tính có khả năng đọc, hiểu và suy luận ngôn ngữ của con người.
 
 ![](images/NLP1.png)
 
 ![](images/NLP2.png)
 
-## NLP development
-Nowadays, NLP has achieve of many memorible milestons. First of all is the appearance of Word2Vec, which is the way a sentence or word is represented by a defined number. Then to improve this representation, attention mechanism was born, which is the premise for the invention of transformer model, the breakthough in AI research and a lot of models are taking over the world such as Gpt-4, Gemeni, LLama2.
+
+## Sự phát triển của NLP (NLP development)
+Ngày nay, NLP đã đạt được nhiều cột mốc đáng nhớ. Đầu tiên là sự xuất hiện của Word2Vec, cho phép biểu diễn một câu hoặc từ bằng một con số xác định. Để cải thiện biểu diễn này, attention mechanism (cơ chế chú ý) ra đời, là tiền đề cho mô hình transformer—bước đột phá trong nghiên cứu AI và là nền tảng cho nhiều mô hình nổi bật như GPT-4, Gemini, LLama2.
 
 ![Source:Huggingface.co](images/model_parameters.png)
 
-However, all of these models can not work well without having a strong representation of our language called **Word Embedding**. Let's find out challenges of buiding Word Embedding in first days and the way NLP researchers solve these problems. 
+Tuy nhiên, tất cả các mô hình này sẽ không hoạt động hiệu quả nếu không có một cách biểu diễn ngôn ngữ mạnh mẽ gọi là **Word Embedding**. Hãy cùng tìm hiểu những thách thức khi xây dựng Word Embedding trong những ngày đầu và cách các nhà nghiên cứu NLP giải quyết chúng.
 
 ![](images/WordEmbedding.png)
 
-## Word Embedding challenges
 
-Three difficulties we have to handle when building a word embedding system are:
-- Ambiguous.
-- Idioms.
-- Meaning depends on context.
+## Thách thức của Word Embedding (Word Embedding challenges)
+
+Ba khó khăn chính khi xây dựng hệ thống word embedding là:
+- Đa nghĩa (Ambiguous).
+- Thành ngữ (Idioms).
+- Ý nghĩa phụ thuộc vào ngữ cảnh (Meaning depends on context).
 
 ![](images/oldman.png)
 
-In this example, we can not know which meaning of "The old man the boats" is really is. We have to base on surround sentences to decide the meaning of that sentence so embedding has to be different on each case. Idioms are also hard case to represent. 
+
+Ví dụ, với câu "The old man the boats", ta không thể biết nghĩa thực sự nếu không dựa vào các câu xung quanh, nên embedding phải khác nhau tùy trường hợp. Thành ngữ cũng là trường hợp khó biểu diễn.
  
-## Tokenizer 
-Tokenizer is the division of sentences, phrases, paragraphs or an entire document into multiple units, which can be words or letters. Each of these units is also called a token. 
+
+## Tokenizer (Bộ tách từ)
+Tokenizer là quá trình chia câu, cụm từ, đoạn văn hoặc toàn bộ tài liệu thành các đơn vị nhỏ hơn, có thể là từ hoặc ký tự. Mỗi đơn vị này gọi là một token (token - đơn vị).
 
 ![](images/Tokenizer1.png)
 
@@ -51,60 +58,74 @@ Tokenizer is the division of sentences, phrases, paragraphs or an entire documen
 
 ![](images/Tokenizer3.png)
 
-In recent days, there are advanced tokenize techniques that used in many SOTA (state-of-the-art) models we must to know such as Byte-Pair Encoding, WordPiece, SentencePiece.
 
-## Lexical Semantics
+Gần đây, có nhiều kỹ thuật tokenizer tiên tiến được sử dụng trong các mô hình SOTA (state-of-the-art - hiện đại nhất) như Byte-Pair Encoding, WordPiece, SentencePiece.
 
-Lexical semantics is the branch of linguistics that deals with the meanings and relationships of words. It examines how words are structured, interpreted, and related to each other within a language.
+
+## Ngữ nghĩa từ vựng (Lexical Semantics)
+
+Lexical semantics là một nhánh của ngôn ngữ học nghiên cứu về ý nghĩa và mối quan hệ giữa các từ. Nó xem xét cách các từ được cấu trúc, diễn giải và liên kết với nhau trong một ngôn ngữ.
 
 ![](images/LexicalSemantic.png)
 
-Let's talk about **Word Similarity** aspect with 2 words "dog" and "cat". Although, cat is not synonym with dog but they are similar to each other on the edge of meanings. The way we say "dog is very lovely" and "cat is very lovely" are so similar. The way we consider lexical semantics on a pair of words help us build Word Embedding later.
 
-## Semantic vector
-Semantic vector is a representation of a word in multidimentional semantic space, which is built on the relationships between that word and surrouding words.
+Ví dụ về **Word Similarity** (độ tương đồng từ vựng): hai từ "dog" và "cat" không phải là từ đồng nghĩa, nhưng chúng khá gần nhau về mặt ý nghĩa. Cách ta nói "dog is very lovely" và "cat is very lovely" rất giống nhau. Việc xem xét ngữ nghĩa từ vựng trên cặp từ giúp xây dựng Word Embedding sau này.
 
-Two words are near in the semantic space will have the same semantic.
+
+## Semantic vector (Vector ngữ nghĩa)
+Semantic vector là cách biểu diễn một từ trong không gian ngữ nghĩa nhiều chiều, được xây dựng dựa trên mối quan hệ giữa từ đó và các từ xung quanh.
+
+Hai từ gần nhau trong không gian ngữ nghĩa sẽ có ý nghĩa tương tự nhau.
 
 ![](images/dog.png)
-**Note:** to playaround with semantic vector, we can visit [Tensorflow Projector](https://projector.tensorflow.org/).
 
-## Embeddings
-Embedding is a set of semantic vectors. The term "semantic" in the context of embeddings emphasizes that these vectors are not arbitrary but are specifically designed to capture and represent the meanings and relationships of words within a language, enabling more nuanced and effective NLP tasks.
+**Lưu ý:** Để thử nghiệm với semantic vector, bạn có thể truy cập [Tensorflow Projector](https://projector.tensorflow.org/).
+
+
+## Embedding (Biểu diễn nhúng)
+Embedding là tập hợp các semantic vector (vector ngữ nghĩa). Từ "semantic" ở đây nhấn mạnh rằng các vector này không phải ngẫu nhiên mà được thiết kế để nắm bắt và biểu diễn ý nghĩa, mối quan hệ giữa các từ trong ngôn ngữ, giúp các tác vụ NLP hiệu quả và tinh tế hơn.
 
 ![](images/Embedding.png)
 
-## Embedding Types
+
+## Các loại Embedding (Embedding Types)
+
 
 ### One Hot Vector
-One Hot Encoding turns each token into a binary vector. First, each token is assigned an integer value. Then, each integer is represented as a binary vector, where all values are 0 except for the position of the integer, which is marked by 1.
+One Hot Encoding (Mã hóa one-hot) biến mỗi token thành một vector nhị phân. Đầu tiên, mỗi token được gán một giá trị số nguyên. Sau đó, số nguyên này được biểu diễn thành vector nhị phân, tất cả các giá trị là 0 trừ vị trí của số nguyên đó là 1.
 
 ![](images/OneHotVector.png)
 
+
 ### Bag of Words (BoW)
-A bag of words simply notes which words appear in a document and how often they occur. It doesn't consider grammar or word order.
+Bag of Words (Túi từ) chỉ ghi nhận từ nào xuất hiện trong tài liệu và tần suất xuất hiện, không quan tâm đến ngữ pháp hay thứ tự từ.
 
 ![](images/BoW.png)
 
+
 ### Bag of n-grams
-In Bag of Words, phrases and word order aren't considered. The Bag of n-grams approach addresses this by breaking the text into groups of n consecutive words.
+Trong Bag of Words, cụm từ và thứ tự từ không được xét đến. Bag of n-grams khắc phục điều này bằng cách chia văn bản thành các nhóm gồm n từ liên tiếp.
 
 ![](images/Bagsofn-grams.png)
 
-### TF-IDF(Term Frequency – Inverse Document Frequency)
-In the methods mentioned earlier, every word holds equal weight. However, TF-IDF evaluates the significance of a word within the corpus.
 
-+ Term Frequency (TF): Measures how often a word appears in a document, calculated as the ratio of the word's occurrences to the total number of terms in the document.
+### TF-IDF (Term Frequency – Inverse Document Frequency)
+Ở các phương pháp trên, mọi từ đều có trọng số như nhau. Tuy nhiên, TF-IDF đánh giá tầm quan trọng của một từ trong toàn bộ tập dữ liệu (corpus).
 
-+ Inverse Document Frequency (IDF): Measures the word's importance across the corpus by reducing the weight of common terms and increasing the weight of rare terms.
 
-+ TF-IDF Score: The product of TF and IDF.
++ Term Frequency (TF): Đo tần suất xuất hiện của một từ trong tài liệu, tính bằng tỉ lệ số lần xuất hiện của từ đó trên tổng số từ trong tài liệu.
 
-The figure below illustrates the calculation of TF-IDF.
++ Inverse Document Frequency (IDF): Đo tầm quan trọng của từ trên toàn bộ tập dữ liệu, giảm trọng số cho từ phổ biến và tăng trọng số cho từ hiếm.
+
++ TF-IDF Score: Là tích của TF và IDF.
+
+
+Hình dưới minh họa cách tính TF-IDF.
 
 ![](images/TFIDF.png)
 
-Furthermore, the following shows the implementation of TF-IDF in Python.
+
+Ví dụ dưới đây là cách triển khai TF-IDF trong Python.
 
 ```shell
 import nltk 
@@ -138,7 +159,7 @@ print("\nTFIDF representation for  'learning dsa from geeksforgeeks' is\n",
       matrix.toarray())
 ```
 
-which outputs:
+Kết quả:
 ```shell
 vocabulary ['am' 'are' 'cooking' 'friendly' 'love' 'people' 'pretty' 'vietnam'
  'vietnamese']
@@ -163,53 +184,61 @@ TFIDF representation for  'I love vietnamese people' is
 
 ![](images/EmbeddingTypes.png)
 
-In this our scope, we will discuss about **Word2Vec**, that is a **Word Embedding** technique used in many models nowadays. 
 
-## Word Embeddings
-Word embeddings are a way of representing words as dense vectors in a continuous vector space where the similarity between words is captured by the proximity of their vectors. Normally, we will use [cosine similarity](https://en.wikipedia.org/wiki/Cosine_similarity) that is a standard method to determine how close two vectors are in terms of their direction, to calculate the proximity of 2 vectors.
+Trong phạm vi bài này, chúng ta sẽ tập trung vào **Word2Vec**, một kỹ thuật **Word Embedding** được sử dụng rộng rãi trong các mô hình hiện đại.
 
-Word Embedding is usually used to represent words before feeding into NLP models.
 
-These vectors are short and dense.
+## Word Embeddings (Biểu diễn từ nhúng)
+Word embedding là cách biểu diễn các từ dưới dạng vector dày đặc (dense vector) trong không gian liên tục, trong đó độ tương đồng giữa các từ được thể hiện qua khoảng cách giữa các vector. Thông thường, ta dùng [cosine similarity](https://en.wikipedia.org/wiki/Cosine_similarity) để đo độ gần nhau về hướng giữa hai vector.
+
+Word embedding thường được dùng để biểu diễn từ trước khi đưa vào các mô hình NLP.
+
+Các vector này ngắn và dày đặc.
 
 ![](images/DensevsSparse.png)
 
-## Word2Vec 
-Word2Vec is a static embedding, one word is represented on a fixed embedding
 
-This is a weakness of Word2Vec so we need new techniques such as **ELMO** or **BERT** and latest technique is **Attention**, which can represent dynamic contextual embedding. It means one word can be represented on different vectors depend on different context. We will talk about this in another lesson.
+## Word2Vec
+Word2Vec là một loại embedding tĩnh (static embedding), mỗi từ chỉ được biểu diễn bằng một vector cố định.
+
+Điểm yếu của Word2Vec là không thể biểu diễn ngữ cảnh động, nên các kỹ thuật mới như **ELMO**, **BERT** và gần đây nhất là **Attention** ra đời để tạo embedding động (dynamic contextual embedding)—một từ có thể có nhiều vector khác nhau tùy ngữ cảnh. Phần này sẽ được nói kỹ hơn ở bài sau.
 
 ![](images/CBOW.png)
 
-## Word2Vec mechanism
+
+## Cơ chế hoạt động của Word2Vec (Word2Vec mechanism)
 
 ![](images/Word2Vec.png)
 
-Every word we feed into Word2Vec, it will convert this word into an embedding vector that we use for NLP models.
 
-There are two ways to build Word2Vec by ourselves: **Continuous Bag Of Words (CBOW)** and **Skip Gram**. 
+Mỗi từ đưa vào Word2Vec sẽ được chuyển thành một vector embedding để sử dụng cho các mô hình NLP.
+
+Có hai cách xây dựng Word2Vec: **Continuous Bag Of Words (CBOW)** và **Skip Gram**.
 
 ## Continuous Bag Of Words (CBOW)
-Continuous Bag of Words (CBOW) is a type of word embedding model used in natural language processing (NLP). It aims to predict the target word based on the context of surrounding words within a fixed window size.
-### How CBOW works
+CBOW là một loại mô hình word embedding trong NLP, dự đoán từ trung tâm dựa trên ngữ cảnh các từ xung quanh trong một cửa sổ cố định.
+### Cách hoạt động của CBOW (How CBOW works)
 ![](images/CBOW2.png)
 
 ![](images/CBOW3.png)
 
-These word embeddings that generated by CBOW can then be used for various NLP tasks like sentiment analysis, language modeling, and machine translation.
+
+Các word embedding sinh ra từ CBOW có thể dùng cho nhiều tác vụ NLP như phân tích cảm xúc, mô hình ngôn ngữ, dịch máy...
 
 ## Skip Gram
-The Skip-gram model is another type of word embedding model used in NLP. Unlike CBOW, which predicts a target word based on its surrounding context, Skip-gram predicts the context words based on a target word.
+Skip-gram là một loại mô hình word embedding khác trong NLP. Khác với CBOW, Skip-gram dự đoán các từ ngữ cảnh dựa trên từ trung tâm.
 
-### How Skip Gram works
+### Cách hoạt động của Skip Gram (How Skip Gram works)
 ![](images/SkipGram.png)
 
-Skip Gram will be used when we want to capture nuanced semantic relationships between words, or are interested in rare words and need a large of dataset to train. Otherwhile, if we have a small dataset or want to capture the overall semantic meaning of a text, CBOW might be a good choice. Silimar to CBOW, Skip Gram can be used for various NLP tasks like sentiment analysis, language modeling, and machine translation.
 
-## Implement CBOW Word2Vec
-Now, we will build CBOW Word2Vec to embedding words.
+Skip Gram phù hợp khi muốn nắm bắt các mối quan hệ ngữ nghĩa tinh vi giữa các từ, hoặc quan tâm đến các từ hiếm và có tập dữ liệu lớn để huấn luyện. Nếu dữ liệu nhỏ hoặc muốn nắm ý nghĩa tổng thể, CBOW là lựa chọn tốt. Tương tự CBOW, Skip Gram cũng dùng cho các tác vụ như phân tích cảm xúc, mô hình ngôn ngữ, dịch máy...
 
-### Import necessary libraries
+
+## Triển khai CBOW Word2Vec (Implement CBOW Word2Vec)
+Bây giờ, chúng ta sẽ xây dựng CBOW Word2Vec để embedding các từ.
+
+### Import các thư viện cần thiết (Import necessary libraries)
 ```shell
 import numpy as np
 import tensorflow as tf
@@ -222,7 +251,7 @@ from tensorflow.keras.layers import Dense, Embedding, Lambda
 from tensorflow.keras.backend import mean
 ```
 
-### Create a small dataset
+### Tạo tập dữ liệu nhỏ (Create a small dataset)
 ```shell
 sentences = """We are about to study the idea of a computational process.
 Computational processes are abstract beings that inhabit computers.
@@ -242,7 +271,7 @@ print(corpus)
 'In effect,\nwe conjure the spirits of the computer with our spells.']
 ```
 
-### Build tokenizer
+### Xây dựng tokenizer (Build tokenizer)
 ```shell
 for i in range(len(corpus)):
   corpus[i] = text_to_word_sequence(corpus[i])
@@ -272,7 +301,7 @@ print(w2id)
  'spells': 45}
 ```
 
-### Preprocessing for CBOW
+### Tiền xử lý cho CBOW (Preprocessing for CBOW)
 ```shell
 # Define some parameters
 vocab_size = len(tokenizer.word_index) + 1
@@ -303,10 +332,10 @@ def generate_pairs(window_size, corpus):
 X_train, y_train = generate_pairs(window_size, corpus)
 ```
 
-### Building CBOW
-CBOW model included:
-- 1 embedding layer with defined dimention.
-- 1 dense layer to map from embedding dimention to dictionary dimention.
+### Xây dựng mô hình CBOW (Building CBOW)
+Mô hình CBOW gồm:
+- 1 lớp embedding với số chiều xác định.
+- 1 lớp dense để ánh xạ từ embedding sang không gian từ điển.
 
 ```shell
 embedding_size = 128
@@ -333,13 +362,13 @@ Non-trainable params: 0 (0.00 Byte)
 _________________________________________________________________
 ```
 
-### Training CBOW
+### Huấn luyện CBOW (Training CBOW)
 ```shell
 cbow.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['acc'])
 cbow.fit(X_train, y_train, epochs=30, verbose=1)
 ```
 
-### Test the model's ability to generate words
+### Kiểm tra khả năng sinh từ của mô hình (Test the model's ability to generate words)
 ```shell
 example = 'processes are beings that'
 example = text_to_word_sequence(example)
@@ -353,7 +382,7 @@ tokenizer.index_word[np.argmax(cbow.predict(example))]
 abstract
 ```
 
-### Show embedding
+### Hiển thị embedding (Show embedding)
 ```shell
 weights = cbow.get_weights()[0]
 import pandas as pd
@@ -362,13 +391,15 @@ weights = weights[1:]
 pd.DataFrame(weights, index=list(tokenizer.index_word.values()))
 ```
 
-## Conclusion
 
-In this lesson, we dove into the world of Word Embeddings, an essential technique in NLP that transforms words into continuous vector spaces, capturing their meanings and relationships. We explored popular methods like Word2Vec and GloVe, seeing how they enable models to grasp context and semantic nuances. 
+## Kết luận (Conclusion)
 
-Now, with this powerful tool, we can enhance our text analysis and create smarter, more intuitive machine learning models.
+Trong bài học này, chúng ta đã khám phá thế giới của Word Embedding—một kỹ thuật thiết yếu trong NLP giúp chuyển đổi từ thành vector liên tục, nắm bắt ý nghĩa và mối quan hệ giữa các từ. Chúng ta đã tìm hiểu các phương pháp phổ biến như Word2Vec, GloVe và cách chúng giúp mô hình hiểu ngữ cảnh, sắc thái ngữ nghĩa.
 
-## References
+Với công cụ mạnh mẽ này, bạn có thể nâng cao phân tích văn bản và xây dựng các mô hình machine learning thông minh, trực quan hơn.
+
+
+## Tài liệu tham khảo (References)
 
 + “What are Word Embeddings? | IBM,” www.ibm.com. https://www.ibm.com/topics/word-embeddings
 + J. Alammar, “The Illustrated Word2vec,” jalammar.github.io, Mar. 27, 2019. https://jalammar.github.io/illustrated-word2vec/
