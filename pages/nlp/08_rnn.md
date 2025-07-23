@@ -13,32 +13,32 @@ permalink: /nlp/08_rnn/
 
 ## Giới thiệu (Introduction)
 
-Recurrent Neural Network (RNN - Mạng nơ-ron hồi tiếp) là một loại mạng nơ-ron được thiết kế để xử lý dữ liệu dạng chuỗi, như chuỗi thời gian, ngôn ngữ, hoặc khung hình video. Khác với mạng nơ-ron truyền thống, RNN có các kết nối vòng lặp (loop back) cho phép nó "ghi nhớ" các đầu vào trước đó. Điều này giúp RNN rất phù hợp cho các bài toán như mô hình ngôn ngữ, nhận diện giọng nói, và dự đoán chuỗi.
+Recurrent Neural Network là một loại mạng nơ-ron được thiết kế để xử lý dữ liệu dạng chuỗi, như chuỗi thời gian, ngôn ngữ, hoặc khung hình video. Khác với mạng nơ-ron truyền thống, RNN có các kết nối vòng lặp (loop back) cho phép nó "ghi nhớ" các đầu vào trước đó. Điều này giúp RNN rất phù hợp cho các bài toán như mô hình ngôn ngữ, nhận diện giọng nói, và dự đoán chuỗi.
 
 
 Các biến thể như LSTM và GRU đã được phát triển để giải quyết các thách thức khi huấn luyện RNN, đặc biệt là việc ghi nhớ các phụ thuộc dài hạn (long-term dependencies) trong dữ liệu. Chúng ta sẽ bàn về các biến thể này ở bài sau.
 
 
-## Mô hình ngôn ngữ (Language Models)
+## Mô hình ngôn ngữ
 Mô hình ngôn ngữ là một hệ thống trí tuệ nhân tạo được thiết kế để hiểu, sinh hoặc dự đoán ngôn ngữ con người dựa trên các mẫu và cấu trúc học được từ lượng lớn dữ liệu văn bản. Nó giống như một "nhà ngôn ngữ học ảo" xử lý và sinh văn bản, hỗ trợ các tác vụ như dịch, tóm tắt, hội thoại...
 ![](images/LanguageModel.png)
 
 
-## Mô hình ngôn ngữ N-Grams (N-Grams Language Models)
+## Mô hình ngôn ngữ N-Grams
 ### N-Grams
 ![](images/Ngram.png)
 
 
-### Mô hình N-Grams (N-Grams Models)
+### Mô hình N-Grams
 ![](images/NgramLanguageModel.png)
 
-### Vấn đề của N-Grams (N-Grams Problem)
+### Vấn đề của N-Grams
 ![](images/NGramWeakness.png)
 
-### Giải pháp cho N-Grams (N-Grams Solution)
+### Giải pháp cho N-Grams
 ![](images/NgramSolution.png)
 
-### Điểm yếu của N-Grams (N-Grams Weakness)
+### Điểm yếu của N-Grams
 ![](images/NGramWeakness1.png)
 
 ![](images/NGramWeakness2.png)
@@ -46,7 +46,7 @@ Mô hình ngôn ngữ là một hệ thống trí tuệ nhân tạo được thi
 Chúng ta cần một mô hình ngôn ngữ mới để giải quyết các vấn đề này.
 
 
-## Mô hình ngôn ngữ dùng mạng nơ-ron (Neural Language Models)
+## Mô hình ngôn ngữ dùng mạng nơ-ron
 Neural language model là mô hình ngôn ngữ sử dụng mạng nơ-ron nhân tạo, lấy cảm hứng từ cấu trúc não bộ con người, để xử lý và sinh ngôn ngữ. Khi được huấn luyện trên tập dữ liệu lớn, nó học được các mẫu và mối quan hệ trong ngôn ngữ, cho phép thực hiện các tác vụ như sinh văn bản, dịch, phân tích cảm xúc với độ chính xác cao.
 
 ### Các thành phần của RNN
@@ -168,13 +168,13 @@ that thereby beauty's rose ---> might
 that thereby beauty's rose might ---> never
 ```
 
-### Chuyển nhãn sang vector one-hot (Convert labels to one hot vectors)
+### Chuyển nhãn sang vector one-hot
 Chúng ta sẽ chuyển mỗi nhãn thành vector one-hot có độ dài bằng tổng số từ trong từ điển.
 ```python
 label = ku.to_categorical(label, num_classes=total_words)
 ```
 
-### Xây dựng mô hình RNN (Build RNN model)
+### Xây dựng mô hình RNN
 ```python
 model = Sequential()
 model.add(Embedding(total_words, 100, input_length=max_sequence_len-1))
@@ -211,12 +211,12 @@ _________________________________________________________________
 None
 ```
 
-### Huấn luyện mô hình RNN (Traning RNN model)
+### Huấn luyện mô hình RNN
 ```python
 history = model.fit(features, label, epochs=130, verbose=1)
 ```
 
-### Dự đoán 10 từ tiếp theo (Predict 10 next words)
+### Dự đoán 10 từ tiếp theo
 ```python
 test_seq = "despite of wrinkles this thy golden time more survey slain torn slain erred"
 next_words = 10
@@ -252,7 +252,7 @@ despite of wrinkles this thy golden time more survey slain torn slain erred cros
 ```
 
 
-## Kết luận (Conclusion)
+## Kết luận
 
 Trong bài học này, chúng ta đã tìm hiểu:
 
@@ -261,7 +261,7 @@ Trong bài học này, chúng ta đã tìm hiểu:
 + Ưu điểm và nhược điểm của RNN.
 
 
-## Tài liệu tham khảo (References)
+## Tài liệu tham khảo
 
 + A. Amidi and S. Amidi, “CS 230 - Recurrent Neural Networks Cheatsheet,” Stanford.edu, 2019. https://stanford.edu/~shervine/teaching/cs-230/cheatsheet-recurrent-neural-networks
 + “Recurrent Neural Network Tutorial (RNN),” www.datacamp.com. https://www.datacamp.com/tutorial/tutorial-for-recurrent-neural-network

@@ -8,48 +8,48 @@ permalink: /nlp/10_gru/
 ---
 
 
-# Gated Recurrent Unit (GRU - Đơn vị hồi tiếp có cổng)
+# Gated Recurrent Unit
 
 
-## Giới thiệu (Introduction)
+## Giới thiệu
 
-Gated Recurrent Unit (GRU) là một biến thể đơn giản và hiệu quả của mạng Long Short-Term Memory (LSTM). GRU sử dụng ít cổng (gate) và tham số hơn, giúp huấn luyện nhanh hơn và dễ dàng hơn nhưng vẫn quản lý tốt các phụ thuộc dài hạn (long-term dependencies) trong dữ liệu tuần tự.
+GRU là một biến thể đơn giản và hiệu quả của mạng LSTM. GRU sử dụng ít gate và tham số hơn, giúp huấn luyện nhanh hơn và dễ dàng hơn nhưng vẫn quản lý tốt các phụ thuộc dài hạn (long-term dependencies) trong dữ liệu tuần tự.
 
-Chúng ta sẽ tìm hiểu kiến trúc của GRU, cách hoạt động và ứng dụng trong các bài toán như mô hình ngôn ngữ (language modeling) và dự đoán chuỗi thời gian (time series prediction).
+Ta sẽ tìm hiểu kiến trúc của GRU, cách hoạt động và ứng dụng trong các bài toán như mô hình ngôn ngữ và dự đoán chuỗi thời gian.
 
 
-## GRU là gì? (What is Gated Recurrent Unit?)
-Gated Recurrent Unit (GRU) là một loại kiến trúc mạng nơ-ron hồi tiếp (Recurrent Neural Network - RNN). GRU có cơ chế tương tự LSTM nhưng ít tham số hơn và không sử dụng trạng thái ô nhớ (Cell State). GRU được thiết kế để giải quyết vấn đề tiêu biến gradient (vanishing gradient) thường gặp ở RNN truyền thống.
+## GRU là gì? 
+GRU là một loại kiến trúc mạng RNN. GRU có cơ chế tương tự LSTM nhưng ít tham số hơn và không sử dụng trạng thái ô nhớ (Cell State). GRU được thiết kế để giải quyết vấn đề tiêu biến gradient (vanishing gradient) thường gặp ở RNN truyền thống.
 
 Tương tự LSTM, GRU sử dụng các cơ chế cổng (gating mechanisms) để chọn lọc cập nhật và quên thông tin theo thời gian, giúp ghi nhớ thông tin quan trọng trong chuỗi dài và xử lý hiệu quả các phụ thuộc ngắn hạn. Nói đơn giản, GRU giống như một hệ thống bộ nhớ thông minh trong mạng, quyết định nên nhớ gì và quên gì khi xử lý dữ liệu tuần tự.
 
 
-## Kiến trúc của GRU (Gated Recurrent Unit Architecture)
+## Kiến trúc của GRU
 ![](images/GRUArchitecture.png)
 
 
-## GRU hoạt động như thế nào? (How Gated Recurrent Unit works?)
-### Cổng đặt lại (Reset Gate)
+## GRU hoạt động như thế nào?
+### Reset Gate
 ![](images/GRUResetGate.png)
 
 Phương trình này tính toán giá trị kích hoạt của cổng đặt lại bằng cách kết hợp trạng thái ẩn trước đó và đầu vào hiện tại, sau đó áp dụng hàm sigmoid để xác định mức độ thông tin quá khứ cần được đặt lại hoặc quên.
 
-### Cổng cập nhật (Update Gate)
+### Update Gate
 ![](images/GRUUpateGate.png)
 
 Phương trình này tính toán giá trị kích hoạt của cổng cập nhật bằng cách kết hợp trạng thái ẩn trước đó và đầu vào hiện tại, sau đó áp dụng hàm sigmoid để xác định giữ lại bao nhiêu trạng thái cũ và thêm bao nhiêu thông tin mới.
 
-### Vector kích hoạt ứng viên (Candidate Activation Vector)
+### Candidate Activation Vector
 ![](images/GRUCandidateActivationVector.png)
 
 Phương trình này tính toán trạng thái ẩn ứng viên bằng cách nhân trạng thái ẩn trước $h_{t-1}$ với cổng đặt lại $r_{t}$ (cho phép mô hình quên một phần trạng thái cũ nếu cần). Sau đó, trạng thái đã được nhân và đầu vào $x_{t}$ được kết hợp, đưa qua ma trận trọng số $W$ và hàm kích hoạt $tanh$ để tạo ra trạng thái ẩn ứng viên $\tilde{h}_{t}$.
 
-### Cập nhật trạng thái (Update Operation)
+### Update Operation
 ![](images/GRUUpdateOperation.png)
 
 Phương trình này trộn trạng thái ẩn cũ $h_{t-1}$ với ứng viên mới $\tilde{h}_{t}$ dựa trên cổng cập nhật $z_{t}$. Nếu $z_{t}$ gần 1, trạng thái mới $h_{t}$ chủ yếu dùng ứng viên $\tilde{h}_{t}$. Nếu $z_{t}$ gần 0, giữ lại nhiều trạng thái cũ $h_{t-1}$ hơn.
 
-### Quyết định cuối cùng (Make a decision)
+### Make a decision
 ![](images/GRUDecision.png)
 
 
@@ -230,11 +230,11 @@ Label: Sarcastic
 ```
 
 
-### Kết luận so sánh (Conclusion)
+### Kết luận
 Dựa trên đánh giá, có thể kết luận mô hình LSTM tốt hơn GRU một chút nhưng kích thước lớn hơn và thời gian huấn luyện lâu hơn. Đây là sự đánh đổi giữa hai mô hình.
 
 
-## Kết luận (Conclusion)
+## Kết luận
 
 Tóm lại, bài học về Gated Recurrent Unit (GRU) đã cho thấy cách mạng này xử lý các phụ thuộc dài hạn trong dữ liệu. Chúng ta đã tìm hiểu về cổng đặt lại (reset gate), cổng cập nhật (update gate) và cách chúng giúp kết hợp thông tin cũ mới để cập nhật trạng thái ẩn hiệu quả.
 

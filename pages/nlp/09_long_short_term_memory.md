@@ -8,57 +8,57 @@ permalink: /nlp/09_long_short_term_memory/
 ---
 
 
-# Long Short Term Memory (LSTM - Bộ nhớ ngắn dài hạn)
+# Long Short Term Memory
 
 
-## Giới thiệu (Introduction)
+## Giới thiệu
 
 Long Short-Term Memory (LSTM) là một mạng nơ-ron hồi tiếp (Recurrent Neural Network - RNN) được cải tiến để xử lý hiệu quả các phụ thuộc dài hạn (long-term dependencies) nhờ cơ chế cổng (gate mechanism). Điều này giúp LSTM lý tưởng cho các bài toán như dịch ngôn ngữ, nhận diện giọng nói, dự đoán chuỗi thời gian... Hãy cùng tìm hiểu cách hoạt động của mạng mạnh mẽ này!
 
 
-## LSTM là gì? (What is Long Short Term Memory?)
+## LSTM là gì?
 Như đã đề cập trong bài **Recurrent Neural Network**, các vấn đề **phụ thuộc dài hạn** (long range dependencies) và **tiêu biến gradient** (Gradient Vanishing) rất phổ biến khi huấn luyện RNN. Sự xuất hiện của **Long Short Term Memory** là vị cứu tinh.
 
-LSTM là một loại mạng nơ-ron hồi tiếp (RNN) được thiết kế để khắc phục hạn chế của RNN truyền thống khi xử lý dữ liệu tuần tự. LSTM sử dụng một ô nhớ (memory cell) có thể lưu trữ thông tin trong thời gian dài, cho phép ghi nhớ ngữ cảnh quan trọng ngay cả khi chuỗi đầu vào rất dài. LSTM đạt được điều này nhờ một loạt các cổng chuyên biệt (specialized gates) kiểm soát luồng thông tin vào/ra ô nhớ, giúp học và lưu giữ các mẫu tuần tự hiệu quả.
+LSTM là một loại mạng RNN được thiết kế để khắc phục hạn chế của RNN truyền thống khi xử lý dữ liệu tuần tự. LSTM sử dụng một ô nhớ (memory cell) có thể lưu trữ thông tin trong thời gian dài, cho phép ghi nhớ ngữ cảnh quan trọng ngay cả khi chuỗi đầu vào rất dài. LSTM đạt được điều này nhờ một loạt các cổng chuyên biệt kiểm soát luồng thông tin vào/ra ô nhớ, giúp học và lưu giữ các mẫu tuần tự hiệu quả.
 
 
-## Tại sao cần dùng LSTM? (Why we need to use Long Short Term Memory?)
+## Tại sao cần dùng LSTM?
 ![](images/LSTMAdvantages.png)
 
 
-## Kiến trúc của LSTM (Long Short Term Memory Architecture)
+## Kiến trúc của LSTM
 ![](images/LSTMArchitecute.png)
 
 
-## LSTM hoạt động như thế nào? (How Long Short Term Memory works?)
-### Cổng quên (Forget Gate)
+## LSTM hoạt động như thế nào?
+### Forget Gate
 
 ![](images/LSTMForgetGate.png)
 
 Phương trình này biểu diễn cổng quên trong LSTM. Nó tính toán giá trị kích hoạt của cổng quên bằng cách kết hợp đầu vào hiện tại $x_{t}$ và trạng thái ẩn trước đó $h_{t-1}$, sau đó áp dụng hàm sigmoid để kiểm soát lượng thông tin cần quên từ trạng thái ô nhớ trước đó.
 
-### Cổng vào (Input Gate)
+### Input Gate
 ![](images/LSTMInputGate.png)
 
 Các phương trình này biểu diễn cổng vào và trạng thái ô nhớ ứng viên trong LSTM:
 + Cổng vào: Tính toán giá trị kích hoạt của cổng vào bằng cách kết hợp $x_{t}$ và $h_{t-1}$, áp dụng hàm sigmoid để kiểm soát lượng thông tin mới được đưa vào ô nhớ.
 + Trạng thái ô nhớ ứng viên: Tính toán trạng thái ô nhớ ứng viên bằng cách kết hợp $x_{t}$ và $h_{t-1}$, áp dụng hàm $tanh$ để sinh thông tin mới cần thêm vào ô nhớ.
 
-### Cập nhật trạng thái (Update Operation)
+### Update Operation
 ![](images/LSTMUpdateOperation.png)
 
 Phương trình này cập nhật trạng thái ô nhớ $C_{t}$ bằng cách kết hợp:
 + Trạng thái ô nhớ trước $C_{t-1}$ nhân với cổng quên $f_{t}$ (quyết định giữ lại bao nhiêu thông tin cũ).
 + Trạng thái ô nhớ ứng viên $\tilde{C}_{t}$ nhân với cổng vào $i_{t}$ (quyết định thêm bao nhiêu thông tin mới).
 
-### Cổng ra (Output Gate)
+### Output Gate
 ![](images/LSTMOutputGate.png)
 
 Các phương trình này biểu diễn cổng ra và trạng thái ẩn trong LSTM:
 + Cổng ra: Tính toán giá trị kích hoạt của cổng ra bằng cách kết hợp $x_{t}$ và $h_{t-1}$, áp dụng hàm sigmoid để kiểm soát đầu ra từ ô nhớ.
 + Trạng thái ẩn: Xác định trạng thái ẩn $h_{t}$ bằng cách áp dụng hàm $tanh$ lên $C_{t}$ để tạo ứng viên đầu ra, sau đó nhân với giá trị kích hoạt của cổng ra $o_{t}$. Điều này quyết định phần nào của ô nhớ sẽ được truyền sang bước tiếp theo và làm đầu ra tại thời điểm hiện tại.
 
-### Quyết định cuối cùng (Make a decision)
+### Make a decision
 ![](images/LSTMDecision.png)
 
 ### Phân loại câu (Sentence Classification)
