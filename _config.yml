@@ -9,7 +9,7 @@ title: Khánh Nguyễn  #title of the page
 description: Enter description here
 ##baseurl:  # the subpath of your site, e.g. /blog #usually not needed
 #url: "https://just-the-docs.github.io" # the base hostname & protocol for your site, e.g. http://example.com #need to input
-url: "https://nameiskhanh.github.io"
+url: "https://nghkhanh.github.io"
 
 permalink: pretty
 exclude: ["node_modules/", "*.gemspec", "*.gem", "Gemfile", "Gemfile.lock", "package.json", "package-lock.json",  "script/", "LICENSE.txt", "lib/", "bin/", "README.md", "Rakefile"
